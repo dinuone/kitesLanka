@@ -20,6 +20,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   {{-- sweet alert 2 --}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css"> 
   
+  
   @livewireStyles  
 </head>
 <body class="hold-transition sidebar-mini">

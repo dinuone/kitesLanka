@@ -1,7 +1,7 @@
 <div>
     <div class="card">
         <div class="card-body">
-            <button class="btn btn-primary"><i class="fas fa-bullhorn mr-2"></i>Send Announcement</button>
+            <button class="btn btn-primary" wire:click="OpenAnnouncementModal()"><i class="fas fa-bullhorn mr-2"></i>Send Announcement</button>
             <table class="table table-hover mt-3">
                 <thead>
                 <tr>
@@ -13,39 +13,27 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Class Fees September</td>
-                    <td>kindly regurading about class fees on september</td>
-                    <td><span class="badge badge-warning">Spoken English</span></td>
-                    <td>
-                        <a href="" class="mr-3"><i class="far fa-edit" style="color:#10d430;"></i></a>
-                        <a href=""><i class="fas fa-trash" style="color:#eb0d0d;"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Class Fees September</td>
-                    <td>kindly regurading about class fees on september</td>
-                    <td><span class="badge badge-warning">Spoken English</span></td>
-                    <td>
-                        <a href="" class="mr-3"><i class="far fa-edit" style="color:#10d430;"></i></a>
-                        <a href=""><i class="fas fa-trash" style="color:#eb0d0d;"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Class Fees September</td>
-                    <td>kindly regurading about class fees on september</td>
-                    <td><span class="badge badge-warning">Spoken English</span></td>
-                    <td>
-                        <a href="" class="mr-3"><i class="far fa-edit" style="color:#10d430;"></i></a>
-                        <a href=""><i class="fas fa-trash" style="color:#eb0d0d;"></i></a>
-                    </td>
-                </tr>
+                    @if($announce->count())
+                    @foreach ($announce as $anc )
+                    <tr>
+                        <td>{{ $anc->id }}</td>
+                        <td>{{ $anc->title }}</td>
+                        <td>{{ $anc->body }}</td>
+                        <td>{{ $anc->course->Name }}</td>
+                        <td>
+                            <a href="" class="mr-3"><i class="far fa-edit" style="color:#10d430;"></i></a>
+                            <a href=""><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
+                        </td>
+                    </tr>
+                    @endforeach
+                    @else
+                        <tr>
+                            <td colspan="5" class="text-danger text-center"><i class="fas fa-exclamation mr-2"></i>No Any Announcement found!</td>
+                        </tr>
+                    @endif
                 </tbody>
             </table>
         </div>  
     </div>
-                
+        @include('modals.add-announcement')      
 </div>

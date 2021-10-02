@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\User\StudentController;
+use App\Http\Controllers\User\StudDashController;
+use App\Http\Controllers\User\StudCourseController;
+
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\User\StudCourseController;
 use App\Http\Controllers\Admin\announcement;
-
 
 use Illuminate\Support\Facades\Auth;
 
@@ -39,7 +41,7 @@ Route::middleware(['guest:student','PreventBackHistory'])->group(function(){
     });
     
 Route::middleware(['auth:student','PreventBackHistory'])->group(function(){
-    Route::view('/dashboard','dashboard.user.home')->name('home');
+    Route::get('/dashboard',[StudDashController::class,'index'])->name('home');
     Route::get('/myclass', [StudCourseController::class,'index'])->name('myclass');
     Route::view('/classfee','dashboard.user.classFee' )->name('classfee');
     Route::post('/logout', [StudentController::class,'logout'])->name('logout');

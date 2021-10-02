@@ -42,8 +42,8 @@
        
         <!-- /.card-header -->
         
-          <table class="table table-sm table-bordered table-hover">
-            <thead class="bg-secondary">
+          <table class="table table-sm  table-hover">
+            <thead>
             <tr>
               <th>Student ID</th>
               <th>Full Name</th>
