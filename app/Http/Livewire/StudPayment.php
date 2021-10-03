@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
-use App\Models\course;
+use App\Models\Course;
 use App\Models\Student;
 use App\Models\Payment;
 
