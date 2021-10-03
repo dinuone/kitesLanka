@@ -20,26 +20,32 @@
                 </tr>
                 </thead>
                 <tbody>
+                    @if ($studlist->count())
                     @foreach ($studlist as $std )
-                   <tr>
-                       <td>{{ $std->student_id }}</td>
-                       <td>{{ $std->FullName }}</td>
-                       <td>{{ $std->email }}</td>
-                       <td>{{ $std->contact }}</td>
-                       <td>{{ $std->contact_whatsapp }}</td>
-                       <td>{{ $std->school }}</td>
-                       <td>{{ $std->address }}</td>
-                       <td>  
-                      @foreach ($std->courses as $course)
-                        <span class="badge badge-info mt-2 p-2">{{ $course->Name }}</span>
-                      @endforeach
-                    </td>
-                    <td>
-                        <a href="" class="mr-3"><i class="far fa-edit" style="color:#10d430;"></i></a>
-                        <a href=""><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
+                    <tr>
+                        <td>{{ $std->student_id }}</td>
+                        <td>{{ $std->FullName }}</td>
+                        <td>{{ $std->email }}</td>
+                        <td>{{ $std->contact }}</td>
+                        <td>{{ $std->contact_whatsapp }}</td>
+                        <td>{{ $std->school }}</td>
+                        <td>{{ $std->address }}</td>
+                        <td>  
+                       @foreach ($std->courses as $course)
+                         <span class="badge badge-info mt-2 p-2">{{ $course->Name }}</span>
+                       @endforeach
                      </td>
-                   </tr>
-                   @endforeach
+                     <td>
+                         <a href="" class="mr-3"><i class="far fa-edit" style="color:#10d430;"></i></a>
+                         <a href=""><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
+                      </td>
+                    </tr>
+                    @endforeach
+
+                    @else
+                    <td colspan="7" class="text-center text-danger"><h5><i class="fas fa-exclamation-triangle mr-2"></i>No any Student registered Today</h5></td>
+                    @endif
+                 
                 </tbody>
             </table>
         </div>  
