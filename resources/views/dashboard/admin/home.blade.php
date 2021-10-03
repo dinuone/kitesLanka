@@ -7,13 +7,13 @@
         <div class="col">
             <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>10</h3>
-                  <p>Newly Register Students</p>
-                </div>
-                <div class="icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <h3>{{ $studToday}}</h3>
+                    <p>Newly Register Students</p>
+                  </div>
+                  <div class="icon">
+                      <i class="fas fa-users"></i>
+                  </div>
+                  <a href="{{ route('admin.todayreg') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col">

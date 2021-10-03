@@ -40,9 +40,23 @@
         </div>
         @empty
         <div class="card shadow mt-3">
-            <div class="card-header bg-warning">Notice!</div>
+            <div class="card-header bg-warning"> <strong><i class="fas fa-exclamation-triangle mr-2"></i>Notice!</strong></div>
             <div class="card-body">
-                <h1>You don't have registered any courses!</h1>
+                <h3>You have to waiting for complete your account verification!</h3>
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-grow spinner-grow-sm text-primary mr-2" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow spinner-grow-sm  text-warning mr-2" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow spinner-grow-sm  text-success mr-2" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    <div class="spinner-grow spinner-grow-sm  text-danger mr-2" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
             </div>
         </div>
         @endforelse

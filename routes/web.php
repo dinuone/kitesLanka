@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\StudentController;
 use App\Http\Controllers\User\StudDashController;
 use App\Http\Controllers\User\StudCourseController;
+use App\Http\Controllers\StudregController;
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -33,7 +34,7 @@ Route::prefix('student')->name('student.')->group(function(){
 
 Route::middleware(['guest:student','PreventBackHistory'])->group(function(){
     Route::view('/login','dashboard.user.login')->name('login');
-    Route::view('/register','dashboard.user.register')->name('register');
+    Route::get('/register',[StudregController::class,'index'])->name('register');
     Route::post('/create',[StudentController::class,'create'])->name('create');
     Route::post('/check',[StudentController::class,'check'])->name('check');
     
@@ -65,5 +66,6 @@ Route::prefix('@kt12admin')->name('admin.')->group(function(){
         Route::view('/links','dashboard.admin.managelinks')->name('links');
         Route::view('/payments','dashboard.admin.payment')->name('payment');
         Route::get('/announcement',[announcement::class,'index'])->name('announcement');
+        Route::get('/Todayregstudents',[DashboardController::class,'showtoday'])->name('todayreg');
     });
 });

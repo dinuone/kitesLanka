@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\Course;
 use App\Helpers\Helper;
 
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,8 @@ class StudentController extends Controller
             'contact1'=>'required|max:10|unique:students,contact_whatsapp',
             'email'=>'required|unique:students,email',
             'school'=>'required',
-            'address'=>'required'
+            'address'=>'required',
+            'course'=>'required|min:1'
         ]);
 
         $user = new Student(); 
@@ -37,6 +39,9 @@ class StudentController extends Controller
         $user->school = $request->school;
         $user->password = '$2y$10$7ix6e/tLHYOPYt8xwP/12uh6fouRIQd7IUZOzZXkU41cvzZjYdMsm';
         $save = $user->save();
+
+        $crs = Course::find($request->course);
+        $user->courses()->attach($crs);
 
        if($save){
            return redirect()->back()->with('success','You are now registerd successfully');

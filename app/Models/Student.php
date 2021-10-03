@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 class Student extends Authenticatable
 {
     use HasFactory;
-    public $timestamps = false;
+    public $timestamps = true;
     protected $fillable = [
         'student_id',
         'FullName',
@@ -22,7 +22,9 @@ class Student extends Authenticatable
         'school',
         'password',
         'id',
-        'payment_status'
+        'payment_status',
+        'created_at',
+        'updated_at'
     ];
 
     public function courses()
