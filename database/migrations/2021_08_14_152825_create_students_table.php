@@ -22,7 +22,7 @@ class CreateStudentsTable extends Migration
             $table->string('contact');
             $table->string('address');
             $table->string('email');
-            $table->string('school');
+            $table->string('school')->nullable();
             $table->string('password');
             $table->boolean('payment_status')->default(0);
             $table->timestamps();

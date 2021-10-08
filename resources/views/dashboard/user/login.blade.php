@@ -43,8 +43,10 @@
                         </div>
                         
                         <div class="form-group">
-                        <button type="submit" class="btn btn-success">Login</button>
+                            <button type="submit" class="btn btn-success">Login</button>
                         </div>
+                           
+                        <a href="{{ route('student.forget.form') }}">Forgot your Password?</a>
                 </form> 
             </div>
            </div>  

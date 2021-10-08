@@ -21,10 +21,10 @@
         <tr>
           <th>Student ID</th>
           <th>Full Name</th>
-          <th>Payment Status</th>
+          <th>Student Access</th>
           <th>Payment Date</th>
           <th>Amount</th>
-          <th>Student Access</th>
+          <th>Payment Status</th>
           <th>Actions</th>
         </tr>
         </thead>
@@ -35,9 +35,9 @@
               <td>{{ $payment->student_id }}</td>
               <td>{{ $payment->student->FullName }}</td>
               @if ($payment->student->payment_status == 1)
-                <td><h5><span class="badge badge-success"><i class="fas fa-check mr-2"></i>Payment Received </span></h5></td>
+                <td><h5><span class="badge badge-success"><i class="fas fa-check mr-2"></i>Account Verify</span></h5></td>
               @else
-                <td><h5><span class="badge badge-warning"><i class="fas fa-info-circle mr-2"></i>Payment Not Received</span></h5></td>
+                <td><h5><span class="badge badge-warning"><i class="fas fa-info-circle mr-2"></i>Accouunt Not verified</span></h5></td>
               @endif
               <td>{{ $payment->created_at->toDatestring(); }}</td>
               <td>{{ $payment->amount }}</td>

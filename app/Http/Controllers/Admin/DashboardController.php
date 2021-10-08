@@ -19,9 +19,6 @@ class DashboardController extends Controller
 
     public function showtoday()
     {
-        $studlist = Student::whereDate('created_at', Carbon::today())->get();
-        return view('dashboard.admin.StudTodayReg',[
-            'studlist'=>$studlist
-        ]);
+        return view('dashboard.admin.StudTodayReg');
     }
 }

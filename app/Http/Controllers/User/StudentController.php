@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
+
     public function create(Request $request)
     {
         $request->validate([
@@ -20,7 +21,7 @@ class StudentController extends Controller
             'contact2'=>'required|max:10|unique:students,contact',
             'contact1'=>'required|max:10|unique:students,contact_whatsapp',
             'email'=>'required|unique:students,email',
-            'school'=>'required',
+            'password'=>'required|string|confirmed|min:8',
             'address'=>'required',
             'course'=>'required|min:1'
         ]);
@@ -28,6 +29,7 @@ class StudentController extends Controller
         $user = new Student(); 
 
         $student_id = Helper:: IDgenerator($user,'student_id',5,'KTL');
+        
 
         $user->student_id = $student_id;
         $user->FullName = $request->fullname;
@@ -37,14 +39,14 @@ class StudentController extends Controller
         $user->address = $request->address;
         $user->email = $request->email;
         $user->school = $request->school;
-        $user->password = '$2y$10$7ix6e/tLHYOPYt8xwP/12uh6fouRIQd7IUZOzZXkU41cvzZjYdMsm';
+        $user->password = \Hash::make($request->password);
         $save = $user->save();
 
         $crs = Course::find($request->course);
         $user->courses()->attach($crs);
 
        if($save){
-           return redirect()->back()->with('success','You are now registerd successfully');
+         return redirect()->back()->with('success',$student_id);
        }else{
            return redirect()->back()->with('fail','Something went wrong, fialed to register');
        }
@@ -64,6 +66,7 @@ class StudentController extends Controller
         }else{
             return redirect()->back()->with('fail','Incorrect Username or Password');
         }
+
     }
 
     public function logout()

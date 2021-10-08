@@ -16,7 +16,6 @@ class StudPayment extends Component
 
     public $photo,$student_id;
     public $course;
-    public $payST = 1;
     public $amount;
    
 
@@ -67,11 +66,6 @@ class StudPayment extends Component
         $payment->st_id = $sid;
         $payment->amount = $this->amount;
         $save = $payment->save();
-
-        
-        $update = Student::find($sid)->update([
-            'payment_status'=>$this->payST
-        ]);
 
         if($save){
             $this->dispatchBrowserEvent('ClosepaymenttModal');

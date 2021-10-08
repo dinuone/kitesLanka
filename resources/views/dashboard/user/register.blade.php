@@ -10,10 +10,12 @@
 <div class="container">
     @if(Session::get('success'))
     <div class="alert alert-success" role="alert">
-        {{ session('success') }}
+        Your Student iD:
+        <strong>{{ session('success') }}</strong> 
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
+        
     </div>
     @endif
 
@@ -70,7 +72,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="">Whatsapp Number</label>
-                        <input type="text" name="contact1" class="form-control" placeholder="Ex:- 070 - XXX-XX-XX" value="{{ old('contact') }}">
+                        <input type="text" name="contact1" class="form-control" placeholder="Ex:- 070 - XXX-XX-XX" value="{{ old('contact1') }}">
                         @error('contact1')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -79,7 +81,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Contact Number</label>
-                        <input type="text" name="contact2" class="form-control" placeholder="Ex:- 070 - XXX-XX-XX" value="{{ old('contact') }}">
+                        <input type="text" name="contact2" class="form-control" placeholder="Ex:- 070 - XXX-XX-XX" value="{{ old('contact2') }}">
                         @error('contact2')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -108,13 +110,21 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>School <strong>(only if you are still in school)</strong></label>
-                        <input type="text" name="school" class="form-control" value="{{ old('contact') }}">
-                        @error('school')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
+                        <input type="text" name="school" class="form-control" value="{{ old('school') }}">
                     </div>
                 </div>
 
+            </div>
+
+            <div class="form-group">
+                <label>Passowrd</label>
+                <input type="password" name="password" class="form-control" placeholder="Enter your new password here..">
+                @error('password')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm your passowrd...">
             </div>
                         
               <div class="form-group">

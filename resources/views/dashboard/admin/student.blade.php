@@ -15,8 +15,6 @@
         $('.addstudent').modal('show');
     });
 
-    
-
     window.addEventListener('CloseStudentModal', function(){
         $('.addstudent').find('span').html('');
         $('.addstudent').find('form')[0].reset();

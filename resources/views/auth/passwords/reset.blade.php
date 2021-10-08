@@ -1,65 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
-                        @csrf
+<style>
+    #frm{padding-top: 100px;}
+</style>
 
-                        <input type="hidden" name="token" value="{{ $token }}">
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Reset Password') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+<div class="container" id="frm">
+    <div class="card shadow">
+        <div class="card-header bg-info" style="color: white">Reset Your Password</div>
+        <div class="card-body">
+            <form class="form" role="form" autocomplete="off" action="{{ route('student.reset.password') }}" method="POST">
+                @csrf
+                <input type="hidden" name="token" value="{{ $token }}">
+                <div class="form-group">
+                    <label for="">Email Address</label>
+                    <input type="email" class="form-control" name="email" placeholder="Enter your E-mail Address" value="{{ old('email') }}">
+                    <span class="text-danger">@error('email') {{ $message }} @enderror</span>
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="inputPasswordOld">New Password</label>
+                    <input type="password" class="form-control" id="inputPasswordOld" required="" name="password">
+                    <span class="text-danger">@error('password'){{ $message }}@enderror</span>
+                </div>
+                <div class="form-group">
+                    <label for="inputPasswordNew">Confirm your Password</label>
+                    <input type="password" class="form-control" id="inputPasswordNew" required="" name="password_confirmation">
+                    
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-lg float-right">Reset Passsword</button>
+                </div>
+            </form>
         </div>
     </div>
+   
 </div>
+
+@include('layouts.footer')
 @endsection

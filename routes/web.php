@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\announcement;
 
+use App\Http\Controllers\Auth\ForgetPasswordController;
+
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -37,6 +39,12 @@ Route::middleware(['guest:student','PreventBackHistory'])->group(function(){
     Route::get('/register',[StudregController::class,'index'])->name('register');
     Route::post('/create',[StudentController::class,'create'])->name('create');
     Route::post('/check',[StudentController::class,'check'])->name('check');
+
+    //password reset
+    Route::get('/forget-password',[ForgetPasswordController::class,'showForgetPasswordFrom'])->name('forget.form');
+    Route::post('/forget-password',[ForgetPasswordController::class,'submitForgetPasswordForm'])->name('forget.email');
+    Route::get('/reset-password/{token}',[ForgetPasswordController::class,'showResetPasswordForm'])->name('reset.form');
+    Route::post('/reset-password',[ForgetPasswordController::class,'submitResetPasswordForm'])->name('reset.password');
     
 
     });
