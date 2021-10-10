@@ -1,7 +1,10 @@
 <div>
     <div class="card">
         <div class="card-header">
-          <h3 class="card-title"><button class="btn btn-primary" wire:click="OpenAddStudentModal()"><i class="fas fa-plus mr-2"></i>Add student</button></h3>
+          <h3 class="card-title">
+            <button class="btn btn-primary mr-2" wire:click="OpenAddStudentModal()"><i class="fas fa-plus mr-2"></i>Add student</button>
+            <button class="btn btn-secondary">Reset Student Class Access</button>
+          </h3>
         </div>
       <div class="card-body">
         <div class="row mb-3 p-2 ml-3 mt-2">
@@ -43,7 +46,7 @@
         <!-- /.card-header -->
         
           <table class="table table-sm  table-hover">
-            <thead>
+            <thead class="bg-info">
             <tr>
               <th>Student ID</th>
               <th>Full Name</th>

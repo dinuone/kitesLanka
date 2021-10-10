@@ -10,6 +10,8 @@ use App\Http\Controllers\StudregController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\announcement;
+use App\Http\Controllers\Admin\DuepaymentController;
+use App\Http\Controllers\Admin\AttendanceController;
 
 use App\Http\Controllers\Auth\ForgetPasswordController;
 
@@ -75,5 +77,7 @@ Route::prefix('@kt12admin')->name('admin.')->group(function(){
         Route::view('/payments','dashboard.admin.payment')->name('payment');
         Route::get('/announcement',[announcement::class,'index'])->name('announcement');
         Route::get('/Todayregstudents',[DashboardController::class,'showtoday'])->name('todayreg');
+        Route::get('/Due-Payment',[DuepaymentController::class,'index'])->name('duepayment');
+        Route::get('/attendance',[AttendanceController::class,'index'])->name('attendace');
     });
 });

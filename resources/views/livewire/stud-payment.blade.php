@@ -56,9 +56,9 @@
                             <td>{{ $payment->created_at->toDatestring(); }}</td>
                             <td>
                                 @if ($payment->payment_status == 0)
-                                <h5><span class="badge badge-warning"><i class="fas fa-exclamation-triangle mr-2"></i> Pending..</span></h5>
+                                <h5><span class="badge badge-warning"><i class="fas fa-exclamation-triangle mr-2"></i>Payment Not verified..</span></h5>
                                 @else
-                                <h5><span class="badge badge-success"><i class="fas fa-check mr-2"></i> Verified</span></h5>
+                                <h5><span class="badge badge-success"><i class="fas fa-check mr-2"></i> Payment Verified...</span></h5>
                                 @endif
                             </td>
                             <td><button class="btn btn-primary">View Recipt</button></td>
@@ -69,6 +69,9 @@
                     @endif
                     </tbody>
                 </table>
+                @if(count($payments))
+                {{ $payments->links('modals.livewire-pagination-links') }}
+                 @endif
             </div>
         </div>
     </div>

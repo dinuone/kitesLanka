@@ -9,44 +9,62 @@
         </select>
       </div>
       <div class="col">
-        <a href="" class="btn btn-warning mt-4">Due Payments</a>
+        <label for="">Search</label>
+          <input type="text" class="form-control" wire:model.debounce.350ms="search">
+      </div>
+      <div class="col">
+        <a href="{{ route('admin.duepayment') }}" class="btn btn-warning mt-4">Due Payments</a>
+        @if ($checkedPayment)
+        <button class="btn btn-danger mt-4 ml-2">Delete Selected</button>
+        @endif
       </div>
       <div class="col-md-2">
         <a href="" class="btn btn-info mt-4"><i class="fas fa-cloud-download-alt mr-2"></i>Download Report</a>
       </div>
+
     </div>
 
-    <table id="dataTable" class="table table-bordered table-hover">
-        <thead class="bg-secondary">
+    <table id="dataTable" class="table table-hover">
+        <thead class="bg-info">
         <tr>
+          <th><input type="checkbox" wire:model="selectAll"></th>
           <th>Student ID</th>
           <th>Full Name</th>
-          <th>Student Access</th>
+          <th>Course</th>
+          <th></th>
           <th>Payment Date</th>
           <th>Amount</th>
+          <th>Ref No</th>
           <th>Payment Status</th>
+          <th></th>
           <th>Actions</th>
         </tr>
         </thead>
         <tbody>
           @if ($payments->count())
             @foreach ($payments as $payment)
-            <tr>
+              <td><input type="checkbox" value="{{ $payment->id }}" wire:model="checkedPayment"></td>
               <td>{{ $payment->student_id }}</td>
               <td>{{ $payment->student->FullName }}</td>
+              <td>{{ $payment->course->Name }}</td>
               @if ($payment->student->payment_status == 1)
-                <td><h5><span class="badge badge-success"><i class="fas fa-check mr-2"></i>Account Verify</span></h5></td>
+                <td><h5><span class="badge badge-success"><i class="fas fa-check mr-2"></i>Payment Recevied..</span></h5></td>
               @else
-                <td><h5><span class="badge badge-warning"><i class="fas fa-info-circle mr-2"></i>Accouunt Not verified</span></h5></td>
+                <td><h5><span class="badge badge-warning"><i class="fas fa-info-circle mr-2"></i>Due Payment..</span></h5></td>
               @endif
               <td>{{ $payment->created_at->toDatestring(); }}</td>
               <td>{{ $payment->amount }}</td>
+              <td>{{ $payment->ref_number }}</td>
               @if ($payment->payment_status == 0)
                     <td><h5><span class="badge badge-danger"><i class="fas fa-exclamation-triangle mr-2"></i> Not verified</span></h5></td>
                     @else
                     <td><h5><span class="badge badge-success"><i class="fas fa-check mr-2"></i>Verified</span></h5></td>
                @endif
-               <td><button class="btn btn-primary" wire:click="OpenPaymentverify({{ $payment->id }})"><i class="far fa-check-square mr-2"></i>Check</button></td>
+               <td><button class="btn btn-primary" wire:click="OpenPaymentverify({{ $payment->id }})">Check</button></td>
+               <td>
+                <a class="mr-3" wire:click="OpenEditPaymentModal({{ $payment->id }})"><i class="far fa-edit" style="color:#10d430;"></i></a>
+                <a wire:click="deletePayment({{ $payment->id }})"><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
+               </td>
             </tr>
             @endforeach
           @else
@@ -55,8 +73,8 @@
         </tbody>
       </table>
       
-    
       @include('modals.verifyPayment')
+      @include('modals.edit-payment')
 
 </div>
 

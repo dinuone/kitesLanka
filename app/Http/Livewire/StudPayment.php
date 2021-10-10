@@ -7,22 +7,25 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Course;
 use App\Models\Student;
 use App\Models\Payment;
+use Livewire\WithPagination;
 
 use Livewire\WithFileUploads;
 
 class StudPayment extends Component
 {
     use WithFileUploads;
+    use WithPagination;
 
     public $photo,$student_id;
     public $course;
     public $amount;
+    public $payST = 1;
    
 
     public function render()
     {
         $sid = Auth::user()->id;
-        $payments = Payment::where('st_id',$sid)->get();
+        $payments = Payment::where('st_id',$sid)->paginate(3);
 
         $courses = Auth::guard('student')->user()->courses()->get();
         $students = Student::where('id',$sid)->get();
@@ -66,6 +69,10 @@ class StudPayment extends Component
         $payment->st_id = $sid;
         $payment->amount = $this->amount;
         $save = $payment->save();
+
+        $update = Student::find($sid)->update([
+            'payment_status'=>$this->payST
+        ]);
 
         if($save){
             $this->dispatchBrowserEvent('ClosepaymenttModal');

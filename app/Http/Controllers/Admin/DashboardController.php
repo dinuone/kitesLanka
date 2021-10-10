@@ -11,9 +11,12 @@ class DashboardController extends Controller
 {
     public function index()
     {
+      
+        $duecount = Student::where('payment_status','=',0)->count();
         $studToday = Student::whereDate('created_at', Carbon::today())->get()->count();
         return view('dashboard.admin.home',[
-            'studToday'=>$studToday
+            'studToday'=>$studToday,
+            'duecount'=>$duecount,
         ]);
     }
 
