@@ -19,8 +19,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   {{-- sweet alert 2 --}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css"> 
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ 
   @livewireStyles  
 </head>
 <body class="hold-transition sidebar-mini">
@@ -122,6 +121,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a href="{{ route('admin.attendace') }}" class="nav-link {{ (request()->is('@kt12admin/attendance*')) ? 'active' : ''}}">
                   <i class="nav-icon fas fa-clipboard-check"></i>
                   <p>Attendance</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.materials') }}" class="nav-link {{ (request()->is('@kt12admin/course-material*')) ? 'active' : ''}}">
+                  <i class="nav-icon fas fa-file-alt"></i>
+                  <p>Course Materials</p>
                 </a>
               </li>
               <li class="nav-item">

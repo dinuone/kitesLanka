@@ -45,19 +45,132 @@
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-header"><i class="far fa-chart-bar mr-2"></i>Student Registraion chart</div>
+                <div class="card-header bg-dark"><i class="far fa-chart-bar mr-2"></i>Student Registraion chart</div>
                 <div class="card-body">
-                    <canvas id="studchart" width="100%" height="100%"></canvas>
+                    <div id="studchart" width="100%" height="100%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-dark"><i class="far fa-chart-bar mr-2"></i>Student Registraion chart</div>
+                <div class="card-body">
+                    <div id="incomechart" width="100%" height="100%"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script>
+    var studdata = <?php echo json_encode($studdata)?>;
+    Highcharts.chart('studchart',{
+        
+
+        title: {
+            text: 'New Students Growth, 2021'
+        },
+        subtitle: {
+            text: 'Source: positronx.io'
+        },
+        xAxis: {
+            categories: ['September',
+                'October', 'November', 'December'
+            ]
+        },
+        yAxis: {
+            title: {
+                text: 'Number of New Students'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+        plotOptions: {
+            series: {
+                allowPointSelect: true
+            }
+        },
+        series: [{
+            name: 'New Students',
+            data: studdata
+        }],
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+    });
+</script>
+
+<script>
+    var income = <?php echo json_encode($income)?>;
+    Highcharts.chart('incomechart',{
+        
+        chart:{
+            type:'column'
+        },
+
+        title: {
+            text: 'Income Growth, 2021'
+        },
+        subtitle: {
+            text: 'Source: positronx.io'
+        },
+        xAxis: {
+            categories: ['September',
+                'October', 'November', 'December'
+            ]
+        },
+        yAxis: {
+            title: {
+                text: 'Amount'
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
+        plotOptions: {
+            series: {
+                allowPointSelect: true
+            }
+        },
+        series: [{
+            name: 'Monthly Income',
+            data: income
+        }],
+        responsive: {
+            rules: [{
+                condition: {
+                    maxWidth: 500
+                    
+                },
+                chartOptions: {
+                    legend: {
+                        layout: 'horizontal',
+                        align: 'center',
+                        verticalAlign: 'bottom'
+                    }
+                }
+            }]
+        }
+    });
+</script>
    
 </div>
 @endsection
-
-<script>
-    var _ydata = '{!! json_encode($months) !!}'
-</script>
