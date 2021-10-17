@@ -23,7 +23,6 @@ class StudentController extends Controller
             'email'=>'required|unique:students,email',
             'password'=>'required|string|confirmed|min:8',
             'address'=>'required',
-            'course'=>'required|min:1'
         ]);
 
         $user = new Student(); 

@@ -10,7 +10,7 @@
             <div class="card shadow mr-3">
                 <div class="card-header bg-dark">{{ $crs->Name }}</div>
                 <div class="card-body">
-                    <img class="card-img-top center" src="{{ asset('assets/img/about.jpg') }}" alt="Card image cap"> 
+                    <img class="card-img-top center" src="{{ asset('storage/'.$crs->image_path) }}" alt="Card image cap"> 
                 <hr>
                     <ul class="list-group">
                     @foreach ($files as $file)

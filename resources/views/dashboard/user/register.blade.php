@@ -33,6 +33,7 @@
     <div class="card-body">
         <form action="{{ route('student.create') }}" method="POST">
             @csrf
+            <input type="hidden" name="course" value="{{ $courseid }}">
             <div class="row mt-3">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -53,21 +54,6 @@
                     </div>
                 </div>
             </div>
-
-            <div> <p class="mt-3" id="crs">Courses</p></div>
-            <hr>
-            @foreach ($courses as $course )
-            <div class="form-check mt-3">
-                <input class="form-check-input" type="checkbox" value="{{ $course->id }}" name="course[]">
-                <label class="form-check-label">
-                 <strong>{{ $course->Name }}</strong> 
-                </label>
-            </div>
-            @endforeach
-            @error('course')
-            <div class="text-danger">{{ $message }}</div>
-            @enderror
-               <hr>
             <div class="row mt-3">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -101,7 +87,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="">Email Address</label>
-                        <input type="text" name="email" class="form-control" placeholder="Ex:- someone@email.com" value="{{ old('email') }}">
+                        <input type="email" name="email" class="form-control" placeholder="Ex:- someone@email.com" value="{{ old('email') }}">
                         @error('email')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror

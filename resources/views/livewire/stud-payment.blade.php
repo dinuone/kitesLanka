@@ -6,7 +6,7 @@
             <div class="card-body">
                 <div class="card mt-3 shadow">
                     <div class="card-header">{{ $course->Name }}</div>
-                    <img class="card-img-top center" src="{{ asset('assets/img/about.jpg') }}" alt="Card image cap">
+                    <img class="card-img-top center" src="{{ asset('storage/'.$course->image_path) }}" alt="Card image cap">
                     <div class="card-body">
                         <hr>
                        

@@ -6,13 +6,15 @@ use Livewire\Component;
 use App\Models\Course;
 use App\Models\Student;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 
 class Courses extends Component
 {
     use WithPagination;
+    use WithFileUploads;
 
     public $name;
-    public $stud_name,$std_id,$crs_id;
+    public $stud_name,$std_id,$crs_id,$photo,$description;
 
     public function render()
     {
@@ -37,12 +39,15 @@ class Courses extends Component
     {
         $this->validate([
             'name'=>'required|unique:courses',
+            'description'=>'required',
+            'photo'=>'image|max:1024'
             
         ]);
 
         $crs = new Course();
         $crs->Name = $this->name;
-
+        $crs->image_path = $this->photo->store('images', 'public');
+        $crs->description = $this->description;
         $save = $crs->save();
        
         if($save)

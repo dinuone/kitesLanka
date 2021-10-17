@@ -8,6 +8,9 @@ use App\Http\Controllers\User\StudCourseController;
 use App\Http\Controllers\StudregController;
 use App\Http\Controllers\User\StudMaterialController;
 
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\CourseController;
+
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\announcement;
@@ -30,9 +33,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'index']);
 
 Auth::routes();
 
@@ -40,9 +41,11 @@ Route::prefix('student')->name('student.')->group(function(){
 
 Route::middleware(['guest:student','PreventBackHistory'])->group(function(){
     Route::view('/login','dashboard.user.login')->name('login');
-    Route::get('/register',[StudregController::class,'index'])->name('register');
+    Route::get('/register/{id}',[StudregController::class,'index'])->name('register');
     Route::post('/create',[StudentController::class,'create'])->name('create');
     Route::post('/check',[StudentController::class,'check'])->name('check');
+    Route::get('/courses,',[CourseController::class,'index'])->name('course');
+    Route::get('/course/{id}',[CourseController::class,'selectcourse'])->name('select-course');
 
     //password reset
     Route::get('/forget-password',[ForgetPasswordController::class,'showForgetPasswordFrom'])->name('forget.form');
@@ -60,6 +63,8 @@ Route::middleware(['auth:student','PreventBackHistory'])->group(function(){
     Route::post('/logout', [StudentController::class,'logout'])->name('logout');
     Route::get('/course-materials',[StudMaterialController::class,'index'])->name('course-materials');
     Route::get('/course-materials/download/{file_name}',[StudMaterialController::class,'download'])->name('stud-download');
+    Route::get('/course-register/{id}',[StudDashController::class,'showreg'])->name('reg-course');
+    Route::post('/course-register/save',[StudDashController::class,'save'])->name('course-save');
      
     });
 });

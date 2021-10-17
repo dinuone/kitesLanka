@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">{{ $crs->Name }}</div>
                 <div class="card-body">
-                    <img class="card-img-top center" src="{{ asset('assets/img/about.jpg') }}" alt="Card image cap"> 
+                    <img class="card-img-top center" src="{{ asset('storage/'.$crs->image_path) }}" alt="Card image cap"> 
                     <hr>
                     <button class="btn btn-primary" wire:click="OpenClassLinkModal({{ $crs->id}})">Class Link</button>
                 </div>

@@ -8,7 +8,6 @@ use App\Models\Course;
 use App\Models\Student;
 use App\Models\Payment;
 use Livewire\WithPagination;
-
 use Livewire\WithFileUploads;
 
 class StudPayment extends Component

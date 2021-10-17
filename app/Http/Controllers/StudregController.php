@@ -7,11 +7,11 @@ use App\Models\Course;
 
 class StudregController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        $courses = Course::all();
+        $courseid = $id;
         return view('dashboard.user.register',[
-            'courses'=>$courses
+            'courseid'=>$courseid
         ]);
     }
 }

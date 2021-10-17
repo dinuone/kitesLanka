@@ -1,6 +1,5 @@
 <div>
-    <div class="card shadow">
-        
+    <div class="card shadow">   
         <div class="card-body">
             <button class="btn btn-primary" wire:click="OpenAddCourseModal()"><i class="fas fa-plus mr-2"></i>Add New Course</button>
             <table id="example2" class="table table-hover mt-3">
@@ -24,8 +23,6 @@
                 </tr>
                 @endforeach
                 @endif
-               
-                
              </tbody>
            </table>
         </div>
