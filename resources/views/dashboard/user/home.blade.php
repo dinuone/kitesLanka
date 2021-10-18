@@ -17,17 +17,19 @@
          <div class="body">
             @foreach ($course as $crs )
                 @foreach ($announce as $anc )
-                    @if ($crs->id == $anc->course_id)
-                    <div class="alert alert-info alert-dismissible fade show m-2" role="alert">
-                        <strong>{{ $anc->title }}</strong>
-                        <br>
-                        {{ $anc->body }}
-                        <br>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    @endif
+                    @foreach ($student as $std)
+                        @if ($crs->id == $anc->course_id && $std->payment_status == $anc->payment_status)
+                        <div class="alert alert-info alert-dismissible fade show m-2" role="alert">
+                            <strong>{{ $anc->title }} : {{ $anc->course->Name }}</strong>
+                            <br>
+                            {{ $anc->body }}
+                            <br>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif
+                    @endforeach
                 @endforeach
             @endforeach
          </div>

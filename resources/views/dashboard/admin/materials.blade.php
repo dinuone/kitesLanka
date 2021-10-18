@@ -65,7 +65,7 @@
                         <td><i class="fas fa-file-pdf mr-2"></i>{{ $file->file_name }}</td>
                         <td>{{ $file->created_at->toDatestring(); }}</td>
                         <td>
-                            <a class="mr-2"><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
+                            <a class="mr-2" href=""><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
                         </td>
                         <td>
                             <a href="{{ route('admin.file-download', $file->file_name) }}" class="btn btn-info"><i class="fas fa-cloud-download-alt mr-2"></i>Download</a>

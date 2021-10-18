@@ -1,32 +1,22 @@
 @extends('layouts.stud')
 
 @section('content')
-
-
-<div class="content">
-    <div class="row">
-        @foreach ($courses as $crs )
-        <div class="col-md-4 col-sm-6"> 
-            <div class="card shadow mr-3">
-                <div class="card-header bg-dark">{{ $crs->Name }}</div>
-                <div class="card-body">
-                    <img class="card-img-top center" src="{{ asset('storage/'.$crs->image_path) }}" alt="Card image cap"> 
-                <hr>
-                    <ul class="list-group">
-                    @foreach ($files as $file)
-                        @if ($crs->id == $file->course_id)
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                        {{ $file->file_name }}
-                        <a href="{{ route('student.stud-download', $file->file_name) }}" class="btn btn-info"><i class="fas fa-cloud-download-alt mr-2"></i>Download</a>
-                        </li>
-                        @endif
-                    @endforeach
-                    </ul>
-                </div>
-            </div>
-        </div>
-        @endforeach
-    </div>
-   </div>
+<style>
+    .card-img-top{max-width: 250px; max-height: 250px; }
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+ 
+        }
+</style>
+    
+@livewire('stud-materials')
 
 @endsection
+
+<script>
+    window.addEventListener('OpenViewCourse',function(){
+      $('.viewmaterial').modal('show');
+  });
+</script>

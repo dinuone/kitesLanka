@@ -40,21 +40,26 @@ class StudClassLink extends Component
 
     public function markattend()
     {
-       
+        $now = Carbon::today();
         $sid = Auth::user()->id;
-        $attendance = new Attendance();
-       
-        $attendance->attend = 1;
-        $attendance->course_id = $this->courseID;
-        $attendance->st_id = $sid;
-
-        $save = $attendance->save();
         
-        if($save){
-            $this->dispatchBrowserEvent('CloseStudentModal');
+        
+        $attend = Attendance::where('st_id','=',$sid)->where('course_id','=',$this->courseID)->where('created_at','=',$now)->first();
+        if($attend == null)
+        {
+            $attendance = new Attendance();
+            $attendance->attend = 1;
+            $attendance->course_id = $this->courseID;
+            $attendance->st_id = $sid;
+    
+            $save = $attendance->save();
+            
+            if($save){
+                $this->dispatchBrowserEvent('CloseStudentModal');
+            }
         }
-
-
+        
+    
        
     }
 }

@@ -18,6 +18,7 @@ class CreateAnnouncementsTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->unsignedBigInteger('course_id');
+            $table->boolean('payment_status');
             $table->timestamps();
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
         });

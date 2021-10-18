@@ -15,14 +15,17 @@ class StudDashController extends Controller
 {
 
     public function index()
-    {
+    {   
+        $stdid = Auth::user()->id;
+        $student = Student::where('id',$stdid)->get();
         $avbCourse = Course::all();
         $course = Auth::guard('student')->user()->courses()->get();
         $announce = Announcement::all();
         return view('dashboard.user.home',[
             'announce'=>$announce,
             'course'=>$course,
-            'avbCourse'=>$avbCourse
+            'avbCourse'=>$avbCourse,
+            'student'=>$student
         ]);
 
         

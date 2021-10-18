@@ -50,5 +50,10 @@ class CourseMaterialsController extends Controller
         return response()->download($path);
         
     }
+
+    public function destroy($id)
+    {
+        dd($id);
+    }
   
 }

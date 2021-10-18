@@ -13,7 +13,8 @@ class Announcement extends Model
        'id',
        'title',
        'body',
-       'course_id'
+       'course_id',
+       'payment_status'
     ];
 
     public function course()

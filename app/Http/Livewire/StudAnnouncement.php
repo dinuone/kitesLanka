@@ -8,7 +8,7 @@ use App\Models\Announcement;
 
 class StudAnnouncement extends Component
 {
-    public $course,$title,$msg;
+    public $course,$title,$msg,$payment;
 
     public function render()
     {
@@ -31,6 +31,7 @@ class StudAnnouncement extends Component
             'title'=>'required',
             'msg'=>'required',
             'course'=>'required',
+            'payment'=>'required'
             
         ]);
 
@@ -38,7 +39,7 @@ class StudAnnouncement extends Component
         $announcement->title = $this->title;
         $announcement->body = $this->msg;
         $announcement->course_id = $this->course;
-     
+        $announcement->payment_status = $this->payment;
 
         $save = $announcement->save();
         if($save)

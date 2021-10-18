@@ -9,6 +9,9 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 
+use App\Exports\PaymentsExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class StudManage extends Component
 {
 
@@ -112,19 +115,27 @@ class StudManage extends Component
     }
 
 
-public function deletePayment($id){
-    $info = Payment::find($id);
-    $this->dispatchBrowserEvent('swalconfirm',[
-        'title'=>'Are You Sure?',
-        'id'=>$id
-    ]);
-}
+    public function deletePayment($id)
+    {
+        $info = Payment::find($id);
+        $this->dispatchBrowserEvent('swalconfirm',[
+            'title'=>'Are You Sure?',
+            'id'=>$id
+        ]);
+    }
+
     public function delete($id)
     {
         $del = Payment::find($id)->delete();
         if($del){
             $this->dispatchBrowserEvent('deleted');
         }
+    }
+
+    public function export()
+    {
+        return (new PaymentsExport($this->checkedPayment))->download('payment-summary.xls'); 
+      
     }
 
 

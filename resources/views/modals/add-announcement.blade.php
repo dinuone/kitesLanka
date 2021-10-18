@@ -17,6 +17,12 @@ aria-hidden="true" data-keyboad="false" data-backdrop="static">
               <option value="{{ $course->id }}">{{ $course->Name }}</option>
             @endforeach
           </select>
+          <label>Select Student Payment</label>
+          <select class="form-control mb-3" wire:model="payment">
+            <option value="">No Selected</option>
+            <option value="1">Payment Done</option>
+            <option value="0">Payment Due</option>
+          </select>
           <span class="text-danger">@error('course') {{ $message }} @enderror</span>
 
           <hr>
