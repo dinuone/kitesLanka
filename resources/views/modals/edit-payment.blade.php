@@ -28,6 +28,22 @@
                     <input type="text"  class="form-control" wire:model="up_amount">
                     <span class="text-danger">@error('up_amount') {{ $message }} @enderror</span>
                   </div>
+
+                  <label>Payment for</label>
+                  <select class="form-control mb-3" wire:model='up_month'>
+                    <option value="January">JAN</option>
+                    <option value="February">FEB</option>
+                    <option value="March">MAR</option>
+                    <option value="April">APR</option>
+                    <option value="May">MAY</option>
+                    <option value="June">JUN</option>
+                    <option value="July">JUL</option>
+                    <option value="August">AUG</option>
+                    <option value="Septmeber">SEP</option>
+                    <option value="October">OCT</option>
+                    <option value="November">NOV</option>
+                    <option value="December">DEC</option>
+                  </select>
                   <div class="form-group">
                    @foreach ($paymentStatus as $data)
                      @if ($data->payment_status == 1)

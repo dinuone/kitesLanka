@@ -20,6 +20,7 @@ class CreatePayments extends Migration
             $table->unsignedBigInteger('course_id');
             $table->string('image_path');
             $table->boolean('payment_status')->default(0);
+            $table->string('month');
             $table->timestamps();
 
             $table->foreign('st_id')->references('id')->on('students')->onDelete('cascade');

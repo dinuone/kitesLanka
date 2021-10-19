@@ -9,6 +9,7 @@ use App\Models\Student;
 use App\Models\Payment;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use Carbon\Carbon;
 
 class StudPayment extends Component
 {
@@ -17,12 +18,13 @@ class StudPayment extends Component
 
     public $photo,$student_id;
     public $course;
-    public $amount;
+    public $amount,$month;
     public $payST = 1;
    
 
     public function render()
     {
+    
         $sid = Auth::user()->id;
         $payments = Payment::where('st_id',$sid)->paginate(3);
 
@@ -32,13 +34,14 @@ class StudPayment extends Component
         return view('livewire.stud-payment',[
             'courses'=>$courses,
             'students'=>$students,
-            'payments'=>$payments
-            
+            'payments'=>$payments,
+
         ]);
     }
 
     public function OpenPaymentModal($id)
     {
+
         $info = Course::find($id);
 
         $this->course = $info->id;
@@ -53,20 +56,21 @@ class StudPayment extends Component
             'student_id'=>'required',
             'course'=>'required',
             'photo'=>'image|max:1024',
-            'amount'=>'required'
+            'amount'=>'required',
+            'month'=>'required'
             
         ]);
         //image name
         
-
         $payment = new Payment();
         $sid = Auth::user()->id;
-        
+    
         $payment->image_path = $this->photo->store('images', 'public');
         $payment->student_id = $this->student_id;
         $payment->course_id = $this->course;
         $payment->st_id = $sid;
         $payment->amount = $this->amount;
+        $payment->month = $this->month;
         $save = $payment->save();
 
         $update = Student::find($sid)->update([

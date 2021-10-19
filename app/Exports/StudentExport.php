@@ -28,7 +28,7 @@ class StudentExport implements FromQuery,WithMapping,WithHeadings
     {
         return[
             'Student ID',
-            'Student Full Name',
+            'Full Name',
             'email',
             'Contact',
             'Contact Whatsaap',

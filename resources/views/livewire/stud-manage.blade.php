@@ -8,19 +8,37 @@
           @endforeach
         </select>
       </div>
+      
+      <div class="col">
+        <label for="">Month</label>
+        <select class="form-control" wire:model="bymonth">
+          <option value="January">JAN</option>
+          <option value="February">FEB</option>
+          <option value="March">MAR</option>
+          <option value="April">APR</option>
+          <option value="May">MAY</option>
+          <option value="June">JUN</option>
+          <option value="July">JUL</option>
+          <option value="August">AUG</option>
+          <option value="Septmeber">SEP</option>
+          <option value="October">OCT</option>
+          <option value="November">NOV</option>
+          <option value="December">DEC</option>
+        </select>
+      </div>
+
       <div class="col">
         <label for="">Search</label>
           <input type="text" class="form-control" wire:model.debounce.350ms="search">
       </div>
+
       <div class="col">
         <a href="{{ route('admin.duepayment') }}" class="btn btn-warning mt-4">Due Payments</a>
-        @if ($checkedPayment)
-        <button class="btn btn-danger mt-4 ml-2">Delete Selected</button>
-        @endif
       </div>
+
       @if ($checkedPayment)
       <div class="col-md-2">
-        <a wire:click.prevent="export " class="btn btn-info mt-4"><i class="fas fa-cloud-download-alt mr-2"></i>Download Report</a>
+        <a wire:click.prevent="export" class="btn btn-info mt-4"><i class="fas fa-cloud-download-alt mr-2"></i>Download Report</a>
       </div>
       @endif
     </div>
@@ -34,6 +52,7 @@
           <th>Course</th>
           <th></th>
           <th>Payment Date</th>
+          <th>Payment for</th>
           <th>Amount</th>
           <th>Ref No</th>
           <th>Payment Status</th>
@@ -54,6 +73,7 @@
                 <td><h5><span class="badge badge-warning"><i class="fas fa-info-circle mr-2"></i>Due Payment..</span></h5></td>
               @endif
               <td>{{ $payment->created_at->toDatestring(); }}</td>
+              <td>{{ $payment->month }}</td>
               <td>{{ $payment->amount }}</td>
               <td>{{ $payment->ref_number }}</td>
               @if ($payment->payment_status == 0)
@@ -69,7 +89,7 @@
             </tr>
             @endforeach
           @else
-            <td colspan="6" class="text-danger text-center">No Any students Payments found!</td>
+            <td colspan="11" class="text-danger text-center">No Any students Payments found!</td>
             @endif
         </tbody>
       </table>

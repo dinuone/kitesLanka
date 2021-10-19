@@ -27,11 +27,27 @@ aria-hidden="true" data-keyboad="false" data-backdrop="static">
                   <span class="text-danger">@error('student_id')  {{ $message }} @enderror</span>
                 </div>
                 <div class="form-group">
-                 
                   <label>Amount :</label>
                   <input type="text"  class="form-control" placeholder="Enter paid amount here.."  wire:model="amount">
                   <span class="text-danger">@error('student_id')  {{ $message }} @enderror</span>
                 </div>
+                
+                <label>Select Payment Month</label>
+                <select class="form-control mb-3" wire:model='month'>
+                  <option value="January">JAN</option>
+                  <option value="February">FEB</option>
+                  <option value="March">MAR</option>
+                  <option value="April">APR</option>
+                  <option value="May">MAY</option>
+                  <option value="June">JUN</option>
+                  <option value="July">JUL</option>
+                  <option value="August">AUG</option>
+                  <option value="Septmeber">SEP</option>
+                  <option value="October">OCT</option>
+                  <option value="November">NOV</option>
+                  <option value="December">DEC</option>
+                </select>
+                
               @endforeach
               <hr>
 
@@ -58,3 +74,4 @@ aria-hidden="true" data-keyboad="false" data-backdrop="static">
   </div>
   <!-- /.modal-dialog -->
 </div>
+

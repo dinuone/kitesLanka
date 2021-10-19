@@ -36,6 +36,7 @@
                             <th>Course</th>
                             <th>Date</th>
                             <th>Payment Status</th>
+                            <th>Payment for</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -61,6 +62,7 @@
                                 <h5><span class="badge badge-success"><i class="fas fa-check mr-2"></i> Payment Verified...</span></h5>
                                 @endif
                             </td>
+                            <td>{{ $payment->month }}</td>
                             <td><button class="btn btn-primary">View Recipt</button></td>
                         </tr>
                         @endforeach

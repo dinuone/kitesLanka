@@ -18,7 +18,8 @@ class Payment extends Model
         'image_path',
         'created_at',
         'amount',
-        'ref_number'
+        'ref_number',
+        'month',
     ];
 
 

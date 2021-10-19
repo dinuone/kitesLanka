@@ -35,7 +35,8 @@ class PaymentsExport implements FromQuery,WithMapping,WithHeadings
             'Amount',
             'Payment Status',
             'Ref Number',
-            'Date'
+            'Date',
+            'Payment for'
         ];
     }
 
@@ -51,6 +52,7 @@ class PaymentsExport implements FromQuery,WithMapping,WithHeadings
              $payment->payment_status,
              $payment->ref_number,
              $payment->created_at->toDatestring(),
+             $payment->month
          ];
     }
 

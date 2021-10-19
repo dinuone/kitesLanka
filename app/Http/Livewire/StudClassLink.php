@@ -43,14 +43,17 @@ class StudClassLink extends Component
         $sid = Auth::user()->id;
         
         
-        $attend = Attendance::where('st_id','=',$sid)->where('course_id','=',$this->courseID)->where('date','=',date('Y-m-d'))->first();
-        if($attend === null)
+        if(Attendance::where('st_id','=',$sid)->where('course_id','=',$this->courseID)->where('created_at','=',$today)->exists()) 
         {
+            return null;
+
+        }else{
+            
             $attendance = new Attendance();
             $attendance->attend = 1;
             $attendance->course_id = $this->courseID;
             $attendance->st_id = $sid;
-            $attendance->date = $today;
+            $attendance->created_at = $today;
             $save = $attendance->save();
             
             if($save){
