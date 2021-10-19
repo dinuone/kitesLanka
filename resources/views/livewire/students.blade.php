@@ -37,17 +37,21 @@
                 <option value="desc">DESC</option>
             </select>
             </div>
-
+            
+            @if ($selected)
             <div class="col-md-2">
-              <a href="" class="btn btn-info mt-4"><i class="fas fa-cloud-download-alt mr-2"></i>Download Report</a>
+              <a wire:click.prevent="export " class="btn btn-info mt-4"><i class="fas fa-cloud-download-alt mr-2"></i>Download Report</a>
             </div>
+            @endif
+           
         </div>
        
         <!-- /.card-header -->
         
-          <table class="table table-sm  table-hover">
+          <table class="table table-hover">
             <thead class="bg-info">
             <tr>
+              <th><input type="checkbox" wire:model="selectAll"></th>
               <th>Student ID</th>
               <th>Full Name</th>
               <th>E-email</th>
@@ -63,6 +67,7 @@
                 @if($students->count())
                 @foreach ($students as $student)
                 <tr>
+                  <td><input type="checkbox" value="{{ $student->id }}" wire:model="selected"></td>
                     <td>{{ $student->student_id }}</td>
                     <td>{{ $student->FullName }}</td>
                     <td>{{ $student->email }}</td>

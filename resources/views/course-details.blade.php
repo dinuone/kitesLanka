@@ -37,11 +37,6 @@
             </div>
 
             <div class="course-info d-flex justify-content-between align-items-center">
-              <h5>Available Seats</h5>
-              <p>30</p>
-            </div>
-
-            <div class="course-info d-flex justify-content-between align-items-center">
               <h5>Enroll</h5>
               <a class="get-started-btn" href="{{ route('student.register',$course->id) }}" style="color: white">Register</a>
             </div>

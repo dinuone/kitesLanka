@@ -138,6 +138,16 @@ class StudManage extends Component
       
     }
 
+    public function updatedSelectAll($value)
+    {
+        if($value){
+            $this->checkedPayment = Payment::pluck('id');
+        }
+        else{
+            $this->checkedPayment = [];
+        }
+    }
+
 
         
 }

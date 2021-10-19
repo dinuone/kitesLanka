@@ -21,7 +21,6 @@ class StudClassLink extends Component
         $stdid = Auth::user()->id;
         $payments = Payment::where('payment_status', '=', 1)->where('st_id','=',$stdid)->where('course_id','=',$this->courseID)->get();
         $courses = Auth::guard('student')->user()->courses()->get();
-    
         return view('livewire.stud-class-link',[
             'courses'=>$courses,
             'payments'=>$payments
@@ -40,18 +39,18 @@ class StudClassLink extends Component
 
     public function markattend()
     {
-        $now = Carbon::today();
+        $today = Carbon::today();
         $sid = Auth::user()->id;
         
         
-        $attend = Attendance::where('st_id','=',$sid)->where('course_id','=',$this->courseID)->where('created_at','=',$now)->first();
-        if($attend == null)
+        $attend = Attendance::where('st_id','=',$sid)->where('course_id','=',$this->courseID)->where('date','=',date('Y-m-d'))->first();
+        if($attend === null)
         {
             $attendance = new Attendance();
             $attendance->attend = 1;
             $attendance->course_id = $this->courseID;
             $attendance->st_id = $sid;
-    
+            $attendance->date = $today;
             $save = $attendance->save();
             
             if($save){

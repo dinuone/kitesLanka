@@ -40,7 +40,7 @@ class Courses extends Component
         $this->validate([
             'name'=>'required|unique:courses',
             'description'=>'required',
-            'photo'=>'image|max:1024'
+            'photo'=>'image|max:2048'
             
         ]);
 

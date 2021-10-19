@@ -8,6 +8,9 @@ use App\Models\Course;
 use App\Helpers\Helper;
 use Livewire\WithPagination;
 
+use App\Exports\StudentExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class Students extends Component
 {
     use WithPagination;
@@ -21,8 +24,10 @@ class Students extends Component
     public $sortBy = 'asc';
     public $search;
 
-    
+    public $selected=[]; 
+    public $selectAll = false;
 
+    //returen view 
     public function render()
     {
         $students = Student::latest()->paginate(5);
@@ -44,6 +49,7 @@ class Students extends Component
         $this->dispatchBrowserEvent('OpenAddStudentModal');
     }
 
+    //save student
     public function save()
     {
         $this->validate([
@@ -80,5 +86,23 @@ class Students extends Component
         if($save){
             $this->dispatchBrowserEvent('CloseStudentModal');
         }
+    }
+
+    //chekboxes select all
+    public function updatedSelectAll($value)
+    {
+        if($value){
+            $this->selected = Student::pluck('id');
+        }
+        else{
+            $this->selected = [];
+        }
+    }
+
+    //export reports 
+    public function export()
+    {
+        return (new StudentExport ($this->selected))->download('students-detials.xls'); 
+      
     }
 }
