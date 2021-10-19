@@ -11,6 +11,7 @@ class CourseLink extends Component
     use WithPagination;
 
     public $vdlink,$crs_id;
+    protected $listeners=['delete'];
 
     public function render()
     {
@@ -51,5 +52,27 @@ class CourseLink extends Component
         
           
     }
+
+    public function DeleteCourseLink($id)
+    {
+        $info = Course::find($id);
+        $this->dispatchBrowserEvent('swalconfirm',[
+            'title'=>'Are You Sure?',
+            'id'=>$id
+        ]);
+    }
+
+    public function delete($id)
+    {
+        
+        $info = Course::find($id);
+        $del = Course::where('id',$id)->where('Links','like',$info->Links)->first();
+        if($del){
+
+            $del->update(['Links' => null]);
+            $this->dispatchBrowserEvent('deleted');
+        }
+    }
+
     
 }

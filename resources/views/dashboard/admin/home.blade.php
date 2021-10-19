@@ -76,7 +76,7 @@
             text: 'Source: positronx.io'
         },
         xAxis: {
-            categories: ['September',
+            categories: [
                 'October', 'November', 'December'
             ]
         },
@@ -116,60 +116,5 @@
     });
 </script>
 
-<script>
-    var income = <?php echo json_encode($income)?>;
-    Highcharts.chart('incomechart',{
-        
-        chart:{
-            type:'column'
-        },
-
-        title: {
-            text: 'Income Growth, 2021'
-        },
-        subtitle: {
-            text: 'Source: positronx.io'
-        },
-        xAxis: {
-            categories: ['September',
-                'October', 'November', 'December'
-            ]
-        },
-        yAxis: {
-            title: {
-                text: 'Amount'
-            }
-        },
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle'
-        },
-        plotOptions: {
-            series: {
-                allowPointSelect: true
-            }
-        },
-        series: [{
-            name: 'Monthly Income',
-            data: income
-        }],
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
-                    
-                },
-                chartOptions: {
-                    legend: {
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom'
-                    }
-                }
-            }]
-        }
-    });
-</script>
 
 @endsection

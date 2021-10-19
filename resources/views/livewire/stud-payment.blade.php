@@ -30,7 +30,6 @@
                 <table class="table table-bordered"  width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            
                             <th>Student Full Name</th>
                             <th>Student ID</th>
                             <th>Course</th>
@@ -41,19 +40,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if(!empty($payments))
+                    @if(!empty($payments))
                         @foreach ($payments as $payment )
                         <tr>
-                            {{-- <td>{{ $payment->student->FullName }}</td>
-                            <td>{{ $payment->student_id}}</td>
-                            <td>{{ $payment->course->Name}}</td>
-                            
-                            <td>{{ $payment->created_at->toDatestring(); }}</td> --}}
                             @foreach ($students as $student)
                                 <td>{{ $student->FullName }}</td>
                             @endforeach
                             <td>{{ $payment->student_id}}</td>
-                            <td>{{ $payment->course->Name }}</td>
+                            <td>{{ $payment->course->Name}}</td>
                             <td>{{ $payment->created_at->toDatestring(); }}</td>
                             <td>
                                 @if ($payment->payment_status == 0)

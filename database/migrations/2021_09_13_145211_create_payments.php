@@ -24,6 +24,7 @@ class CreatePayments extends Migration
             $table->timestamps();
 
             $table->foreign('st_id')->references('id')->on('students')->onDelete('cascade');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
         });
     }
 

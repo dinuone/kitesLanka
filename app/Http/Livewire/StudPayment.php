@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Course;
 use App\Models\Student;
 use App\Models\Payment;
+
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use Carbon\Carbon;
@@ -18,7 +19,8 @@ class StudPayment extends Component
 
     public $photo,$student_id;
     public $course;
-    public $amount,$month;
+    public $amount;
+    public $month;
     public $payST = 1;
    
 
@@ -26,7 +28,7 @@ class StudPayment extends Component
     {
     
         $sid = Auth::user()->id;
-        $payments = Payment::where('st_id',$sid)->paginate(3);
+        $payments = Payment::where('st_id',$sid)->paginate(5);
 
         $courses = Auth::guard('student')->user()->courses()->get();
         $students = Student::where('id',$sid)->get();
@@ -43,7 +45,6 @@ class StudPayment extends Component
     {
 
         $info = Course::find($id);
-
         $this->course = $info->id;
         $this->dispatchBrowserEvent('OpenPaymentModal',[
             'id'=>$id

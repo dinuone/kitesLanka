@@ -9,7 +9,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $courses = Course::all();
+        $courses = Course::select('id','Name','description','image_path')->get();
         return view('welcome',[
             'courses'=>$courses
         ]);

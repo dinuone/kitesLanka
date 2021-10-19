@@ -23,3 +23,5 @@ class material extends Model
     }
 
 }
+
+?>

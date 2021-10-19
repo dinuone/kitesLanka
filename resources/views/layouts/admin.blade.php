@@ -131,8 +131,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-chart-line {{ (request()->is('@kt12admin/report*')) ? 'active' : ''}}"></i>
+                <a href="{{ route('admin.reports') }}" class="nav-link {{ (request()->is('@kt12admin/reports*')) ? 'active' : ''}}">
+                  <i class="nav-icon fas fa-chart-line"></i>
                   <p>Reports</p>
                 </a>
               </li>

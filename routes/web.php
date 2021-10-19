@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\announcement;
 use App\Http\Controllers\Admin\DuepaymentController;
 use App\Http\Controllers\Admin\AttendanceController;
 use App\Http\Controllers\Admin\CourseMaterialsController;
+use App\Http\Controllers\Admin\ReportController;
 
 use App\Http\Controllers\Auth\ForgetPasswordController;
 
@@ -91,5 +92,7 @@ Route::prefix('@kt12admin')->name('admin.')->group(function(){
         Route::get('/course-material',[CourseMaterialsController::class,'index'])->name('materials');
         Route::post('/course-material/upload',[CourseMaterialsController::class,'store'])->name('file-upload');
         Route::get('/course-material/download/{file_name}',[CourseMaterialsController::class,'download'])->name('file-download');
+        Route::get('/reports',[ReportController::class,'index'])->name('reports');
+        Route::post('/reports/view,',[ReportController::class,'showchart'])->name('show-chart');
     });
 });
