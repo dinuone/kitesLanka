@@ -13,8 +13,6 @@
             </div>
         </div> 
         @endforeach
-
-        
     </div>
 
     @include('modals.add-link')
