@@ -65,7 +65,7 @@ aria-hidden="true" data-keyboad="false" data-backdrop="static">
 
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Click to Pay</button>
+            <button type="submit" class="btn bg-indigo">Click to Pay</button>
           </div>
         </form>
         

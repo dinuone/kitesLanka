@@ -1,7 +1,7 @@
 <div>
     <div class="card shadow">   
         <div class="card-body">
-            <button class="btn btn-primary" wire:click="OpenAddCourseModal()"><i class="fas fa-plus mr-2"></i>Add New Course</button>
+            <button class="btn bg-Indigo" wire:click="OpenAddCourseModal()"><i class="fas fa-plus mr-2"></i>Add New Course</button>
             <table id="example2" class="table table-hover mt-3">
              <thead>
              <tr>
@@ -17,7 +17,7 @@
                     <td>{{ $course->id }}</td>
                     <td>{{ $course->Name }}</td>
                     <td>
-                        <a href="" class="mr-3"><i class="far fa-edit" style="color:#10d430;"></i></a>
+                        <a class="mr-3" wire:click="OpenEditCourseModal({{ $course->id }})"><i class="far fa-edit" style="color:#10d430;"></i></a>
                         <a href=""><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
                     </td>
                 </tr>
@@ -31,5 +31,6 @@
         @endif
     </div>
     @include('modals.add-course')
+    @include('modals.edit-course')
    
 </div>

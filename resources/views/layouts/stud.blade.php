@@ -36,7 +36,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a class="dropdown-item" href="{{ route('student.logout') }}"
+        <a class="dropdown-item bg-maroon" href="{{ route('student.logout') }}"
         onclick="event.preventDefault();
              document.getElementById('logout-form').submit();">
          {{ __('Logout') }}

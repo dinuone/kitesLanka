@@ -33,18 +33,18 @@
       </div>
 
       <div class="col">
-        <a href="{{ route('admin.duepayment') }}" class="btn btn-warning mt-4">Due Payments</a>
+        <a href="{{ route('admin.duepayment') }}" class="btn bg-maroon mt-4">Due Payments</a>
       </div>
 
       @if ($checkedPayment)
       <div class="col-md-2">
-        <a wire:click.prevent="export" class="btn btn-info mt-4"><i class="fas fa-cloud-download-alt mr-2"></i>Download Report</a>
+        <a wire:click.prevent="export" class="btn bg-Indigo mt-4"><i class="fas fa-cloud-download-alt mr-2"></i>Download Report</a>
       </div>
       @endif
     </div>
 
     <table id="dataTable" class="table table-hover">
-        <thead class="bg-info">
+        <thead class="bg-Navy">
         <tr>
           <th><input type="checkbox" wire:model="selectAll"></th>
           <th>Student ID</th>
@@ -81,7 +81,7 @@
                     @else
                     <td><h5><span class="badge badge-success"><i class="fas fa-check mr-2"></i>Verified</span></h5></td>
                @endif
-               <td><button class="btn btn-primary" wire:click="OpenPaymentverify({{ $payment->id }})">Check</button></td>
+               <td><button class="btn bg-indigo" wire:click="OpenPaymentverify({{ $payment->id }})">Check</button></td>
                <td>
                 <a class="mr-3" wire:click="OpenEditPaymentModal({{ $payment->id }})"><i class="far fa-edit" style="color:#10d430;"></i></a>
                 <a wire:click="deletePayment({{ $payment->id }})"><i class="fas fa-trash" style="color:#e70c0c;"></i></a>

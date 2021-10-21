@@ -7,8 +7,8 @@
                 <div class="card-body">           
                     <input type="text" class="form-control" readonly value="{{ $course->Links}}">          
                     <hr>
-                    <button class="btn btn-primary" wire:click="OpenAddLinkModal({{ $course->id }})"><i class="fas fa-plus mr-2"></i>Add Meeting Link</button>
-                    <button class="btn btn-danger ml-3" wire:click="DeleteCourseLink({{ $course->id }})"><i class="fas fa-trash mr-2"></i>Delete Link</button>
+                    <button class="btn bg-Indigo" wire:click="OpenAddLinkModal({{ $course->id }})"><i class="fas fa-plus mr-2"></i>Add Meeting Link</button>
+                    <button class="btn bg-maroon ml-3" wire:click="DeleteCourseLink({{ $course->id }})"><i class="fas fa-trash mr-2"></i>Delete Link</button>
                 </div>
             </div>
         </div> 

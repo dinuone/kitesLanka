@@ -31,10 +31,9 @@
     </div>
     
     <div class="card shadow">
-    <div class="card-header bg-info"><i class="fas fa-clipboard-list mr-2"></i>Student Attendance Detials</div>
     <div class="card-body">
         <table class="table table-hover mb-3">
-            <thead>
+            <thead class="bg-navy">
                 <tr>
                     <th><input type="checkbox" wire:model="selectAll"></th>
                     <th>Student ID</th>

@@ -37,12 +37,17 @@
      <div class="row">    
         @foreach ($avbCourse as $avbcrs)
         <div class="col-md-4">
-            <div class="card">
-                <div class="card-header bg-dark">{{ $avbcrs->Name }}</div>
+            <div class="card shadow">
+                <div class="ribbon-wrapper ribbon-xl">
+                    <div class="ribbon bg-danger text-lg">
+                      New
+                    </div>
+                  </div>
+                <div class="card-header bg-indigo">{{ $avbcrs->Name }}</div>
                 <div class="card-body">
                     <img class="card-img-top center" src="{{ asset('storage/'.$avbcrs->image_path) }}" alt="Card image cap"> 
                     <hr>
-                    <a href="{{ route('student.reg-course',$avbcrs->id) }}" class="btn btn-primary">Register</a>
+                    <a href="{{ route('student.reg-course',$avbcrs->id) }}" class="btn bg-maroon">Register</a>
                 </div>
             </div>
         </div>

@@ -32,7 +32,7 @@ aria-hidden="true" data-keyboad="false" data-backdrop="static">
 
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Give Access</button>
+            <button type="submit" class="btn bg-indigo">Give Access</button>
           </div>
         </form>
         

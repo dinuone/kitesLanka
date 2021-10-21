@@ -43,7 +43,7 @@ aria-hidden="true" data-keyboad="false" data-backdrop="static">
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+        <button type="submit" class="btn bg-Indigo"><i class="fas fa-paper-plane mr-2"></i>Send</button>
       </div>
     </form>
     </div><!-- /.modal-content -->

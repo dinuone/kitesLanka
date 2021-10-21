@@ -1,9 +1,9 @@
 <div>
     <div class="card shadow">
-        <div class="card-header bg-info">Today Registered Students List</div>
+        <div class="card-header bg-gray">Today Registered Students List</div>
         <div class="card-body">
             <table class="table table-hover mt-3">
-                <thead class="shadow">
+                <thead class="bg-navy">
                 <tr>
                     <th>Student ID</th>
                     <th>Full Name</th>
@@ -29,7 +29,7 @@
                         <td>{{ $std->address }}</td>
                         <td>  
                        @foreach ($std->courses as $course)
-                         <span class="badge badge-info mt-2 p-2">{{ $course->Name }}</span>
+                         <span class="badge bg-indigo mt-2 p-2">{{ $course->Name }}</span>
                        @endforeach
                      </td>
                      <td>

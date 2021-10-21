@@ -2,7 +2,7 @@
     <div class="row">
         @foreach ($courses as $course )
         <div class="col-3">
-        <div class="info-box bg-warning">
+        <div class="info-box bg-Navy">
             <span class="info-box-icon"><i class="far fa-user"></i></span>
             <div class="info-box-content">
                 <span class="info-box-text">{{ $course->Name }}</span>

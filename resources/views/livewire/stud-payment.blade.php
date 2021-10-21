@@ -5,13 +5,13 @@
         <div class="col-md-4 col-sm-6">
             <div class="card-body">
                 <div class="card mt-3 shadow">
-                    <div class="card-header">{{ $course->Name }}</div>
+                    <div class="card-header bg-indigo">{{ $course->Name }}</div>
                     <img class="card-img-top center" src="{{ asset('storage/'.$course->image_path) }}" alt="Card image cap">
                     <div class="card-body">
                         <hr>
                        
                         @foreach ($students as $student)
-                        <button class="btn btn-warning" wire:click="OpenPaymentModal({{ $course->id}})">Click here to Pay</button>
+                        <button class="btn bg-maroon" wire:click="OpenPaymentModal({{ $course->id}})">Click here to Pay</button>
                         @endforeach
                     </div>
                 </div>
@@ -22,8 +22,8 @@
         
 
     <div class="card shadow mb-4 mt-3">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Payment Summary</h6>
+        <div class="card-header py-3 bg-navy">
+            <h6 class="m-0 font-weight-bold text-white">Payment Summary</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -51,13 +51,13 @@
                             <td>{{ $payment->created_at->toDatestring(); }}</td>
                             <td>
                                 @if ($payment->payment_status == 0)
-                                <h5><span class="badge badge-warning"><i class="fas fa-exclamation-triangle mr-2"></i>Payment Not verified..</span></h5>
+                                <h5><span class="badge bg-maroon"><i class="fas fa-exclamation-triangle mr-2"></i>Payment Not verified..</span></h5>
                                 @else
-                                <h5><span class="badge badge-success"><i class="fas fa-check mr-2"></i> Payment Verified...</span></h5>
+                                <h5><span class="badge bg-lime"><i class="fas fa-check mr-2"></i> Payment Verified...</span></h5>
                                 @endif
                             </td>
                             <td>{{ $payment->month }}</td>
-                            <td><button class="btn btn-primary">View Recipt</button></td>
+                            <td><button class="btn bg-indigo">View Recipt</button></td>
                         </tr>
                         @endforeach
                     @else

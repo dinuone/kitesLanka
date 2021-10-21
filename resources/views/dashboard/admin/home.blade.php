@@ -5,7 +5,7 @@
 <div class="content">
     <div class="row">
         <div class="col">
-            <div class="small-box bg-info">
+            <div class="small-box bg-indigo">
                 <div class="inner">
                     <h3>{{ $studToday}}</h3>
                     <p>Newly Register Students</p>
@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="col">
-            <div class="small-box bg-success">
+            <div class="small-box bg-maroon">
                 <div class="inner">
                   <h3>5</h3>
                   <p>Total Available Courses</p>
@@ -45,7 +45,7 @@
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-header bg-dark"><i class="far fa-chart-bar mr-2"></i>Student Registraion chart</div>
+                <div class="card-header bg-navy"><i class="far fa-chart-bar mr-2"></i>Student Registraion chart</div>
                 <div class="card-body">
                     <div id="studchart" width="100%" height="100%"></div>
                 </div>
@@ -55,7 +55,7 @@
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-header bg-dark"><i class="far fa-chart-bar mr-2"></i>Student Registraion chart</div>
+                <div class="card-header bg-navy"><i class="far fa-chart-bar mr-2"></i>Student Registraion chart</div>
                 <div class="card-body">
                     <div id="incomechart" width="100%" height="100%"></div>
                 </div>

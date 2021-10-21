@@ -1,9 +1,9 @@
 <div>
     <div class="card">
         <div class="card-body">
-            <button class="btn btn-primary" wire:click="OpenAnnouncementModal()"><i class="fas fa-bullhorn mr-2"></i>Send Announcement</button>
+            <button class="btn bg-Indigo" wire:click="OpenAnnouncementModal()"><i class="fas fa-bullhorn mr-2"></i>Send Announcement</button>
             <table class="table table-hover mt-3">
-                <thead>
+                <thead class="bg-Navy">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Message Title</th>

@@ -2,8 +2,8 @@
     <div class="card">
         <div class="card-header">
           <h3 class="card-title">
-            <button class="btn btn-primary mr-2" wire:click="OpenAddStudentModal()"><i class="fas fa-plus mr-2"></i>Add student</button>
-            <button class="btn btn-secondary">Reset Student Class Access</button>
+            <button class="btn bg-Indigo mr-2" wire:click="OpenAddStudentModal()"><i class="fas fa-plus mr-2"></i>Add student</button>
+            <button class="btn bg-Maroon">Reset Student Class Access</button>
           </h3>
         </div>
       <div class="card-body">
@@ -49,7 +49,7 @@
         <!-- /.card-header -->
         
           <table class="table table-hover">
-            <thead class="bg-info">
+            <thead class="bg-Navy">
             <tr>
               <th><input type="checkbox" wire:model="selectAll"></th>
               <th>Student ID</th>
@@ -77,7 +77,7 @@
                     <td>{{ $student->address }}</td>
                     <td>
                       @foreach ($student->courses as $course)
-                        <span class="badge badge-dark mt-2 p-2">{{ $course->Name }}</span>
+                        <span class="badge bg-indigo mt-2 p-2">{{ $course->Name }}</span>
                       @endforeach
                     </td>
                     

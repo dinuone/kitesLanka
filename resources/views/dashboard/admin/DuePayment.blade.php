@@ -11,12 +11,12 @@
     </ol>
   </nav>
     <div class="content">
-        <button class="btn btn-warning mb-3"><i class="fas fa-cloud-download-alt mr-2"></i>Download</button>
+        <button class="btn bg-indigo mb-3"><i class="fas fa-cloud-download-alt mr-2"></i>Download</button>
         <div class="card">
             <div class="card-header"><h5>Due payments <span class="badge badge-primary badge-lg">{{ $duecount }}</span></h5></div>
             <div class="card-body">
                 <table class="table table-hover mb-3">
-                    <thead class="bg-info">
+                    <thead class="bg-navy">
                         <tr>
                             <td>Student ID</td>
                             <td>Full Name</td>

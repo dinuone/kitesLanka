@@ -48,7 +48,24 @@
         });
     });
 
-   
+    window.addEventListener('OpenEditCourseModal',function(){
+        $('.editcourse').find('span').html('');
+        $('.editcourse').find('form')[0].reset();
+        $('.editcourse').modal('show');
+    });
+
+    
+    window.addEventListener('CloseEditCourse', function(){
+        $('.editcourse').find('span').html('');
+        $('.editcourse').find('form')[0].reset();
+        $('.editcourse').modal('hide');
+        Swal.fire({
+            icon: 'success',
+            title: 'Successfull',
+            text: 'Course has been Updated!',
+          
+        });
+    });
 
   
   

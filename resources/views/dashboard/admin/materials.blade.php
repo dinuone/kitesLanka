@@ -25,7 +25,7 @@
         @endif
         
         <div class="card shadow">
-            <div class="card-header bg-info"><i class="fas fa-file-alt mr-2"></i>Upload Course Materials</div>
+            <div class="card-header bg-navy"><i class="fas fa-file-alt mr-2"></i>Upload Course Materials</div>
             <div class="card-body">
                 <form action="{{ route('admin.file-upload') }}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -43,13 +43,13 @@
                         <label>Select File <small>(PDF,MP4,docs,ppt etc..)</small></label>
                         <input type="file" class="form-control-file" name="file">
                     </div>
-                    <button type="submit" name="submit" class="btn btn-info"><i class="fas fa-cloud-upload-alt mr-2"></i>Upload</button>
+                    <button type="submit" name="submit" class="btn bg-maroon"><i class="fas fa-cloud-upload-alt mr-2"></i>Upload</button>
                 </form>
             </div>
         </div>
         <div class="card shadow">
             <table id="dataTable" class="table table-hover">
-                <thead>
+                <thead class="bg-navy">
                     <tr>
                         <th>Course Name</th>
                         <th>File Name</th>
@@ -68,7 +68,7 @@
                             <a class="mr-2" href=""><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
                         </td>
                         <td>
-                            <a href="{{ route('admin.file-download', $file->file_name) }}" class="btn btn-info"><i class="fas fa-cloud-download-alt mr-2"></i>Download</a>
+                            <a href="{{ route('admin.file-download', $file->file_name) }}" class="btn bg-indigo"><i class="fas fa-cloud-download-alt mr-2"></i>Download</a>
                         </td>
                     </tr>
                     @empty
