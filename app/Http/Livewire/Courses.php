@@ -20,7 +20,7 @@ class Courses extends Component
 
     public function render()
     {
-        $courses = Course::latest()->paginate(3);
+        $courses = Course::select('id','Name','teacher_id')->paginate(3);
         $teachers = Teacher::Select('id','fullname')->get();
         return view('livewire.courses',[
             'courses'=>$courses,
@@ -52,6 +52,7 @@ class Courses extends Component
         $crs->image_path = $this->photo->store('images', 'public');
         $crs->description = $this->description;
         $crs->teacher_id = $this->teacher;
+        
         $save = $crs->save();
        
         if($save)
@@ -79,12 +80,14 @@ class Courses extends Component
         $id = $this->courseid;
         $this->validate([
             'up_name'=>'required',
-            'up_description'=>'required'
+            'up_description'=>'required',
+            'up_teacher'=>'required',
         ]);
 
         $update = Course::find($id)->update([
             'Name'=>$this->up_name,
-            'description'=>$this->up_description
+            'description'=>$this->up_description,
+            'teacher_id'=>$this->up_teacher
         ]);
 
         if($update){

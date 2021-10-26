@@ -9,7 +9,7 @@ class CourseController extends Controller
 {
     public function index()
     {
-        $courses = Course::All();
+        $courses = Course::select('id','Name','image_path')->get();
         return view('course',[
             'courses'=>$courses
         ]);
@@ -20,6 +20,14 @@ class CourseController extends Controller
         $selectCourse = Course::where('id',$id)->get();
         return view('course-details',[
             'selectCourse'=>$selectCourse
+        ]);
+    }
+
+    public function selectteacher($id)
+    {
+        $thcourse = Course::where('teacher_id',$id)->get();
+        return view('teacher-course',[
+            'thcourse'=>$thcourse
         ]);
     }
 }

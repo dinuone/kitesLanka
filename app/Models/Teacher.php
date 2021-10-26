@@ -20,5 +20,9 @@ class Teacher extends Model
         'updated_at'
     ];
 
-
+    public function courses()
+    {
+        return $this->hasMany(Course::class,'id');
+    }
+ 
 }

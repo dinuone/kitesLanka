@@ -48,6 +48,7 @@ Route::middleware(['guest:student','PreventBackHistory'])->group(function(){
     Route::post('/check',[StudentController::class,'check'])->name('check');
     Route::get('/courses,',[CourseController::class,'index'])->name('course');
     Route::get('/course/{id}',[CourseController::class,'selectcourse'])->name('select-course');
+    Route::get('/teacher/{id}',[CourseController::class,'selectteacher'])->name('select-teacher');
 
     //password reset
     Route::get('/forget-password',[ForgetPasswordController::class,'showForgetPasswordFrom'])->name('forget.form');
