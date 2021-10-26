@@ -13,7 +13,7 @@ aria-hidden="true" data-keyboad="false" data-backdrop="static">
         </button>
       </div>
       <div class="modal-body">
-        <form wire:submit.prevent="update" enctype="multipart/form-data">
+        <form wire:submit.prevent="update">
           <div class="form-group">
             <label for="">Course Name</label>
             <input type="text" class="form-control" wire:model="up_name">
@@ -26,10 +26,29 @@ aria-hidden="true" data-keyboad="false" data-backdrop="static">
             <span class="text-danger">@error('up_description')  {{ $message }} @enderror</span>
           </div>
 
+          <label>Select Teacher</label>
+          <select class="form-control mb-3" wire:model="up_teacher">
+            <option value="">No Selected</option>
+            @foreach ($teachers as $teacher)
+              <option value="{{ $teacher->id }}">{{ $teacher->fullname }}</option>
+            @endforeach
+          </select>
+
+          <div class="form-group">
+            <label>Select Image</label>
+            <input type="file" class="form-control-file" wire:model="up_photo" id="photo1">
+            <span class="text-danger">@error('photo')  {{ $message }} @enderror</span>
+            <div wire:loading wire:target="photo">Uploading...</div>
+          </div>  
+            {{-- image preview --}}
+            @if ($photo)
+              <img src="{{ $photo->temporaryUrl() }}" id="photo1">
+            @endif  
+
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Update Course</button>
+        <button type="submit" class="btn bg-indigo">Update Course</button>
       </div>
     </form>
     </div>

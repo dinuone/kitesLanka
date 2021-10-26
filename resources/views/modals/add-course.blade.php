@@ -25,6 +25,14 @@ aria-hidden="true" data-keyboad="false" data-backdrop="static">
             <textarea type="text" class="form-control" rows="5" placeholder="Enter Course Description.." wire:model="description" ></textarea>
             <span class="text-danger">@error('description')  {{ $message }} @enderror</span>
           </div>
+          
+          <label>Select Teacher</label>
+          <select class="form-control mb-3" wire:model="teacher">
+            <option value="">No Selected</option>
+            @foreach ($teachers as $teacher)
+              <option value="{{ $teacher->id }}">{{ $teacher->fullname }}</option>
+            @endforeach
+          </select>
 
           <div class="form-group">
             <label>Select Image</label>

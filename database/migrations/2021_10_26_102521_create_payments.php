@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnnouncementsTable extends Migration
+class CreatePayments extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,19 @@ class CreateAnnouncementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('announcements', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('body');
+            $table->unsignedBigInteger('st_id');
+            $table->string('student_id');
             $table->unsignedBigInteger('course_id');
-            $table->boolean('payment_status');
+            $table->string('image_path');
+            $table->boolean('payment_status')->default(0);
+            $table->string('month');
+            $table->decimal('amount');
+            $table->bigInteger('ref_number')->nullable();
             $table->timestamps();
+
+            $table->foreign('st_id')->references('id')->on('students')->onDelete('cascade');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
         });
     }
@@ -31,6 +37,6 @@ class CreateAnnouncementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('announcements');
+        Schema::dropIfExists('payments');
     }
 }

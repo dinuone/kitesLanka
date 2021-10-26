@@ -20,7 +20,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
   {{-- sweet alert 2 --}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css"> 
- 
   @livewireStyles  
 </head>
 <body class="hold-transition sidebar-mini">
@@ -37,17 +36,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a class="dropdown-item bg-maroon" href="{{ route('admin.logout') }}"
+        <a class="dropdown-item bg-maroon" href="{{ route('student.logout') }}"
         onclick="event.preventDefault();
-             document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt mr-2"></i>
+             document.getElementById('logout-form').submit();">
          {{ __('Logout') }}
         </a>
-        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
+        <form id="logout-form" action="{{ route('student.logout') }}" method="POST" class="d-none">
             @csrf
         </form>
       </li>
       
     </ul>
+    
 
     <!-- Right navbar links -->
     
@@ -67,10 +67,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/AdminLTELogo.png" class="img-circle elevation-2" alt="User Image">
+          <img src="dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::guard('admin')->user()->name }}</a>
+          <a href="#" class="d-block">{{ Auth::guard('teacher')->user()->FullName}}</a>
         </div>
       </div>
 
@@ -83,63 +83,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                <a href="{{ route('admin.home') }}" class="nav-link {{ (request()->is('@kt12admin/home*')) ? 'active' : ''}}">
+                <a href="{{ route('student.home') }}" class="nav-link {{ (request()->is('student/dashboard*')) ? 'active' : ''}}">
                   <i class="nav-icon fas fa-home"></i>
                   <p>Dashboard</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('admin.student') }}" class="nav-link {{ (request()->is('@kt12admin/student*')) ? 'active' : ''}}">
+                <a href="{{ route('student.myclass') }}" class="nav-link {{ (request()->is('student/myclass*')) ? 'active' : ''}}">
                   <i class="nav-icon fa fa-user-plus"></i>
-                  <p>Students</p>
+                  <p>My Class</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('admin.teacher-details') }}" class="nav-link {{ (request()->is('@kt12admin/add-teachers*')) ? 'active' : ''}}">
-                  <i class="nav-icon fas fa-chalkboard-teacher"></i>
-                  <p>Teachers</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('admin.class') }}" class="nav-link {{ (request()->is('@kt12admin/class*')) ? 'active' : ''}}">
+                <a href="{{ route('student.classfee') }}" class="nav-link {{ (request()->is('student/classfee*')) ? 'active' : ''}}">
                     <i class="nav-icon fa fa-address-card"></i>
-                  <p>Courses</p>
+                  <p>Class Fee</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('admin.payment') }}" class="nav-link {{ (request()->is('@kt12admin/payment*')) ? 'active' : ''}}">
-                    <i class="nav-icon fa fa-credit-card"></i>
-                  <p>Payments</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('admin.links') }}" class="nav-link {{ (request()->is('@kt12admin/links*')) ? 'active' : ''}}">
-                  <i class="nav-icon fa fa-link"></i>
-                  <p>Manage Links</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('admin.announcement') }}" class="nav-link {{ (request()->is('@kt12admin/announcement*')) ? 'active' : ''}}">
-                  <i class="nav-icon fas fa-bullhorn"></i>
-                  <p>Announcement</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('admin.attendace') }}" class="nav-link {{ (request()->is('@kt12admin/attendance*')) ? 'active' : ''}}">
-                  <i class="nav-icon fas fa-clipboard-check"></i>
-                  <p>Attendance</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('admin.materials') }}" class="nav-link {{ (request()->is('@kt12admin/course-material*')) ? 'active' : ''}}">
-                  <i class="nav-icon fas fa-file-alt"></i>
+                <a href="{{ route('student.course-materials') }}" class="nav-link {{ (request()->is('student/course-materials*')) ? 'active' : ''}}">
+                  <i class="nav-icon fa fa-file-pdf"></i>
                   <p>Course Materials</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('admin.reports') }}" class="nav-link {{ (request()->is('@kt12admin/reports*')) ? 'active' : ''}}">
-                  <i class="nav-icon fas fa-chart-line"></i>
-                  <p>Reports</p>
                 </a>
               </li>
         </ul>
@@ -169,7 +133,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"></script>
-
 @livewireScripts
 </body>
 </html>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePayments extends Migration
+class CreateMaterials extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,14 @@ class CreatePayments extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('materials', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('st_id');
-            $table->string('student_id');
-            $table->unsignedBigInteger('course_id');
-            $table->string('image_path');
-            $table->boolean('payment_status')->default(0);
-            $table->string('month');
+            $table->unsignedBigInteger('course_id'); 
+            $table->string('file_name');
             $table->timestamps();
 
-            $table->foreign('st_id')->references('id')->on('students')->onDelete('cascade');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+        
         });
     }
 
@@ -35,6 +31,6 @@ class CreatePayments extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payments');
+        Schema::dropIfExists('materials');
     }
 }

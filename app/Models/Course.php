@@ -10,10 +10,14 @@ class Course extends Model
     use HasFactory;
     protected $fillable = [
        'id',
+       'teacher_id',
        'Name',
        'Links',
        'image_path',
-       'description'
+       'description',
+       'created_at',
+       'update_at'
+       
     ];
 
     
@@ -22,6 +26,10 @@ class Course extends Model
         return $this->belongsToMany(Student::class,'course_student');
     }
 
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class,'id');
+    }
 
    
    

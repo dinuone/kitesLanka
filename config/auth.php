@@ -28,6 +28,11 @@ return [
         'model'=>App\Models\Student::class,
     ],
 
+    'teacher'=>[
+        'driver'=>'eloquent',
+        'model'=>App\Models\Teacher::class,
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
@@ -68,6 +73,11 @@ return [
             'provider'=>'students',
         ],
 
+        'teacher'=>[
+            'driver'=>'session',
+            'provider'=>'teachers'
+        ],
+
          
        
     ],
@@ -103,6 +113,11 @@ return [
         'students'=>[
             'driver'=>'eloquent',
             'model'=>App\Models\Student::class,
+        ],
+
+        'teachers'=>[
+            'driver'=>'eloquent',
+            'model'=>App\Models\Teacher::class,
         ],
 
         // 'users' => [
@@ -142,6 +157,11 @@ return [
         'students'=>[
             'driver'=>'eloquent',
             'model'=>App\Models\Student::class,
+        ],
+
+        'teachers'=>[
+            'driver'=>'eloquent',
+            'model'=>App\Models\Teacher::class,
         ],
     ],
 

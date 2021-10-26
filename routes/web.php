@@ -38,6 +38,7 @@ Route::get('/', [WelcomeController::class, 'index']);
 
 Auth::routes();
 
+//students routes
 Route::prefix('student')->name('student.')->group(function(){
 
 Route::middleware(['guest:student','PreventBackHistory'])->group(function(){
@@ -70,7 +71,7 @@ Route::middleware(['auth:student','PreventBackHistory'])->group(function(){
     });
 });
     
-
+//admin routes
 Route::prefix('@kt12admin')->name('admin.')->group(function(){
 
     Route::middleware(['guest:admin','PreventBackHistory'])->group(function(){
@@ -94,5 +95,23 @@ Route::prefix('@kt12admin')->name('admin.')->group(function(){
         Route::get('/course-material/download/{file_name}',[CourseMaterialsController::class,'download'])->name('file-download');
         Route::get('/reports',[ReportController::class,'index'])->name('reports');
         Route::post('/reports/view,',[ReportController::class,'showchart'])->name('show-chart');
+        Route::view('/add-teachers','dashboard.admin.teacher-details')->name('teacher-details');
     });
 });
+
+
+//teacher routes
+Route::prefix('teacher')->name('teacher.')->group(function(){
+
+    Route::middleware(['guest:teacher','PreventBackHistory'])->group(function(){
+        Route::view('/login','dashboard.user.login')->name('login');
+       
+    
+        });
+        
+    Route::middleware(['auth:teacher','PreventBackHistory'])->group(function(){
+       
+         
+        });
+    });
+        
