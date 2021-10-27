@@ -10,8 +10,8 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $courses = Course::select('id','Name','description','image_path','teacher_id')->get();
-        $teachers = Teacher::select('id','fullname','image_path')->get();
+        $courses = Course::Select('id','Name','description','image_path','teacher_id')->get();
+        $teachers = Teacher::Select('id','fullname','image_path')->get();
         return view('welcome',[
             'courses'=>$courses,
             'teachers'=>$teachers

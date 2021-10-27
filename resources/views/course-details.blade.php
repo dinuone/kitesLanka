@@ -28,7 +28,7 @@
 
             <div class="course-info d-flex justify-content-between align-items-center">
               <h5>Teacher</h5>
-              <p><a href="#">Walter White</a></p>
+              <p><a href="#">{{ $course->teacher->fullname }}</a></p>
             </div>
 
             <div class="course-info d-flex justify-content-between align-items-center">

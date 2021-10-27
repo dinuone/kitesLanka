@@ -9,7 +9,7 @@ class CourseController extends Controller
 {
     public function index()
     {
-        $courses = Course::select('id','Name','image_path')->get();
+        $courses = Course::select('id','Name','image_path','teacher_id')->get();
         return view('course',[
             'courses'=>$courses
         ]);

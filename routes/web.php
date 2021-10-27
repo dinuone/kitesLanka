@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\AttendanceController;
 use App\Http\Controllers\Admin\CourseMaterialsController;
 use App\Http\Controllers\Admin\ReportController;
 
+use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +47,7 @@ Route::middleware(['guest:student','PreventBackHistory'])->group(function(){
     Route::get('/register/{id}',[StudregController::class,'index'])->name('register');
     Route::post('/create',[StudentController::class,'create'])->name('create');
     Route::post('/check',[StudentController::class,'check'])->name('check');
-    Route::get('/courses,',[CourseController::class,'index'])->name('course');
+    Route::get('/courses',[CourseController::class,'index'])->name('course');
     Route::get('/course/{id}',[CourseController::class,'selectcourse'])->name('select-course');
     Route::get('/teacher/{id}',[CourseController::class,'selectteacher'])->name('select-teacher');
 
@@ -106,12 +107,12 @@ Route::prefix('teacher')->name('teacher.')->group(function(){
 
     Route::middleware(['guest:teacher','PreventBackHistory'])->group(function(){
         Route::view('/login','dashboard.user.login')->name('login');
-       
+        Route::post('/check',[TeacherController::class,'check'])->name('check');
     
         });
         
     Route::middleware(['auth:teacher','PreventBackHistory'])->group(function(){
-       
+        Route::get('/dashboard',[TeacherController::class,'index'])->name('home');
          
         });
     });
