@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\CourseMaterialsController;
 use App\Http\Controllers\Admin\ReportController;
 
 use App\Http\Controllers\Teacher\TeacherController;
+use App\Http\Controllers\Teacher\MyClassController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 
 use Illuminate\Support\Facades\Auth;
@@ -113,7 +114,8 @@ Route::prefix('teacher')->name('teacher.')->group(function(){
         
     Route::middleware(['auth:teacher','PreventBackHistory'])->group(function(){
         Route::get('/dashboard',[TeacherController::class,'index'])->name('home');
-         
+        Route::get('/myclass',[MyClassController::class,'index'])->name('myclass');
+        Route::get('/class-students/{id}',[MyClassController::class,'mystudents'])->name('classtud');
         });
     });
         

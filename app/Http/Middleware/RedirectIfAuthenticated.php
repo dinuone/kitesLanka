@@ -31,6 +31,10 @@ class RedirectIfAuthenticated
                 {
                     return redirect()->route('admin.home');
                 }
+                if($guard === 'teacher')
+                {
+                    return redirect()->route('teacher.home');
+                }
 
                 return redirect()->route('welcome');
             }
