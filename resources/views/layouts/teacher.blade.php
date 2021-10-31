@@ -36,12 +36,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a class="dropdown-item bg-maroon" href="{{ route('student.logout') }}"
+        <a class="dropdown-item bg-maroon" href="{{ route('teacher.logout') }}"
         onclick="event.preventDefault();
              document.getElementById('logout-form').submit();">
          {{ __('Logout') }}
         </a>
-        <form id="logout-form" action="{{ route('student.logout') }}" method="POST" class="d-none">
+        <form id="logout-form" action="{{ route('teacher.logout') }}" method="POST" class="d-none">
             @csrf
         </form>
       </li>
@@ -70,7 +70,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ Auth::guard('teacher')->user()->FullName}}</a>
+          <a href="#" class="d-block">{{ Auth::guard('teacher')->user()->fullname}}</a>
         </div>
       </div>
 

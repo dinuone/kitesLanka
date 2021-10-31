@@ -116,6 +116,7 @@ Route::prefix('teacher')->name('teacher.')->group(function(){
         Route::get('/dashboard',[TeacherController::class,'index'])->name('home');
         Route::get('/myclass',[MyClassController::class,'index'])->name('myclass');
         Route::get('/class-students/{id}',[MyClassController::class,'mystudents'])->name('classtud');
+        Route::post('/logout',[TeacherController::class,'logout'])->name('logout');
         });
     });
         

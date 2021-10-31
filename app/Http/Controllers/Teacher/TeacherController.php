@@ -42,5 +42,11 @@ class TeacherController extends Controller
 
     }
 
+    public function logout()
+    {
+        Auth::guard('teacher')->logout();
+        return redirect('/');
+    }
+
 
 }
