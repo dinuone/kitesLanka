@@ -29,7 +29,7 @@ class StudManage extends Component
     public $checkedPayment=[];
     public $selectAll = false;
 
-    public $up_stid,$up_amount,$up_course,$up_status,$up_ref,$up_month;
+    public $up_stid,$up_amount,$up_course,$up_status,$up_month;
     protected $listeners=['delete'];
 
     public function render()
@@ -70,7 +70,6 @@ class StudManage extends Component
         $this->up_amount = $info->amount;
         $this->up_course = $info->course_id;
         $this->up_status = $info->payment_status;
-        $this->up_ref = $info->ref_number;
         $this->up_month = $info->month;
         $this->dispatchBrowserEvent('OpenEditPaymentModal',[
             'id'=>$id,
@@ -80,21 +79,12 @@ class StudManage extends Component
     public function update()
     {
         $paymentID = $this->paymentID;
-        $this->validate([
-            'up_amount'=>'required',
-            'up_course'=>'required',
-            'up_status'=>'required',
-            'up_ref'=>'required',
-            'up_month'=>'required|unique:payments'
-
-        ]);
 
         $update=Payment::find($paymentID)->update([
            'amount'=>$this->up_amount,
            'course_id'=>$this->up_course,
            'payment_status'=>$this->up_status,
-           'ref_number'=>$this->up_ref,
-           'up_month'=>$this->up_month
+           'month'=>$this->up_month
         ]);
 
         if($update){

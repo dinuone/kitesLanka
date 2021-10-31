@@ -68,11 +68,7 @@
                     </select>
                     <span class="text-danger">@error('up_course') {{ $message }} @enderror</span>
                 <hr>
-                  <div class="form-group">
-                    <label>Reference Number</label>
-                    <input type="text" class="form-control" wire:model="up_ref">
-                    <span class="text-danger">@error('up_ref') {{ $message }} @enderror</span>
-                  </div>  
+     
             </div>
   
             <div class="modal-footer justify-content-between">
