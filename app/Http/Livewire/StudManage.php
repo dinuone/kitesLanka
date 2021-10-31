@@ -21,7 +21,7 @@ class StudManage extends Component
     public $bycourse= 1;
     public $courseID;
     public $bymonth;
-    public $refnum;
+    public $ref_number;
     public $paymentST = 1;
     public $search;
     public $paymentID;
@@ -85,7 +85,7 @@ class StudManage extends Component
             'up_course'=>'required',
             'up_status'=>'required',
             'up_ref'=>'required',
-            'up_month'=>'required,'
+            'up_month'=>'required|unique:payments'
 
         ]);
 
@@ -105,11 +105,11 @@ class StudManage extends Component
     public function access()
     {
         $this->validate([
-            'refnum'=>'required'  
+            'ref_number'=>'required|unique:payments'  
         ]);
 
         $update = Payment::find($this->courseID)->update([
-            'ref_number'=>$this->refnum,
+            'ref_number'=>$this->ref_number,
             'payment_status'=>$this->paymentST
         ]);
 

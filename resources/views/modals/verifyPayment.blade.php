@@ -24,8 +24,8 @@ aria-hidden="true" data-keyboad="false" data-backdrop="static">
           
           <div class="form-group">
             <label for="">Reference Number</label>
-            <input type="text" class="form-control" placeholder="Enter reference Number...." wire:model="refnum">
-            <span class="text-danger">@error('refnum')  {{ $message }} @enderror</span>
+            <input type="text" class="form-control" placeholder="Enter reference Number...." wire:model="ref_number">
+            <span class="text-danger">@error('ref_number')  {{ $message }} @enderror</span>
           </div>
 
        </div>
