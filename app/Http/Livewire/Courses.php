@@ -70,6 +70,7 @@ class Courses extends Component
         $this->up_description = $info->description;
         $this->up_teacher = $info->teacher_id;
         $this->courseid = $id;
+        $this->up_photo = $info->image_path;
         $this->dispatchBrowserEvent('OpenEditCourseModal',[
             'id'=>$id
         ]);
@@ -87,7 +88,8 @@ class Courses extends Component
         $update = Course::find($id)->update([
             'Name'=>$this->up_name,
             'description'=>$this->up_description,
-            'teacher_id'=>$this->up_teacher
+            'teacher_id'=>$this->up_teacher,
+            'image_path'=>$this->up_photo->store('images', 'public'),
         ]);
 
         if($update){
