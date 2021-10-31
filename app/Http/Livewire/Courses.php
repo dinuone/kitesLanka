@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Course;
-use App\models\Teacher;
+use App\Models\Teacher;
 
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
