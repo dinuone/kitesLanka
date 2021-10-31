@@ -107,10 +107,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('student.logout') }}" class="nav-link {{ (request()->is('student/logout*')) ? 'active' : ''}}">
+                <a href="{{ route('student.logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();" class="nav-link {{ (request()->is('student/logout*')) ? 'active' : ''}}">
                   <i class="nav-icon fas fa-sign-out-alt"></i>
                   <p>Logout</p>
                 </a>
+                <form id="logout-form" action="{{ route('student.logout') }}" method="POST" class="d-none">
+                  @csrf
+              </form>
               </li>
         </ul>
       </nav>
