@@ -25,7 +25,6 @@
             <div class="col-md-2">
               <label for="">Order By</label>
               <select class="form-control" wire:model="orderBy">
-                  <option value="FullName">Student Name</option>
                   <option value="created_at">Register Date</option>
               </select>
             </div>

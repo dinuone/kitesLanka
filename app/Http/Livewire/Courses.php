@@ -14,6 +14,7 @@ class Courses extends Component
     use WithPagination;
     use WithFileUploads;
 
+    protected $listeners=['delete'];
     
     public $name,$photo,$description,$courseid,$teacher;
     public $up_name,$up_description,$up_teacher,$up_photo;
@@ -94,6 +95,23 @@ class Courses extends Component
 
         if($update){
             $this->dispatchBrowserEvent('CloseEditCourse');
+        }
+    }
+
+    //delete function
+    public function DeleteCourse($id){
+        $info = Course::find($id);
+        $this->dispatchBrowserEvent('swalconfirm',[
+            'title'=>'Are You Sure?',
+            'id'=>$id
+        ]);
+    }
+
+    public function delete($id)
+    {
+        $del = Course::find($id)->delete();
+        if($del){
+            $this->dispatchBrowserEvent('deleted');
         }
     }
 

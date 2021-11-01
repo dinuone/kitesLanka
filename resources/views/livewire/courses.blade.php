@@ -19,7 +19,7 @@
                     <td>{{ $course->teacher->fullname}}</td>
                     <td>
                         <a class="mr-3" wire:click="OpenEditCourseModal({{ $course->id }})"><i class="far fa-edit" style="color:#10d430;"></i></a>
-                        <a href=""><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
+                        <a wire:click="DeleteCourse({{ $course->id }})"><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
                     </td>
                 </tr>
                 @endforeach
