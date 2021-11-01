@@ -54,7 +54,7 @@ class DashboardController extends Controller
     {
         $course = Course::find($id);
         $selectcourse = Course::where('id',$id)->get();
-        $students = $course->students;
+        $students = $course->students()->paginate(5);
         return view('dashboard.admin.course-stud',[
             'students'=>$students,
             'selectcourse'=>$selectcourse
