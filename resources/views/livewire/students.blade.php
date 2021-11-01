@@ -3,7 +3,7 @@
         <div class="card-header">
           <h3 class="card-title">
             <button class="btn bg-Indigo mr-2" wire:click="OpenAddStudentModal()"><i class="fas fa-plus mr-2"></i>Add student</button>
-            <button class="btn bg-Maroon">Reset Student Class Access</button>
+            <button class="btn bg-Maroon" wire:click="resetstudStatus()">Reset Student Class Access</button>
           </h3>
         </div>
       <div class="card-body">

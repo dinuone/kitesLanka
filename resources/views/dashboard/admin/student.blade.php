@@ -86,6 +86,25 @@
                 window.livewire.emit('deletecheckedtudents',event.detail.checkedIDS);
             }
         });
+    });
+
+
+    //reset status 
+    window.addEventListener('swal:resetstudent', function(event){
+        swal.fire({
+            title:event.detail.title,
+            text: "You won't be able to revert this!",
+            html:event.detail.html,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, reset it!'
+        }).then(function(result){
+            if(result.value){
+                window.livewire.emit('resetstud',event.detail.checkedIDS);
+            }
+        });
     })
 
 </script>

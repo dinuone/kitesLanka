@@ -30,7 +30,7 @@ class Students extends Component
     public $up_fullname,$up_dob,$up_contact,$up_whatsapp,$up_address,$up_school; //update modal vairables
     public $up_course=[];
 
-    protected $listeners=['delete','deletecheckedtudents'];
+    protected $listeners=['delete','deletecheckedtudents','resetstud'];
 
     //returen view 
     public function render()
@@ -168,6 +168,25 @@ class Students extends Component
     {
         Student::whereKey($ids)->delete();
         $this->selected = [];
+    }
+
+    //update student status 
+    public function resetstudStatus()
+    {
+        $this->dispatchBrowserEvent('swal:resetstudent',[
+            'title'=>'Are you Sure?',
+            'html'=>'you want to reset student status please make sure students payments status change <strong> end of the month</strong>',
+            'checkedIDS'=>$this->selected,
+        ]);
+    }
+
+    public function resetstud($ids)
+    {
+        
+        $update = Student::whereKey($ids)->update([
+            'payment_status'=>0,
+        ]);
+        $this->selected =[];
     }
 
 
