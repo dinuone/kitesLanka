@@ -27,6 +27,8 @@ class Students extends Component
     public $selected=[]; 
     public $selectAll = false;
 
+    public $up_fullname,$up_dob,$up_contact,$up_whatsapp,$up_address,$up_school; //update modal vairables
+    public $up_course=[];
     //returen view 
     public function render()
     {
@@ -86,6 +88,11 @@ class Students extends Component
         if($save){
             $this->dispatchBrowserEvent('CloseStudentModal');
         }
+    }
+
+    public function OpenEditModal($id)
+    {
+        
     }
 
     //chekboxes select all

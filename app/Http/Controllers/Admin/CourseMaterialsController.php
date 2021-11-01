@@ -44,7 +44,7 @@ class CourseMaterialsController extends Controller
         
     }
 
-    public function download($file_name)
+    public function downloadfile($file_name)
     {
         $path = public_path('assets/'.$file_name);
         return response()->download($path);
