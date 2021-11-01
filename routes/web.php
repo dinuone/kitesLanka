@@ -99,6 +99,8 @@ Route::prefix('@kt12admin')->name('admin.')->group(function(){
         Route::get('/reports',[ReportController::class,'index'])->name('reports');
         Route::post('/reports/view,',[ReportController::class,'showchart'])->name('show-chart');
         Route::view('/add-teachers','dashboard.admin.teacher-details')->name('teacher-details');
+        Route::get('/avb-course',[DashboardController::class,'showavbCourse'])->name('avb-course');
+        Route::get('/course-students/{id}',[DashboardController::class,'coursestud'])->name('course-stud');
     });
 });
 

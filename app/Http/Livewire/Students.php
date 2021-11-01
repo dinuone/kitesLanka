@@ -29,11 +29,14 @@ class Students extends Component
 
     public $up_fullname,$up_dob,$up_contact,$up_whatsapp,$up_address,$up_school; //update modal vairables
     public $up_course=[];
+
+    protected $listeners=['delete','deletecheckedtudents'];
+
     //returen view 
     public function render()
     {
         $students = Student::latest()->paginate(5);
-        $courses = Course::all();
+        $courses = Course::Select('id','Name')->get();
         return view('livewire.students',[
             'courses'=>$courses,
             'students'=>Student::when($this->bycourse, function($query){
@@ -90,10 +93,83 @@ class Students extends Component
         }
     }
 
+    //update module 
     public function OpenEditModal($id)
     {
-        
+        $info = Student::find($id);
+        $this->up_fullname = $info->FullName;
+        $this->up_contact = $info->contact;
+        $this->up_whatsapp = $info->contact_whatsapp;
+        $this->up_address = $info->address;
+        $this->up_dob = $info->date_of_birth;
+        $this->up_school = $info->school;
+        $this->std = $info->id;
+        $this->dispatchBrowserEvent('OpenEditModal',[
+            'id'=>$id
+        ]);
     }
+
+    public function update()
+    {
+        $studid = $this->std;
+        $this->validate([
+            'up_fullname'=>'required',
+            'up_contact'=>'required',
+            'up_whatsapp'=>'required',
+            'up_address'=>'required',
+            'up_course'=>'required'
+        ]);
+
+        $update = Student::find($studid)->update([
+           ' FullName'=>$this->up_fullname,
+            'contact'=>$this->up_contact,
+            'contact_whatsapp'=>$this->up_whatsapp,
+            'address'=>$this->up_address,
+            'date_of_birth'=>$this->up_dob,
+            'school'=>$this->up_school,
+        ]);
+
+        $student = Student::find($this->std);
+        $student->courses()->sync($this->up_course);
+
+        if($update){
+            $this->dispatchBrowserEvent('CloseEditStudent');
+        }
+    }
+
+    //dlete sutdents
+    public function deleteStudent($id)
+    {
+        $info = Student::find($id);
+        $this->dispatchBrowserEvent('swalconfirm',[
+            'title'=>'Are you Sure?',
+            'id'=>$id
+        ]);
+    }
+
+    public function delete($id)
+    {
+        $del = Student::find($id)->delete();
+        if($del){
+            $this->dispatchBrowserEvent('deleted');
+        }
+    }
+
+    public function deleteStudents()
+    {
+        $this->dispatchBrowserEvent('swal:deleteStudents',[
+            'title'=>'Are you Sure?',
+            'html'=>'you want to delete this students',
+            'checkedIDS'=>$this->selected,
+        ]);
+    }
+
+    public function deletecheckedtudents($ids)
+    {
+        Student::whereKey($ids)->delete();
+        $this->selected = [];
+    }
+
 
     //chekboxes select all
     public function updatedSelectAll($value)

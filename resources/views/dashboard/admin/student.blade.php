@@ -27,6 +27,67 @@
         });
     });
 
+    window.addEventListener('OpenEditModal',function(){
+        $('.editstudent').find('span').html('');
+        $('.editstudent').modal('show');
+    });
+
+    window.addEventListener('CloseEditStudent',function(){
+        $('.editstudent').find('span').html('');
+        $('.editstudent').find('form')[0].reset();
+        $('.editstudent').modal('hide');
+        Swal.fire({
+            icon: 'success',
+            title: 'Updated',
+            text: 'Student Details are Updated!',
+          
+        });
+    });
+
+    window.addEventListener('swalconfirm',function(event){
+        swal.fire({
+            title:event.detail.title,
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then(function(result){
+            if(result.value){
+                window.livewire.emit('delete',event.detail.id);
+            }
+        });
+            
+    });
+
+    window.addEventListener('deleted', function(event){
+        Swal.fire({
+            icon: 'success',
+            title: 'Deleted',
+            text: 'Selected Student Record has been deleted!',
+          
+        });
+    });
+
+
+    window.addEventListener('swal:deleteStudents', function(event){
+        swal.fire({
+            title:event.detail.title,
+            text: "You won't be able to revert this!",
+            html:event.detail.html,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then(function(result){
+            if(result.value){
+                window.livewire.emit('deletecheckedtudents',event.detail.checkedIDS);
+            }
+        });
+    })
+
 </script>
 
 

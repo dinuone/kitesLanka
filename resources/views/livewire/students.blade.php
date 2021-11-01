@@ -21,14 +21,7 @@
                 <option value="25">25</option>
               </select>
             </div>
-      
-            <div class="col-md-2">
-              <label for="">Order By</label>
-              <select class="form-control" wire:model="orderBy">
-                  <option value="created_at">Register Date</option>
-              </select>
-            </div>
-      
+
             <div class="col-md-2">
               <label for="">Sort By</label>
               <select class="form-control" wire:model="sortBy">
@@ -36,10 +29,15 @@
                 <option value="desc">DESC</option>
             </select>
             </div>
-            
+      
             @if ($selected)
             <div class="col-md-2">
               <a wire:click.prevent="export " class="btn btn-info mt-4"><i class="fas fa-cloud-download-alt mr-2"></i>Download Report</a>
+            </div>
+            @endif
+            @if ($selected)
+            <div class="col-md-2">
+              <a wire:click="deleteStudents()" class="btn btn-danger mt-4"><i class="fas fa-trash mr-2"></i>Delete</a>
             </div>
             @endif
            
@@ -81,8 +79,8 @@
                     </td>
                     
                     <td>
-                       <a href="" class="mr-3"><i class="far fa-edit" style="color:#10d430;"></i></a>
-                       <a href=""><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
+                       <a wire:click="OpenEditModal({{ $student->id }})" class="mr-3"><i class="far fa-edit" style="color:#10d430;"></i></a>
+                       <a wire:click="deleteStudent({{ $student->id }})"><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
                     </td>
                 </tr>
                 @endforeach
@@ -97,4 +95,5 @@
       </div>
       </div>
     @include('modals.add-stud')
+    @include('modals.edit-student')
 </div>

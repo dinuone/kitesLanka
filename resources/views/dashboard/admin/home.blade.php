@@ -19,13 +19,13 @@
         <div class="col">
             <div class="small-box bg-maroon">
                 <div class="inner">
-                  <h3>5</h3>
+                  <h3>{{ $courseCount }}</h3>
                   <p>Total Available Courses</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-chalkboard"></i>
                 </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="{{ route('admin.avb-course') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col">
