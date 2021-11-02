@@ -29,8 +29,8 @@
                             @endif
                         </td>
                         <td>
-                            <a href="" class="mr-3"><i class="far fa-edit" style="color:#10d430;"></i></a>
-                            <a href=""><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
+                            <a wire:click="OpenEditModal({{ $anc->id }})" class="mr-3"><i class="far fa-edit" style="color:#10d430;"></i></a>
+                            <a wire:click="DeleteAnnouncement({{ $anc->id }})"><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
                         </td>
                     </tr>
                     @endforeach
@@ -43,5 +43,6 @@
             </table>
         </div>  
     </div>
-        @include('modals.add-announcement')      
+        @include('modals.add-announcement')    
+        @include('modals.edit-announcement')  
 </div>

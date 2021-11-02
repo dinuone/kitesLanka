@@ -70,7 +70,7 @@ class Courses extends Component
         $this->up_name = $info->Name;
         $this->up_description = $info->description;
         $this->up_teacher = $info->teacher_id;
-        $this->courseid = $id;
+        $this->courseid = $info->id;
         $this->up_photo = $info->image_path;
         $this->dispatchBrowserEvent('OpenEditCourseModal',[
             'id'=>$id

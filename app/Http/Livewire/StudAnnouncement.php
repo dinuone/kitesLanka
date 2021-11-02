@@ -9,7 +9,11 @@ use App\Models\Announcement;
 class StudAnnouncement extends Component
 {
     public $course,$title,$msg,$payment;
+    public $up_course,$up_title,$up_msg,$up_payment;
+    public $ancid;
 
+    protected $listeners=['delete'];
+    
     public function render()
     {
         $courses = Course::all();
@@ -45,6 +49,39 @@ class StudAnnouncement extends Component
         if($save)
         {
             $this->dispatchBrowserEvent('CloseAnnouncementModal');
+        }
+    }
+
+    public function OpenEditModal($id)
+    {
+        $info = Announcement::find($id);
+        $this->up_course = $info->course_id;
+        $this->up_title = $info->title;
+        $this->up_msg = $info->body;
+        $this->up_payment = $info->payment_status;
+        $this->ancid = $info->id;
+
+        $this->dispatchBrowserEvent('OpenEditModal',[
+            'id'=>$id
+        ]);
+        
+    }
+
+    public function DeleteAnnouncement($id)
+    {
+        $info = Announcement::find($id);
+        $this->dispatchBrowserEvent('swalconfirm',[
+            'title'=>'Are You Sure?',
+            'id'=>$id
+        ]);
+
+    }
+
+    public function delete($id)
+    {
+        $del = Announcement::find($id)->delete();
+        if($del){
+            $this->dispatchBrowserEvent('deleted');
         }
     }
 }
