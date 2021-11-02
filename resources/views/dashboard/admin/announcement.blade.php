@@ -34,6 +34,18 @@
         $('.editannouncement').find('form')[0].reset();
         $('.editannouncement').modal('show');
     });
+    
+    window.addEventListener('CloseEditModal',function(){
+        $('.editannouncement').find('span').html('');
+        $('.editannouncement').find('form')[0].reset();
+        $('.editannouncement').modal('hide');
+        Swal.fire({
+            icon: 'success',
+            title: 'Updated',
+            text: 'Announcement Details are Updated!',
+          
+        });
+    });
 
     window.addEventListener('swalconfirm',function(event){
         swal.fire({

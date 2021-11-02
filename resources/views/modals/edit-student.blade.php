@@ -65,7 +65,7 @@ aria-hidden="true" data-keyboad="false" data-backdrop="static">
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn bg-indigo">Add Student</button>
+        <button type="submit" class="btn bg-indigo">Update</button>
       </div>
     </form>
     </div>

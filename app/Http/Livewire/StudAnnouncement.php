@@ -67,6 +67,29 @@ class StudAnnouncement extends Component
         
     }
 
+    public function update()
+    {
+        $annnounceid = $this->ancid;
+        $this->validate([
+            'up_course'=>'required',
+            'up_title'=>'required',
+            'up_msg'=>'required',
+            'up_payment'=>'required',
+
+        ]);
+
+        $update = Announcement::find($annnounceid)->update([
+            'course_id'=>$this->up_course,
+            'title'=>$this->up_title,
+            'body'=>$this->up_msg,
+            'payment_status'=>$this->up_payment
+        ]);
+
+        if($update){
+            $this->dispatchBrowserEvent('CloseEditModal');
+        }
+    }
+
     public function DeleteAnnouncement($id)
     {
         $info = Announcement::find($id);

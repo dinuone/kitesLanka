@@ -8,7 +8,7 @@ aria-hidden="true" data-keyboad="false" data-backdrop="static">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-    <form wire:submit.prevent="save"> 
+    <form wire:submit.prevent="update"> 
       <div class="modal-body">
           <label for="">Select Course</label>  
           <select class="form-control mb-3" wire:model="up_course">
@@ -43,7 +43,7 @@ aria-hidden="true" data-keyboad="false" data-backdrop="static">
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn bg-Indigo"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+        <button type="submit" class="btn bg-Indigo"><i class="fas fa-paper-plane mr-2"></i>Update</button>
       </div>
     </form>
     </div><!-- /.modal-content -->
