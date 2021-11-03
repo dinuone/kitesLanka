@@ -10,8 +10,12 @@ use Livewire\WithFileUploads;
 class AdminTeacher extends Component
 {
     use WithFileUploads;
+    protected $listeners=['delete'];
+
 
     public $teachername,$contact,$email,$photo;
+    public $up_teachername,$up_contact,$up_email,$teacherID;
+    public $up_photo='';
 
     public function render()
     {
@@ -45,6 +49,56 @@ class AdminTeacher extends Component
 
         if($save){
             $this->dispatchBrowserEvent('CloseTeacherModal');
+        }
+    }
+
+    public function EditTeacherModal($id)
+    {
+        $info = Teacher::find($id);
+        $this->up_teachername = $info->fullname;
+        $this->up_contact = $info->contact;
+        $this->up_email = $info->email;
+        $this->teacherID = $info->id;
+        $this->dispatchBrowserEvent('EditTeacherModal',[
+            'id'=>$id
+        ]);
+    }
+
+    public function update()
+    {
+        $tID = $this->teacherID;
+        $this->validate([
+            'up_teachername' => 'required',
+            'up_contact' => 'required',
+            'up_email' => 'required',
+            'up_photo' =>'required|max:3048'
+        ]);
+        $update = Teacher::find($tID)->update([
+            'fullname'=>$this->up_teachername,
+            'contact'=>$this->up_contact,
+            'email'=>$this->up_email,
+            'image_path'=>$this->up_photo->store('teacher_img','public')
+        ]);
+
+        if($update){
+            $this->dispatchBrowserEvent('CloseEdiTeacherModal');
+        }
+    }
+
+    public function DeleteTeacher($id)
+    {
+        $info = Teacher::find($id);
+        $this->dispatchBrowserEvent('swalconfirm',[
+            'title'=>'Are You Sure?',
+            'id'=>$id
+        ]);
+    }
+
+    public function delete($id)
+    {
+        $del = Teacher::find($id)->delete();
+        if($del){
+            $this->dispatchBrowserEvent('deleted');
         }
     }
 }

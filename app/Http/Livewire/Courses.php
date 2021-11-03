@@ -71,7 +71,6 @@ class Courses extends Component
         $this->up_description = $info->description;
         $this->up_teacher = $info->teacher_id;
         $this->courseid = $info->id;
-        $this->up_photo = $info->image_path;
         $this->dispatchBrowserEvent('OpenEditCourseModal',[
             'id'=>$id
         ]);
@@ -84,6 +83,7 @@ class Courses extends Component
             'up_name'=>'required',
             'up_description'=>'required',
             'up_teacher'=>'required',
+            'up_photo'=>'required|max:3048'
         ]);
 
         $update = Course::find($id)->update([
@@ -99,7 +99,8 @@ class Courses extends Component
     }
 
     //delete function
-    public function DeleteCourse($id){
+    public function DeleteCourse($id)
+    {
         $info = Course::find($id);
         $this->dispatchBrowserEvent('swalconfirm',[
             'title'=>'Are You Sure?',

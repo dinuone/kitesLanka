@@ -17,7 +17,7 @@
             <div class="form-group">
               <label for="">Full Name</label>
               <input type="text" class="form-control" wire:model="teachername">
-              <span class="text-danger">@error('fullname') {{ $message }} @enderror</span>
+              <span class="text-danger">@error('teachername') {{ $message }} @enderror</span>
             </div>
             <div class="form-group">
                 <label for="">Contact</label>

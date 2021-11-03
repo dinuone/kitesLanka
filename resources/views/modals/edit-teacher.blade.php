@@ -13,28 +13,28 @@
           </button>
         </div>
         <div class="modal-body">
-          <form wire:submit.prevent="save" enctype="multipart/form-data">
+          <form wire:submit.prevent="update" enctype="multipart/form-data">
             <div class="form-group">
               <label for="">Full Name</label>
               <input type="text" class="form-control" wire:model="up_teachername">
-              <span class="text-danger">@error('fullname') {{ $message }} @enderror</span>
+              <span class="text-danger">@error('up_teachername') {{ $message }} @enderror</span>
             </div>
             <div class="form-group">
                 <label for="">Contact</label>
                 <input type="text" class="form-control" wire:model="up_contact">
-                <span class="text-danger">@error('contact') {{ $message }} @enderror</span>
+                <span class="text-danger">@error('up_contact') {{ $message }} @enderror</span>
               </div>
               <div class="form-group">
                 <label for="">E-mail</label>
-                <input type="text" class="form-control" wire:model="email">
-                <span class="text-danger">@error('email') {{ $message }} @enderror</span>
+                <input type="text" class="form-control" wire:model="up_email">
+                <span class="text-danger">@error('up_email') {{ $message }} @enderror</span>
               </div>
           
            <hr>
             <div class="form-group">
               <label>Select Image</label>
-              <input type="file" class="form-control-file" wire:model="photo" id="photo1">
-              <span class="text-danger">@error('photo')  {{ $message }} @enderror</span>
+              <input type="file" class="form-control-file" wire:model="up_photo" id="photo1">
+              <span class="text-danger">@error('up_photo')  {{ $message }} @enderror</span>
               <div wire:loading wire:target="photo">Uploading...</div>
             </div>  
               {{-- image preview --}}
@@ -44,7 +44,7 @@
         </div>
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn bg-Indigo">Add Teacher </button>
+          <button type="submit" class="btn bg-Indigo">Update</button>
         </div>
       </form>
       </div>

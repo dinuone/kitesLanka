@@ -67,8 +67,8 @@
                             <td>{{ $teacher->email }}</td>
                             <td>{{ $teacher->created_at->toDatestring(); }}</td>
                             <td>
-                                <a class="mr-3"><i class="far fa-edit" style="color:#10d430;"></i></a>
-                                <a><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
+                                <a class="mr-3" wire:click="EditTeacherModal({{ $teacher->id }})"><i class="far fa-edit" style="color:#10d430;"></i></a>
+                                <a wire:click="DeleteTeacher({{ $teacher->id }})"><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
                             </td>
                         </tr>                        
                     @endforeach
@@ -77,6 +77,7 @@
         </div>
     </div>
     @include('modals.add-teach')
+    @include('modals.edit-teacher')
 </div>
 
 
