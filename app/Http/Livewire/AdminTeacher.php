@@ -11,8 +11,6 @@ class AdminTeacher extends Component
 {
     use WithFileUploads;
     protected $listeners=['delete'];
-
-
     public $teachername,$contact,$email,$photo;
     public $up_teachername,$up_contact,$up_email,$teacherID;
     public $up_photo='';
