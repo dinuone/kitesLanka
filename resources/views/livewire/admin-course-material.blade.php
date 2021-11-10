@@ -1,6 +1,33 @@
 <div>
     <div class="content">
         <div class="container">
+            @if ($msg = Session::get('success'))
+            <div class="alert alert-success">
+                <strong>{{ $msg }}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> 
+            </div>
+             @endif
+
+             @if ($msg2 = Session::get('delete'))
+             <div class="alert alert-success">
+                 <strong>{{ $msg2 }}</strong>
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button> 
+             </div>
+              @endif
+
+             @if ($msg = Session::get('fail'))
+             <div class="alert alert-warning">
+                 <strong>{{ $msg }}</strong>
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button> 
+             </div>
+              @endif
+
              @if (count($errors) > 0)
                 <div class="alert alert-danger" role="alert">
                     @foreach ($errors->all() as $error)
@@ -73,7 +100,7 @@
                             <td>{{ $file->month }}</td>
                             <td>{{ $file->created_at->toDatestring(); }}</td>
                             <td>
-                                <a class="mr-2" href=""><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
+                                <a href="{{ route('admin.file-remove',$file->file_name) }}" class="mr-2" href=""><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
                             </td>
                             <td>
                                 <a href="{{ route('admin.file-download',$file->file_name) }}" class="btn bg-indigo"><i class="fas fa-cloud-download-alt mr-2"></i>Download</a>

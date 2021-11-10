@@ -45,6 +45,8 @@ class AdminCourseMaterial extends Component
             $data->file_name = $filename;
             $data->month = $this->month;
             $data->save();
+
+            return back()->with('success','File has uploaded to the database.');
         }
         
       

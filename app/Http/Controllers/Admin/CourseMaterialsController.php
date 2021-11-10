@@ -9,6 +9,7 @@ use App\Models\Course; //
 use App\Models\Material;
 use Webpatser\Uuid\Uuid;
 use Illuminate\Support\Facades\Storage;
+use File;
 
 
 class CourseMaterialsController extends Controller
@@ -23,26 +24,6 @@ class CourseMaterialsController extends Controller
         ]);
     }
 
-    public function store(Request $request)
-    {
-        $validator = $request->validate([
-            'file' => 'required|mimes:png,jpg,jpeg,csv,txt,xlx,xls,pdf|max:10000',
-            'course'=>'required'
-        ]);
-    
-        $data = new Material();
-        $file = $request->file;
-        $filename = time().'.'.$file->getClientOriginalName();
-        $request->file->move('assets',$filename);
-        
-        $data->course_id = $request->course;
-        $data->file_name = $filename;
-        $data->save();
-
-            
-        return back()->with('success','File has uploaded to the database.');
-        
-    }
 
     public function download($file_name)
     {
@@ -51,9 +32,19 @@ class CourseMaterialsController extends Controller
         
     }
 
-    public function destroy($id)
+    public function Removefilles($file_name)
     {
-        dd($id);
+        if(File::exists(public_path('storage/'.$file_name))){
+            File::delete(public_path('storage/'.$file_name));
+            Material::where('file_name',$file_name)->delete();
+            return back()->with('delete','File has been Deleted.');
+           
+        }else{
+
+            return back()->with('fail','The file does not exsits!.');
+        }
+
+
     }
   
 }
