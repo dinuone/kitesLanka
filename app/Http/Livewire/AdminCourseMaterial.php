@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Course;
-use App\Models\material;
+use App\Models\Material;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,7 +18,7 @@ class AdminCourseMaterial extends Component
 
     public function render()
     {
-        $files = material::paginate(10);
+        $files = Material::paginate(10);
         $courses = Course::all();
         return view('livewire.admin-course-material',[
             'courses'=>$courses,
@@ -37,7 +37,7 @@ class AdminCourseMaterial extends Component
      
         foreach($this->material as $pdf)
         {
-            $data = new material();
+            $data = new Material();
             $filename = $pdf->getClientOriginalName();
   
             $pdf->storeAs('public',$filename);

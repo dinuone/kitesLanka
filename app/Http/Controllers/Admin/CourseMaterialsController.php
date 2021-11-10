@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Course;
-use App\Models\material;
+use App\Models\Material;
 use Webpatser\Uuid\Uuid;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,7 +15,7 @@ class CourseMaterialsController extends Controller
 {
     public function index()
     {
-        $files = material::paginate(10);
+        $files = Material::paginate(10);
         $courses = Course::all();
         return view('dashboard.admin.materials',[
             'courses'=>$courses,
@@ -30,7 +30,7 @@ class CourseMaterialsController extends Controller
             'course'=>'required'
         ]);
     
-        $data = new material();
+        $data = new Material();
         $file = $request->file;
         $filename = time().'.'.$file->getClientOriginalName();
         $request->file->move('assets',$filename);
