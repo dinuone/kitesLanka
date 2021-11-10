@@ -11,11 +11,12 @@ class Material extends Model
     
     protected $fillable = [
         'id',
+        'month',
         'course_id',
         'path',
         'file_name',
         'created_at',
-        'month'
+        
     ];
 
     public function course()
