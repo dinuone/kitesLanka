@@ -46,7 +46,9 @@
                         <div class="form-group">
                             <label>Select File <small>(PDF,MP4,docs,ppt etc..)</small></label>
                             <input type="file" class="form-control-file" wire:model="material" multiple>
+                            <div wire:loading wire:target="material">Uploading...</div>
                         </div>
+                       
                         <button type="submit" class="btn bg-maroon"><i class="fas fa-cloud-upload-alt mr-2"></i>Upload</button>
                     </form>
                 </div>
