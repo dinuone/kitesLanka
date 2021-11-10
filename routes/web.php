@@ -94,8 +94,7 @@ Route::prefix('@kt12admin')->name('admin.')->group(function(){
         Route::get('/Due-Payment',[DuepaymentController::class,'index'])->name('duepayment');
         Route::get('/attendance',[AttendanceController::class,'index'])->name('attendace');
         Route::get('/course-material',[CourseMaterialsController::class,'index'])->name('materials');
-        Route::post('/course-material/upload',[CourseMaterialsController::class,'store'])->name('file-upload');
-        Route::get('/course-material/download/{file_name}',[CourseMaterialsController::class,'downloadfile'])->name('file-download');
+        Route::get('/course-material/download/{file_name}',[CourseMaterialsController::class,'download'])->name('file-download');
         Route::get('/reports',[ReportController::class,'index'])->name('reports');
         Route::post('/reports/view,',[ReportController::class,'showchart'])->name('show-chart');
         Route::view('/add-teachers','dashboard.admin.teacher-details')->name('teacher-details');

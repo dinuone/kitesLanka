@@ -15,6 +15,7 @@ class material extends Model
         'path',
         'file_name',
         'created_at',
+        'month'
     ];
 
     public function course()
