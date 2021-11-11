@@ -22,7 +22,12 @@ class PreventBackHistory
             'Pragma','no-cache',
             'Expires','Fri, 01 Jan 1990 00:00:00 GMT',
         ];
-        
+
+        foreach($headers as $key => $value) {
+            $response->headers->set($key, $value);
+        }
+
         return $response;
     }
 }
+    
