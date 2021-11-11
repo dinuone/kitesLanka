@@ -40,7 +40,7 @@ class AdminCourseMaterial extends Component
             $data = new Material();
             $filename = $pdf->getClientOriginalName();
   
-            $pdf->storeAs('public',$filename);
+            $pdf->storeAs('pdf',$filename);
             $data->course_id = $this->course;
             $data->file_name = $filename;
             $data->month = $this->month;

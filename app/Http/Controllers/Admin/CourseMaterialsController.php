@@ -27,8 +27,8 @@ class CourseMaterialsController extends Controller
 
     public function download($file_name)
     {
-        $path = public_path('storage/'.$file_name);
-        return response()->download($path);
+        
+        return response()->download(storage_path('app/public/pdf'.$file_name));
         
     }
 
