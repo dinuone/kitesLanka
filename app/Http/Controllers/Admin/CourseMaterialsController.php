@@ -33,8 +33,8 @@ class CourseMaterialsController extends Controller
     public function download($file_name)
     {
         
-        return response()->download(storage_path('app/public/pdf/'.$file_name));
-        
+        // return response()->download(storage_path('app/public/pdf/'.$file_name));
+        return response()->download(storage_path('app/public/pdf/'.$file_name), null, [], null);
     }
 
     public function Removefilles($file_name)

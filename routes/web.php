@@ -95,7 +95,7 @@ Route::prefix('@kt12admin')->name('admin.')->group(function(){
         Route::get('/attendance',[AttendanceController::class,'index'])->name('attendace');
         Route::get('/course-material',[CourseMaterialsController::class,'index'])->name('materials');
         Route::get('/course-material/download/{file_name}',[CourseMaterialsController::class,'download'])->name('file-download');
-        Route::get('/course-material/delete/{file_name}',[CourseMaterialsController::class,'Removefilles'])->name('file-remove');
+        Route::get('/course-material/delete/{file_name}',[CourseMaterialsController::class,'Removefilles'])->where('file_name', '^[^/]+$')->name('file-remove');
         Route::get('/reports',[ReportController::class,'index'])->name('reports');
         Route::post('/reports/view,',[ReportController::class,'showchart'])->name('show-chart');
         Route::view('/add-teachers','dashboard.admin.teacher-details')->name('teacher-details');
