@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Course; //
 use App\Models\Material;
 use Webpatser\Uuid\Uuid;
@@ -33,8 +33,7 @@ class CourseMaterialsController extends Controller
     public function download($file_name)
     {
         
-        // return response()->download(storage_path('app/public/pdf/'.$file_name));
-        Storage::path('app/public/storage/pdf/'.$file_name);
+        return response()->download(storage_path('app/public/pdf/'.$file_name));
         
     }
 
