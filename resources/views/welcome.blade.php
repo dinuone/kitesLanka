@@ -45,15 +45,7 @@
                         <p class="p-large">We love to create dependable business solutions for companies of all sizes and any industry. Our goal is to improve accuracy and efficiency to reduce operational costs</p>
                         
                         <!-- Sign Up Form -->
-                        <form id="signUpForm">
-                            <div class="form-group">
-                                <input type="email" class="form-control-input" id="semail" required>
-                                <label class="label-control" for="semail">Email address</label>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="form-control-submit-button">SIGN UP</button>
-                            </div>
-                        </form>
+                       
                         <!-- end of sign up form -->
 
                     </div> <!-- end of text-container -->
@@ -68,7 +60,7 @@
             <!-- <a class="logo-text" href="index.html">Petals</a> -->
 
             <!-- Image Logo -->
-            <a href="index.html"><img class="logo-image" src="{{ asset('maintain/images/logo.svg') }}" alt="alternative"></a> 
+            <a href="index.html"><img class="logo-image" src="{{ asset('maintain/images/logo.png') }}" alt="alternative"></a> 
             
             <span class="fa-stack">
                 <a href="#your-link">
