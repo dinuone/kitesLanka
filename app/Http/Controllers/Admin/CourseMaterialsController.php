@@ -14,6 +14,11 @@ use File;
 
 class CourseMaterialsController extends Controller
 {
+    public function __construct()
+	{
+		$this->middleware('auth');
+	}
+    
     public function index()
     {
         $files = Material::paginate(10);
@@ -27,10 +32,8 @@ class CourseMaterialsController extends Controller
 
     public function download($file_name)
     {
-        $filepath =storage_path('app/public/pdf/');
-        $filename = $file_name;
-        $headers = ['Content-Type: application/pdf'];
-        return response()->download($filePath, $fileName, $headers);
+        
+        return response()->download(storage_path('app/public/pdf/'.$file_name));
         
     }
 
