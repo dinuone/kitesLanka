@@ -95,7 +95,7 @@
                     <tbody>
                         @forelse ($files as $file )
                         <tr>
-                            <td>{{ $file->course->Name }}c</td>
+                            <td>{{ $file->course->Name }}</td>
                             <td><i class="fas fa-file-pdf mr-2"></i>{{ $file->file_name }}</td>
                             <td>{{ $file->month }}</td>
                             <td>{{ $file->created_at->toDatestring(); }}</td>
