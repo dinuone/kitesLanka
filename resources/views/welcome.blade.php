@@ -97,12 +97,6 @@
         
     </header> <!-- end of header -->
     <!-- end of header -->
-
-
-    <!-- Scripts -->
-    <script src="{{ asset('maintain/js/jquery.min.js"') }}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
-    <script src="{{ asset('maintain/js/bootstrap.min.js') }}"></script> <!-- Bootstrap framework -->
-    <script src="{{ asset('maintain/js/jquery.easing.min.js') }}"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
     <script src="{{ asset('maintain/js/jquery.countdown.min.js') }}"></script> <!-- The Final Countdown plugin for jQuery -->
     <script src="{{ asset('maintain/js/scripts.js') }}"></script> <!-- Custom scripts -->
 </body>
