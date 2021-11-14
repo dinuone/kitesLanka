@@ -24,8 +24,8 @@ class AttendaceReport extends Component
         ->get();
         $courses = Course::all();
         return view('livewire.attendace-report',[
-            'attend'=>$attend,
-            'courses'=>$courses
+            'courses'=>$courses,
+            'attend'=>$attend
         ]);
     }
 
@@ -39,6 +39,7 @@ class AttendaceReport extends Component
             $this->selected = [];
         }
     }
+
 
     //export report
     public function export()

@@ -3,6 +3,7 @@
       <div class="col-md-3">
         <label for="">Course</label>
         <select class="form-control" wire:model="bycourse">
+          <option value="0">Not Selected</option>
           @foreach ($crs as $cr)
           <option value="{{ $cr->id }}">{{ $cr->Name }}</option>
           @endforeach
@@ -33,13 +34,18 @@
       </div>
 
       <div class="col">
-        <a href="{{ route('admin.duepayment') }}" class="btn bg-maroon mt-4">Due Payments</a>
+        <div class="form-group mt-2">
+          <a href="{{ route('admin.duepayment') }}" class="btn bg-maroon mt-4">Due Payments</a>
+        </div>
       </div>
+       
 
       @if ($checkedPayment)
       <div class="col-md-2">
-        <a wire:click.prevent="export" class="btn bg-Indigo mt-4"><i class="fas fa-cloud-download-alt mr-2"></i>Download Report</a>
-      </div>
+        <div class="form-group mt-2">
+          <a wire:click.prevent="export" class="btn bg-Indigo mt-4"><i class="fas fa-cloud-download-alt mr-2"></i>Download Report</a>
+        </div>
+        </div>
       @endif
     </div>
 

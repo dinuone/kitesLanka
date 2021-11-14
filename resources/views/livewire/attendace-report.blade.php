@@ -4,6 +4,7 @@
         <div class="col-md-3">
             <label for="">Course</label>
             <select class="form-control" wire:model="bycourse">
+                <option value="0">Not Selected</option>
                 @foreach ($courses as $crs )
                 <option value="{{ $crs->id }}">{{ $crs->Name }}</option>
                 @endforeach
@@ -21,6 +22,7 @@
             <input type="date" class="form-control" wire:model="EndDate">
            </div>
        </div>
+    </div>
        @if ($selected)
         <div class="col-md-2">
             <a wire:click.prevent="export " class="btn btn-info mt-4"><i class="fas fa-cloud-download-alt mr-2"></i>Download Report</a>
@@ -48,7 +50,7 @@
                     <tr>
                         <td><input type="checkbox" value="{{ $atd->id }}" wire:model="selected"></td>
                         <td>{{ $atd->student->student_id}}</td>
-                        <td>{{ $atd->student->FullName }}</td>
+                        <td>{{ $atd->student->FullName}}</td>
                         <td>{{ $atd->course->Name }}</td>
                         <td>{{ $atd->attend }}</td>
                         <td>{{ $atd->created_at->toDatestring(); }}</td>
