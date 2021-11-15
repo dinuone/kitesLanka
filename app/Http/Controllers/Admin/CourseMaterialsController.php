@@ -14,7 +14,8 @@ use File;
 
 class CourseMaterialsController extends Controller
 {
-   
+   public $getfilename;
+
     public function index()
     {
         $files = Material::paginate(10);
@@ -25,25 +26,43 @@ class CourseMaterialsController extends Controller
         ]);
     }
 
-
-    public function download($file_name)
+    public function uploadfile(Request $request)
     {
-        
-        return response()->download(storage_path('app/public/pdf/'.$file_name));
+        $request->validate([
+            'file' => 'required|mimes:png,jpg,jpeg,csv,txt,xlx,xls,pdf|max:10000',
+            'month'=>'required',
+            'course'=>'required'
+        ]);
+
+     
+
+            $data = new Material();
+            $filename = $request->file->getClientOriginalName();
+  
+            // $filepath = $request->file('file')->storeAs('pdf', $filename, 'public');
+            Storage::disk('local')->put($filename, 'pdf');
+            $data->course_id = $request->course;
+            $data->file_name = $filename;
+            $data->month = $request->month;
+            $data->save();
+
+            return back()->with('success','File has uploaded to the database.');
+    
         
     }
 
-    public function Removefilles($file_name)
-    {
-        if(File::exists(public_path('storage/'.$file_name))){
-            File::delete(public_path('storage/'.$file_name));
-            Material::where('file_name',$file_name)->delete();
-            return back()->with('delete','File has been Deleted.');
-           
-        }else{
 
-            return back()->with('fail','The file does not exsits!.');
-        }
+    public function downloadfile($filename)
+    {
+        
+        return Storage::download($filename);
+        
+    }
+
+    public function Removefilles($id)
+    {
+    
+        
 
 
     }
