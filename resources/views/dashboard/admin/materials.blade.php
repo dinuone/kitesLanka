@@ -44,7 +44,7 @@
         <div class="card shadow">
             <div class="card-header bg-navy"><i class="fas fa-file-alt mr-2"></i>Upload Course Materials</div>
             <div class="card-body">
-                <form action="{{ route('admin.file-upload') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('file-upload') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label>Select Month</label>
@@ -103,10 +103,10 @@
                         <td>{{ $file->month }}</td>
                         <td>{{ $file->created_at->toDatestring(); }}</td>
                         <td>
-                            <a href="{{ route('admin.file-remove',$file->id) }}" class="mr-2" href=""><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
+                            <a href="{{ route('file-remove',$file->id) }}" class="mr-2" href=""><i class="fas fa-trash" style="color:#e70c0c;"></i></a>
                         </td>
                         <td>
-                            <a href="{{ route('admin.file-download',$file->file_name) }}" class="btn bg-indigo"><i class="fas fa-cloud-download-alt mr-2"></i>Download</a>
+                            <a href="{{ route('file-download',$file->file_name) }}" class="btn bg-indigo"><i class="fas fa-cloud-download-alt mr-2"></i>Download</a>
                         </td>
                     </tr>
                     @empty

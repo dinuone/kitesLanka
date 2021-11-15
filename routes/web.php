@@ -40,6 +40,10 @@ Route::get('/', [WelcomeController::class, 'index']);
 
 Auth::routes();
 
+        Route::get('/course-material',[CourseMaterialsController::class,'index'])->name('materials');
+        Route::post('/upload',[CourseMaterialsController::class,'uploadfile'])->name('file-upload');
+        Route::get('/course-material/download/{filename}',[CourseMaterialsController::class,'downloadfile'])->name('file-download');
+        Route::get('/course-material/delete/{id}',[CourseMaterialsController::class,'Removefilles'])->name('file-remove');
 //students routes
 Route::prefix('student')->name('student.')->group(function(){
 
@@ -93,11 +97,7 @@ Route::prefix('@kt12admin')->name('admin.')->group(function(){
         Route::get('/Todayregstudents',[DashboardController::class,'showtoday'])->name('todayreg');
         Route::get('/Due-Payment',[DuepaymentController::class,'index'])->name('duepayment');
         Route::get('/attendance',[AttendanceController::class,'index'])->name('attendace');
-        Route::get('/course-material',[CourseMaterialsController::class,'index'])->name('materials');
-      
-        Route::post('/upload',[CourseMaterialsController::class,'uploadfile'])->name('file-upload');
-        Route::get('/course-material/download/{filename}',[CourseMaterialsController::class,'downloadfile'])->name('file-download');
-        Route::get('/course-material/delete/{id}',[CourseMaterialsController::class,'Removefilles'])->name('file-remove');
+        
        
         Route::get('/reports',[ReportController::class,'index'])->name('reports');
         Route::post('/reports/view,',[ReportController::class,'showchart'])->name('show-chart');

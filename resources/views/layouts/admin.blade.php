@@ -131,7 +131,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('admin.materials') }}" class="nav-link {{ (request()->is('@kt12admin/course-material*')) ? 'active' : ''}}">
+                <a href="{{ route('materials') }}" class="nav-link {{ (request()->is('/course-material*')) ? 'active' : ''}}">
                   <i class="nav-icon fas fa-file-alt"></i>
                   <p>Course Materials</p>
                 </a>
