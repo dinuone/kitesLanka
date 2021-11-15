@@ -15,8 +15,7 @@ class StudMaterialController extends Controller
 
     public function download($file_name)
     {
-        $path = public_path('assets/'.$file_name);
-        return response()->download($path);
+        return Storage::download($file_name);
         
     }
 }

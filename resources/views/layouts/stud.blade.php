@@ -101,7 +101,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('student.course-materials') }}" class="nav-link {{ (request()->is('student/course-materials*')) ? 'active' : ''}}">
+                <a href="{{ route('course-materials') }}" class="nav-link {{ (request()->is('student/course-materials*')) ? 'active' : ''}}">
                   <i class="nav-icon fa fa-file-pdf"></i>
                   <p>Course Materials</p>
                 </a>

@@ -15,7 +15,7 @@ class StudMaterials extends Component
     public function render()
     {
         
-        $stdid = Auth::user()->id;
+        
         $student = Student::where('id',$stdid)->get();
         $paymentdone = Payment::where('st_id',$stdid)->where('course_id',$this->courseID)->where('payment_status',1)->get();
 
