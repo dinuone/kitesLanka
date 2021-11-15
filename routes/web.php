@@ -70,6 +70,8 @@ Route::middleware(['auth:student','PreventBackHistory'])->group(function(){
     Route::get('/myclass', [StudCourseController::class,'index'])->name('myclass');
     Route::view('/classfee','dashboard.user.classFee' )->name('classfee');
     Route::post('/logout', [StudentController::class,'logout'])->name('logout');
+    Route::get('/course-materials',[StudMaterialController::class,'index'])->name('course-materials');
+    Route::get('/course-materials/download/{file_name}',[StudMaterialController::class,'download'])->name('stud-download');
     Route::get('/course-register/{id}',[StudDashController::class,'showreg'])->name('reg-course');
     Route::post('/course-register/save',[StudDashController::class,'save'])->name('course-save');
      
