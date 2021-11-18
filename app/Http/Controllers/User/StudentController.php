@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Course;
 use App\Helpers\Helper;
-
 use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
@@ -27,8 +26,8 @@ class StudentController extends Controller
 
         $user = new Student(); 
 
-        $student_id = Helper:: IDgenerator($user,'student_id',5,'KTL');
-        
+        $student_id = random_int(1000, 9999);
+    
 
         $user->student_id = $student_id;
         $user->FullName = $request->fullname;
@@ -59,7 +58,6 @@ class StudentController extends Controller
         ]);
 
         $creds = $request->only('student_id','password');
-
         if(Auth::guard('student')->attempt($creds)){
             return redirect()->route('student.home');
         }else{
