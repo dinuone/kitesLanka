@@ -22,7 +22,7 @@ class AttendaceReport extends Component
 
         $attend = Attendance::where('course_id', $this->bycourse)->whereBetween('created_at', [$this->startDate, $this->EndDate])
         ->get();
-        $courses = Course::all();
+        $courses = Course::select('Name','id')->get();
         return view('livewire.attendace-report',[
             'courses'=>$courses,
             'attend'=>$attend

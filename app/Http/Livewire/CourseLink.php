@@ -10,7 +10,7 @@ class CourseLink extends Component
 {
     use WithPagination;
 
-    public $vdlink,$crs_id;
+    public $vdlink,$crs_id,$month;
     protected $listeners=['delete'];
 
     public function render()
@@ -36,12 +36,13 @@ class CourseLink extends Component
     {
         $this->validate([
             'vdlink'=>'required',
-            
+            'month'=>'required'
         ]);
 
         $crs_id = $this->crs_id;
         $update = Course::find($crs_id)->update([
             'Links'=>$this->vdlink,
+            'month'=>$this->month
         ]);
         
         
@@ -66,10 +67,10 @@ class CourseLink extends Component
     {
         
         $info = Course::find($id);
-        $del = Course::where('id',$id)->where('Links','like',$info->Links)->first();
+        $del = Course::where('id',$id)->where('Links','like',$info->Links)->where('month','like',$info->month)->first();
         if($del){
 
-            $del->update(['Links' => null]);
+            $del->update(['Links' => null,'month'=>null]);
             $this->dispatchBrowserEvent('deleted');
         }
     }

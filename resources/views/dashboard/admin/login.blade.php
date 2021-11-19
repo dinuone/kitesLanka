@@ -32,7 +32,7 @@
               
                 <div class="form-group">
                     <label for="">Password</label>
-                    <input type="text" class="form-control" name="password" value="{{ old('password') }}">
+                    <input type="password" class="form-control" name="password" value="{{ old('password') }}">
                     @error('password')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror

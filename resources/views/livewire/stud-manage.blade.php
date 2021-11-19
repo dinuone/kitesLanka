@@ -76,7 +76,7 @@
               @if ($payment->student->payment_status == 1)
                 <td><h5><span class="badge badge-success"><i class="fas fa-check mr-2"></i>Payment Recevied..</span></h5></td>
               @else
-                <td><h5><span class="badge badge-warning"><i class="fas fa-info-circle mr-2"></i>Due Payment..</span></h5></td>
+                <td><h5><span class="badge badge-warning"><i class="fas fa-info-circle mr-2"></i>Payment Done</span></h5></td>
               @endif
               <td>{{ $payment->created_at->toDatestring(); }}</td>
               <td>{{ $payment->month }}</td>

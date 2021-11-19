@@ -16,7 +16,8 @@ class Course extends Model
        'image_path',
        'description',
        'created_at',
-       'update_at'
+       'update_at',
+       'month'
        
     ];
 

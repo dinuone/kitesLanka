@@ -19,6 +19,7 @@ class CreateCourses extends Migration
             $table->string('Name');
             $table->string('image_path');
             $table->string('description');
+            $table->string('month')->nullable();
             $table->string('Links')->nullable();
             $table->timestamps();
 

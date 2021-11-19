@@ -69,7 +69,7 @@ class Students extends Component
         ]);
 
         $user = new Student(); 
-        $this->std = Helper:: IDgenerator($user,'student_id',5,'KTL');
+        $this->std = random_int(1000, 9999);
         
             $user->FullName = $this->fullname;
             $user->date_of_birth = $this->dob;
