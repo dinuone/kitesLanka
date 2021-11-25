@@ -17,6 +17,7 @@ class CreateMaterials extends Migration
             $table->id();
             $table->unsignedBigInteger('course_id'); 
             $table->string('file_name');
+            $table->string('month');
             $table->timestamps();
 
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
