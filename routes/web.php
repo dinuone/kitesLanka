@@ -56,9 +56,10 @@ Route::group(['middleware'=>['auth:student','PreventBackHistory']], function(){
     Route::get('student/course-materials',[StudMaterialController::class,'index'])->name('student-course-materials');
     Route::get('student/course-register/{id}',[StudDashController::class,'showreg'])->name('student-reg-course');
     Route::post('student/course-register/save',[StudDashController::class,'save'])->name('student-course-save');
-});
-//student - download pdf
+    //student - download pdf
 Route::get('student/course-materials/download/{filename}',[StudMaterialController::class,'download'])->name('student-stud-download');
+});
+
 
 //password reset - student ----------------------
 Route::get('student/forget-password',[ForgetPasswordController::class,'showForgetPasswordFrom'])->name('student-forget.form');
