@@ -18,20 +18,7 @@ return [
         'passwords' => 'users',
     ],
 
-    'admin'=>[
-        'driver'=>'eloquent',
-        'model'=>App\Models\Admin::class,
-    ],
-
-    'student'=>[
-        'driver'=>'eloquent',
-        'model'=>App\Models\Student::class,
-    ],
-
-    'teacher'=>[
-        'driver'=>'eloquent',
-        'model'=>App\Models\Teacher::class,
-    ],
+  
 
     /*
     |--------------------------------------------------------------------------
@@ -149,20 +136,7 @@ return [
             'throttle' => 60,
         ],
 
-        'admins'=>[
-            'driver'=>'eloquent',
-            'model'=>App\Models\Admin::class,
-        ],
-        
-        'students'=>[
-            'driver'=>'eloquent',
-            'model'=>App\Models\Student::class,
-        ],
-
-        'teachers'=>[
-            'driver'=>'eloquent',
-            'model'=>App\Models\Teacher::class,
-        ],
+       
     ],
 
     /*
