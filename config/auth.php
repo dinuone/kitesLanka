@@ -55,9 +55,18 @@ return [
             'provider'=>'admins',
         ],
 
+        'admin-api' => [
+            'driver' => 'token',
+            'provider' => 'admins',
+        ],
+
         'student'=>[
             'driver'=>'session',
             'provider'=>'students',
+        ],
+        'student-api' => [
+            'driver' => 'token',
+            'provider' => 'students',
         ],
 
         'teacher'=>[

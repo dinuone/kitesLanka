@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Storage;
 
 class StudMaterialController extends Controller
 {
@@ -16,10 +16,7 @@ class StudMaterialController extends Controller
 
     public function download($filename)
     {
-        $file = Storage::disk('public')->get($filename);
-
-        return (new Response($file,200))
-            ->header('Content-Type','pdf');
+        return Storage::download($filename);
         
     }
 }
