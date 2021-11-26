@@ -13,9 +13,9 @@ class StudMaterialController extends Controller
         return view('dashboard.user.Materials');
     }
 
-    public function download($file_name)
+    public function download($filename)
     {
-        return Storage::download($file_name);
+        return Storage::download($filename);
         
     }
 }
