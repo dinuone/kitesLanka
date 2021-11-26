@@ -9,6 +9,7 @@ use App\Models\Course; //
 use App\Models\Material;
 use Webpatser\Uuid\Uuid;
 use Illuminate\Support\Facades\Storage;
+use DB;
 use File;
 
 
@@ -29,26 +30,31 @@ class CourseMaterialsController extends Controller
     public function uploadfile(Request $request)
     {
         $request->validate([
-            'file' => 'required|mimes:png,jpg,jpeg,csv,txt,xlx,xls,pdf|max:10000',
+            'material.*' => 'required|mimes:png,jpg,jpeg,csv,txt,xlx,xls,pdf,pptx|max:10000',
             'month'=>'required',
             'course'=>'required'
         ]);
 
      
+        if($request->hasfile('material')){
+            foreach($request->file('material') as $file)
+            {
+                $filename = $file->getClientOriginalName();
+                // $filepath = $request->file('file')->storeAs('pdf', $filename, 'public');
+                Storage::disk('local')->put($filename, 'pdf');
+                $file = new Material();
+                $file->course_id = $request->course;
+                $file->file_name = $filename;
+                $file->month = $request->month;
+                $file->save();
+            }
 
-            $data = new Material();
-            $filename = $request->file->getClientOriginalName();
-  
-            // $filepath = $request->file('file')->storeAs('pdf', $filename, 'public');
-            Storage::disk('local')->put($filename, 'pdf');
-            $data->course_id = $request->course;
-            $data->file_name = $filename;
-            $data->month = $request->month;
-            $data->save();
+            
 
             return back()->with('success','File has uploaded to the database.');
-    
-        
+        }
+            
+
     }
 
 
@@ -62,7 +68,24 @@ class CourseMaterialsController extends Controller
     public function Removefilles($id)
     {
     
-        
+        $checkfile = Material::select('id','file_name')->where('id','=',$id)->get();
+        foreach($checkfile as $file)
+        {
+           $materialName = $file->file_name;
+           if(Storage::exists($materialName)){
+               Storage::delete($materialName);
+           }
+           else
+           {
+            return back()->with('fail','File does not exists in server!.');
+           }
+
+           $delete = Material::find($id)->delete();
+           if($delete){
+            return back()->with('success','File has been Deleted!.');
+           }
+           
+        }
 
 
     }
