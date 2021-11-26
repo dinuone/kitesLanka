@@ -40,71 +40,64 @@ Route::get('/', [WelcomeController::class, 'index']);
 
 Auth::routes();
 
-        Route::get('/course-material',[CourseMaterialsController::class,'index'])->name('materials');
-        Route::post('/upload',[CourseMaterialsController::class,'uploadfile'])->name('file-upload');
-        Route::get('/course-material/download/{filename}',[CourseMaterialsController::class,'downloadfile'])->name('file-download');
-        Route::get('/course-material/delete/{id}',[CourseMaterialsController::class,'Removefilles'])->name('file-remove');
-//students routes
-Route::prefix('student')->name('student.')->group(function(){
 
-Route::middleware(['guest:student','PreventBackHistory'])->group(function(){
-    Route::view('/login','dashboard.user.login')->name('login');
-    Route::get('/register/{id}',[StudregController::class,'index'])->name('register');
-    Route::post('/create',[StudentController::class,'create'])->name('create');
-    Route::post('/check',[StudentController::class,'check'])->name('check');
-    Route::get('/courses',[CourseController::class,'index'])->name('course');
-    Route::get('/course/{id}',[CourseController::class,'selectcourse'])->name('select-course');
-    Route::get('/teacher/{id}',[CourseController::class,'selectteacher'])->name('select-teacher');
+//student:guest-------------------------------------------------------
+Route::view('student/login','dashboard.user.login')->name('student-login');
+Route::get('student/register/{id}',[StudregController::class,'index'])->name('student-register');
+Route::post('student/create',[StudentController::class,'create'])->name('student-create');
+Route::post('student/check',[StudentController::class,'check'])->name('student-check');
+Route::get('student/courses',[CourseController::class,'index'])->name('student-course');
+Route::get('student/course/{id}',[CourseController::class,'selectcourse'])->name('student-select-course');
+Route::get('student/teacher/{id}',[CourseController::class,'selectteacher'])->name('student-select-teacher');
 
-    //password reset
-    Route::get('/forget-password',[ForgetPasswordController::class,'showForgetPasswordFrom'])->name('forget.form');
-    Route::post('/forget-password',[ForgetPasswordController::class,'submitForgetPasswordForm'])->name('forget.email');
-    Route::get('/reset-password/{token}',[ForgetPasswordController::class,'showResetPasswordForm'])->name('reset.form');
-    Route::post('/reset-password',[ForgetPasswordController::class,'submitResetPasswordForm'])->name('reset.password');
-    
-
-    });
-    
-Route::middleware(['auth:student','PreventBackHistory'])->group(function(){
-    Route::get('/dashboard',[StudDashController::class,'index'])->name('home');
-    Route::get('/myclass', [StudCourseController::class,'index'])->name('myclass');
-    Route::view('/classfee','dashboard.user.classFee' )->name('classfee');
-    Route::post('/logout', [StudentController::class,'logout'])->name('logout');
-    Route::get('/course-materials',[StudMaterialController::class,'index'])->name('course-materials');
-    Route::get('/course-materials/download/{file_name}',[StudMaterialController::class,'download'])->name('stud-download');
-    Route::get('/course-register/{id}',[StudDashController::class,'showreg'])->name('reg-course');
-    Route::post('/course-register/save',[StudDashController::class,'save'])->name('course-save');
-     
-    });
+//student:auth-------------------------------------------------------------
+Route::group(['middleware'=>['auth:student','PreventBackHistory']], function(){
+    Route::get('student/dashboard',[StudDashController::class,'index'])->name('student-home');
+    Route::get('student/myclass', [StudCourseController::class,'index'])->name('student-myclass');
+    Route::view('student/classfee','dashboard.user.classFee' )->name('student-classfee');
+    Route::post('student/logout', [StudentController::class,'logout'])->name('student-logout');
+    Route::get('student/course-materials',[StudMaterialController::class,'index'])->name('student-course-materials');
+    Route::get('student/course-materials/download/{file_name}',[StudMaterialController::class,'download'])->name('student-stud-download');
+    Route::get('student/course-register/{id}',[StudDashController::class,'showreg'])->name('student-reg-course');
+    Route::post('student/course-register/save',[StudDashController::class,'save'])->name('student-course-save');
 });
-    
-//admin routes
-Route::prefix('@kt12admin')->name('admin.')->group(function(){
 
-    Route::middleware(['guest:admin','PreventBackHistory'])->group(function(){
-        Route::view('/','dashboard.admin.login')->name('login');
-        Route::post('/check',[AdminController::class,'check'])->name('check');
-    });
+//password reset - student ----------------------
+Route::get('student/forget-password',[ForgetPasswordController::class,'showForgetPasswordFrom'])->name('student-forget.form');
+Route::post('student/forget-password',[ForgetPasswordController::class,'submitForgetPasswordForm'])->name('student-forget.email');
+Route::get('student/reset-password/{token}',[ForgetPasswordController::class,'showResetPasswordForm'])->name('student-reset.form');
+Route::post('student/reset-password',[ForgetPasswordController::class,'submitResetPasswordForm'])->name('student-reset.password');
 
-    Route::middleware(['auth:admin','PreventBackHistory'])->group(function(){
-        Route::get('/home',[DashboardController::class,'index'])->name('home');
-        Route::post('/logout',[AdminController::class,'logout'])->name('logout');
-        Route::view('/student','dashboard.admin.student')->name('student');
-        Route::view('/class','dashboard.admin.classes')->name('class');
-        Route::view('/links','dashboard.admin.managelinks')->name('links');
-        Route::view('/payments','dashboard.admin.payment')->name('payment');
-        Route::get('/announcement',[announcement::class,'index'])->name('announcement');
-        Route::get('/Todayregstudents',[DashboardController::class,'showtoday'])->name('todayreg');
-        Route::get('/Due-Payment',[DuepaymentController::class,'index'])->name('duepayment');
-        Route::get('/attendance',[AttendanceController::class,'index'])->name('attendace');
-        
-       
-        Route::get('/reports',[ReportController::class,'index'])->name('reports');
-        Route::post('/reports/view,',[ReportController::class,'showchart'])->name('show-chart');
-        Route::view('/add-teachers','dashboard.admin.teacher-details')->name('teacher-details');
-        Route::get('/avb-course',[DashboardController::class,'showavbCourse'])->name('avb-course');
-        Route::get('/course-students/{id}',[DashboardController::class,'coursestud'])->name('course-stud');
-    });
+
+
+//admin:guest---------------------------------------------------------------
+Route::get('/admin/login',[AdminController::class,'showadminlogin'])->name('admin-login');
+Route::post('/admin/check',[AdminController::class,'check'])->name('check');
+
+//admin:auth
+Route::group(['middleware'=>['auth:admin','PreventBackHistory']],function (){
+    Route::get('admin/dashboard',[DashboardController::class,'index'])->name('admin-home');
+    Route::post('admin/logout',[AdminController::class,'logout'])->name('admin-logout');
+   
+    //views- admin
+    Route::view('admin/student','dashboard.admin.student')->name('admin-student');
+    Route::view('admin/class','dashboard.admin.classes')->name('admin-class');
+    Route::view('admin/links','dashboard.admin.managelinks')->name('admin-links');
+    Route::view('admin/payments','dashboard.admin.payment')->name('admin-payment');
+    Route::get('admin/announcement',[announcement::class,'index'])->name('admin-announcement');
+    Route::get('admin/Todayregstudents',[DashboardController::class,'showtoday'])->name('admin-todayreg');
+    Route::get('admin/Due-Payment',[DuepaymentController::class,'index'])->name('admin-duepayment');
+    Route::get('admin/attendance',[AttendanceController::class,'index'])->name('admin-attendance');
+    Route::get('admin/reports',[ReportController::class,'index'])->name('admin-reports');
+    Route::view('admin/add-teachers','dashboard.admin.teacher-details')->name('admin-teacher-details');
+    Route::get('admin/avb-course',[DashboardController::class,'showavbCourse'])->name('admin-avb-course');
+    Route::get('admin/course-students/{id}',[DashboardController::class,'coursestud'])->name('admin-course-stud');
+
+    //course material
+    Route::get('admin/course-material',[CourseMaterialsController::class,'index'])->name('materials');
+    Route::post('admin/upload',[CourseMaterialsController::class,'uploadfile'])->name('file-upload');
+    Route::get('admin/course-material/download/{filename}',[CourseMaterialsController::class,'downloadfile'])->name('file-download');
+    Route::get('admin/course-material/delete/{id}',[CourseMaterialsController::class,'Removefilles'])->name('file-remove');
 });
 
 
@@ -122,6 +115,7 @@ Route::prefix('teacher')->name('teacher.')->group(function(){
         Route::get('/myclass',[MyClassController::class,'index'])->name('myclass');
         Route::get('/class-students/{id}',[MyClassController::class,'mystudents'])->name('classtud');
         Route::post('/logout',[TeacherController::class,'logout'])->name('logout');
+        
         });
     });
         

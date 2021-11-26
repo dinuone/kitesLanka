@@ -13,7 +13,7 @@
                     <div class="icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <a href="{{ route('admin.todayreg') }}" class="small-box-footer">More info <i
+                    <a href="{{ route('admin-todayreg') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                     <div class="icon">
                         <i class="fas fa-chalkboard"></i>
                     </div>
-                    <a href="{{ route('admin.avb-course') }}" class="small-box-footer">More info <i
+                    <a href="{{ route('admin-avb-course') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                     <div class="icon">
                         <i class="fas fa-money-check-alt"></i>
                     </div>
-                    <a href="{{ route('admin.duepayment') }}" class="small-box-footer">More info <i
+                    <a href="{{ route('admin-duepayment') }}" class="small-box-footer">More info <i
                             class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>

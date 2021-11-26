@@ -55,7 +55,7 @@ class StudDashController extends Controller
         $studid = Student::find($user);
         $studid->courses()->syncWithoutDetaching($courseid);
         
-        return redirect()->route('student.myclass')->with('success');
+        return redirect()->route('student-myclass')->with('success');
         
     }
 

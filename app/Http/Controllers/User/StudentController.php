@@ -59,7 +59,7 @@ class StudentController extends Controller
 
         $creds = $request->only('student_id','password');
         if(Auth::guard('student')->attempt($creds)){
-            return redirect()->route('student.home');
+            return redirect()->route('student-home');
         }else{
             return redirect()->back()->with('fail','Incorrect Username or Password');
         }
