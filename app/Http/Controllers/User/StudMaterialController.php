@@ -16,7 +16,10 @@ class StudMaterialController extends Controller
 
     public function download($filename)
     {
-        return Storage::download($filename);
+        $file = Storage::disk('public')->get($filename);
+
+        return (new Response($file,200))
+            ->header('Content-Type','pdf');
         
     }
 }
