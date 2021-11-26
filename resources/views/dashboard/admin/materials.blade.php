@@ -114,7 +114,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td class="text-danger text-center">Not any course materials found!</td>
+                                <td colspan="6" class="text-danger text-center">Not any course materials found!</td>
                             </tr>
 
                         @endforelse
