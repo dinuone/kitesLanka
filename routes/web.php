@@ -38,8 +38,6 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [WelcomeController::class, 'index']);
 
-Auth::routes();
-
 
 //student:guest-------------------------------------------------------
 Route::view('student/login','dashboard.user.login')->name('student-login');
