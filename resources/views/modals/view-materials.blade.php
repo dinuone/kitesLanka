@@ -22,7 +22,7 @@
             </div>
             <div class="modal-body">
                 <label>Select Payment Month</label>
-                <select class="form-select mb-3" wire:model='month'>
+                <select class="form-control mb-3" wire:model='month'>
                     <option value="">Not Selected</option>
                     <option value="January">JAN</option>
                     <option value="February">FEB</option>
