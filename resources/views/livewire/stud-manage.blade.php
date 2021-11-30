@@ -13,6 +13,7 @@
         <div class="col">
             <label for="">Month</label>
             <select class="form-control" wire:model="bymonth">
+                <option value="">Not Selected</option>
                 <option value="January">JAN</option>
                 <option value="February">FEB</option>
                 <option value="March">MAR</option>
