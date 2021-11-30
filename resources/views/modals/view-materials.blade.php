@@ -21,6 +21,22 @@
                 </button>
             </div>
             <div class="modal-body">
+                <label>Select Payment Month</label>
+                <select class="form-select mb-3" wire:model='month'>
+                    <option value="">Not Selected</option>
+                    <option value="January">JAN</option>
+                    <option value="February">FEB</option>
+                    <option value="March">MAR</option>
+                    <option value="April">APR</option>
+                    <option value="May">MAY</option>
+                    <option value="June">JUN</option>
+                    <option value="July">JUL</option>
+                    <option value="August">AUG</option>
+                    <option value="Septmeber">SEP</option>
+                    <option value="October">OCT</option>
+                    <option value="November">NOV</option>
+                    <option value="December">DEC</option>
+                </select>
                 <table id="dataTable" class="table table-hover">
                     <thead>
                         <tr>

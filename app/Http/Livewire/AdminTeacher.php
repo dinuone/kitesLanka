@@ -34,7 +34,7 @@ class AdminTeacher extends Component
             'teachername'=>'required',
             'contact'=>'required|unique:teachers',
             'email'=>'required|unique:teachers',
-            'photo'=>'image|max:3048',
+            'photo'=>'required',
         ]);
 
             $user = new Teacher(); 
