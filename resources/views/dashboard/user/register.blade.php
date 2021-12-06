@@ -14,16 +14,6 @@
 
     <section id="reg">
         <div class="container">
-            @if (Session::get('success'))
-                <div class="alert alert-success" role="alert">
-                    Your Student iD:
-                    <strong>{{ session('success') }}</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-
-                </div>
-            @endif
 
             @if (Session::get('fail'))
                 <div class="alert alert-danger" role="alert">
@@ -44,8 +34,8 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="">Full Name</label>
-                                    <input type="text" class="form-control" name="fullname"
-                                        value="{{ old('fullname') }}" autofocus>
+                                    <input type="text" class="form-control" name="fullname" value="{{ old('fullname') }}"
+                                        autofocus>
                                     @error('fullname')
                                         <div class="text-danger">{{ $message }}</div>
                                     @enderror

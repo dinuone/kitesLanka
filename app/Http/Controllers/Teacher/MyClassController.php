@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Student;
+use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -24,8 +25,11 @@ class MyClassController extends Controller
     {
         $course = Course::find($id);
         $students = $course->students;
+        $date=  Carbon::today();
+        $today= $date->format("Y-m-d");
         return view('dashboard.teacher.mystudents',[
-            'students'=>$students
+            'students'=>$students,
+            'today'=>$today
         ]);
     }
 }

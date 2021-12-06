@@ -44,7 +44,7 @@ class StudentController extends Controller
         $user->courses()->attach($crs);
 
        if($save){
-         return redirect()->back()->with('success',$student_id);
+         return redirect()->route('student-login')->with('success',$student_id);
        }else{
            return redirect()->back()->with('fail','Something went wrong, fialed to register');
        }

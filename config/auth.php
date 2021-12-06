@@ -74,6 +74,11 @@ return [
             'provider'=>'teachers'
         ],
 
+        'teacher-api' => [
+            'driver' => 'token',
+            'provider' => 'students',
+        ],
+
          
        
     ],

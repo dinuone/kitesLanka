@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Teacher\MyClassController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
+use App\Http\Controllers\Teacher\CoursePDFcontroller;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -115,7 +116,11 @@ Route::prefix('teacher')->name('teacher.')->group(function(){
         Route::get('/myclass',[MyClassController::class,'index'])->name('myclass');
         Route::get('/class-students/{id}',[MyClassController::class,'mystudents'])->name('classtud');
         Route::post('/logout',[TeacherController::class,'logout'])->name('logout');
+        Route::get('/today-reg',[TeacherController::class,'todayReg'])->name('today-reg');
+        Route::view('/class-link','dashboard.teacher.class-link')->name('class-link');
         
+        //file materials
+        Route::get('/course-material',[CoursePDFcontroller::class,'index'])->name('course-material');
         });
     });
         

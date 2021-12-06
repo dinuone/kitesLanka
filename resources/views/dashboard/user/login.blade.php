@@ -11,6 +11,16 @@
 
     <section id="reg">
         <div class="container">
+            @if (Session::get('success'))
+                <div class="alert alert-success" role="alert">
+                    Your Student iD:
+                    <strong>{{ session('success') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+            @endif
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
@@ -85,8 +95,8 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="">E-mail</label>
-                                        <input type="email" class="form-control" name="email" value="{{ old('email') }}"
-                                            autofocus>
+                                        <input type="email" class="form-control" name="email"
+                                            value="{{ old('email') }}" autofocus>
                                         @error('email')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
