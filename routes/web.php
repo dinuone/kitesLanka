@@ -58,8 +58,10 @@ Route::group(['middleware'=>['auth:student','PreventBackHistory']], function(){
     Route::get('student/course-register/{id}',[StudDashController::class,'showreg'])->name('student-reg-course');
     Route::post('student/course-register/save',[StudDashController::class,'save'])->name('student-course-save');
     //student - download pdf
-    Route::get('student/course-materials/download/{filename}',[StudMaterialController::class,'download'])->name('student-stud-download');
+   
 });
+
+Route::get('student/course-materials/download/{filename}',[StudMaterialController::class,'download'])->name('student-stud-download');
 
 
 //password reset - student ----------------------
@@ -93,16 +95,16 @@ Route::group(['middleware'=>['auth:admin','PreventBackHistory']],function (){
     Route::get('admin/avb-course',[DashboardController::class,'showavbCourse'])->name('admin-avb-course');
     Route::get('admin/course-students/{id}',[DashboardController::class,'coursestud'])->name('admin-course-stud');
 
-    //course material
+
+});
+
+//course material
 Route::get('admin/course-material',[CourseMaterialsController::class,'index'])->name('materials');
 Route::post('admin/upload',[CourseMaterialsController::class,'uploadfile'])->name('file-upload');
 Route::get('admin/course-material/download/{filename}',[CourseMaterialsController::class,'downloadfile'])->name('file-download');
 Route::get('admin/course-material/delete/{id}',[CourseMaterialsController::class,'Removefilles'])->name('file-remove');
-});
 
 
-
-  
 
 //teacher routes
 Route::prefix('teacher')->name('teacher.')->group(function(){
