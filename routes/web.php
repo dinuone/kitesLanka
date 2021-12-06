@@ -92,13 +92,15 @@ Route::group(['middleware'=>['auth:admin','PreventBackHistory']],function (){
     Route::view('admin/add-teachers','dashboard.admin.teacher-details')->name('admin-teacher-details');
     Route::get('admin/avb-course',[DashboardController::class,'showavbCourse'])->name('admin-avb-course');
     Route::get('admin/course-students/{id}',[DashboardController::class,'coursestud'])->name('admin-course-stud');
-});
 
-//course material
+    //course material
 Route::get('admin/course-material',[CourseMaterialsController::class,'index'])->name('materials');
 Route::post('admin/upload',[CourseMaterialsController::class,'uploadfile'])->name('file-upload');
 Route::get('admin/course-material/download/{filename}',[CourseMaterialsController::class,'downloadfile'])->name('file-download');
 Route::get('admin/course-material/delete/{id}',[CourseMaterialsController::class,'Removefilles'])->name('file-remove');
+});
+
+
 
   
 
