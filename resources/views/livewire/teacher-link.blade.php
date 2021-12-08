@@ -8,8 +8,21 @@
                         <img class="card-img-top center" src="{{ asset('storage/' . $course->image_path) }}"
                             alt="Card image cap">
                         <hr>
-                        <button class="btn bg-maroon" wire:click="OpenAddLinkModal({{ $course->id }})">Add Class
-                            Link</button>
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn bg-maroon" wire:click="OpenAddLinkModal({{ $course->id }})">Add
+                                    Class
+                                    Link</button>
+                            </div>
+                            @if ($course->Links)
+                                <div class="col">
+                                    <button class="btn bg-dark" wire:click="DeleteCourseLink({{ $course->id }})"><i
+                                            class="fas fa-trash mr-2"></i>Delete</button>
+                                </div>
+                            @endif
+
+                        </div>
+
                     </div>
                     <div class="card-body">
                         <label>Month:</label>
@@ -18,7 +31,6 @@
                             <label>Class Link</label>
                             <input type="text" class="form-control" value="{{ $course->Links }}" readonly>
                         </div>
-
                     </div>
                 </div>
             </div>

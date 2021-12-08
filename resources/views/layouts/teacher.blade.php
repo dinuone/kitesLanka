@@ -106,17 +106,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('teacher.class-link') }}"
-                                class="nav-link {{ request()->is('student/classfee*') ? 'active' : '' }}">
+                                class="nav-link {{ request()->is('teacher/class-link*') ? 'active' : '' }}">
                                 <i class="nav-icon fa fa-address-card"></i>
                                 <p>Class Link</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href=""
-                                class="nav-link {{ request()->is('student/course-materials*') ? 'active' : '' }}">
+                            <a href="{{ route('teacher.materials') }}"
+                                class="nav-link {{ request()->is('teacher/course-materials*') ? 'active' : '' }}">
                                 <i class="nav-icon fa fa-file-pdf"></i>
                                 <p>Course Materials</p>
                             </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('teacher.logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();" class="nav-link">
+                                <i class="nav-icon fas fa-sign-out-alt"></i>
+                                <p>Logout</p>
+                            </a>
+                            <form id="logout-form" action="{{ route('teacher.logout') }}" method="POST"
+                                class="d-none">
+                                @csrf
+                            </form>
                         </li>
                     </ul>
                 </nav>

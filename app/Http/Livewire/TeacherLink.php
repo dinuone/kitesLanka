@@ -55,17 +55,24 @@ class TeacherLink extends Component
     public function DeleteCourseLink($id)
     {
         $info = Course::find($id);
+        $del = Course::where('id',$id)->where('Links','like',$info->Links)->first();
+        
         $this->dispatchBrowserEvent('swalconfirm',[
             'title'=>'Are You Sure?',
             'id'=>$id
         ]);
+    
+       
     }
+    
+    
 
     public function delete($id)
     {
         
         $info = Course::find($id);
         $del = Course::where('id',$id)->where('Links','like',$info->Links)->where('month','like',$info->month)->first();
+
         if($del){
 
             $del->update(['Links' => null,'month'=>null]);

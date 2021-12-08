@@ -21,8 +21,8 @@ use App\Http\Controllers\Admin\ReportController;
 
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Teacher\MyClassController;
+use App\Http\Controllers\Teacher\TeacherPDFController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
-use App\Http\Controllers\Teacher\CoursePDFcontroller;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -128,6 +128,11 @@ Route::prefix('teacher')->name('teacher.')->group(function(){
         
         //file materials
         Route::get('/course-material',[CoursePDFcontroller::class,'index'])->name('course-material');
+        //course material
+        Route::get('teacher/course-material',[TeacherPDFController::class,'index'])->name('materials');
+        Route::post('teacher/upload',[TeacherPDFController::class,'uploadfile'])->name('file-upload');
+        Route::get('teacher/course-material/download/{filename}',[TeacherPDFController::class,'downloadfile'])->name('file-download');
+        Route::get('teacher/course-material/delete/{id}',[TeacherPDFController::class,'Removefilles'])->name('file-remove');
         });
     });
         
