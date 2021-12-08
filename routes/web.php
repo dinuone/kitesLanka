@@ -48,6 +48,9 @@ Route::get('student/courses',[CourseController::class,'index'])->name('student-c
 Route::get('student/course/{id}',[CourseController::class,'selectcourse'])->name('student-select-course');
 Route::get('student/teacher/{id}',[CourseController::class,'selectteacher'])->name('student-select-teacher');
 
+Route::get('student/sign-up',[StudregController::class,'show'])->name('stud-signup');
+Route::post('/student/sign-up/create',[StudregController::class,'create'])->name('stud-create');
+
 //student:auth-------------------------------------------------------------
 Route::group(['middleware'=>['auth:student','PreventBackHistory']], function(){
     Route::get('student/dashboard',[StudDashController::class,'index'])->name('student-home');
