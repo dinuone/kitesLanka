@@ -15,6 +15,7 @@
                             <td>Address</td>
                             <td>School</td>
                             <td>Register Date</td>
+                            <td>Attendance</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,7 +32,10 @@
                                 @else
                                     <td>{{ $stud->created_at->toDatestring() }}</td>
                                 @endif
-
+                                <td>
+                                    <a href="{{ route('teacher.show-studattend', $stud->id) }}"
+                                        class="btn bg-indigo">View</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

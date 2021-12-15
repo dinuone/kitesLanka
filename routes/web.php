@@ -24,6 +24,8 @@ use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Teacher\MyClassController;
 use App\Http\Controllers\Teacher\TeacherPDFController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
+use App\Http\Controllers\Teacher\StudAttendController;
+use App\Http\Controllers\Teacher\ChangePasswordController;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -136,7 +138,12 @@ Route::prefix('teacher')->name('teacher.')->group(function(){
         Route::get('teacher/course-material',[TeacherPDFController::class,'index'])->name('materials');
         Route::post('teacher/upload',[TeacherPDFController::class,'uploadfile'])->name('file-upload');
         Route::get('teacher/course-material/download/{filename}',[TeacherPDFController::class,'downloadfile'])->name('file-download');
-        Route::get('teacher/course-material/delete/{id}',[TeacherPDFController::class,'Removefilles'])->name('file-remove');
+        Route::get('teacher/course-material/delete/{id}',[TeacherPDFController::class,'Removefilles'])->name('filove');
+
+        Route::get('/view-attendance/{id}',[StudAttendController::class,'index'])->name('show-studattend');
+        Route::get('/chenge-password',[ChangePasswordController::class,'index'])->name('show-chngepsw');
+        Route::post('/change',[ChangePasswordController::class,'changePsw'])->name('submit');
+
         });
     });
         

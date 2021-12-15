@@ -119,6 +119,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('teacher.show-chngepsw') }}"
+                                class="nav-link {{ request()->is('teacher/change-password*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-user-shield"></i>
+                                <p>Account Settings</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('teacher.logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();" class="nav-link">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
