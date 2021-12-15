@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\DuepaymentController;
 use App\Http\Controllers\Admin\AttendanceController;
 use App\Http\Controllers\Admin\CourseMaterialsController;
 use App\Http\Controllers\Admin\ReportController;
+use App\Http\Controllers\Admin\AccountController;
 
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Teacher\MyClassController;
@@ -97,6 +98,9 @@ Route::group(['middleware'=>['auth:admin','PreventBackHistory']],function (){
     Route::view('admin/add-teachers','dashboard.admin.teacher-details')->name('admin-teacher-details');
     Route::get('admin/avb-course',[DashboardController::class,'showavbCourse'])->name('admin-avb-course');
     Route::get('admin/course-students/{id}',[DashboardController::class,'coursestud'])->name('admin-course-stud');
+    
+    Route::get('admin/account-setting',[AccountController::class,'index'])->name('admin-showAcc-Setting');
+    Route::post('admin/change-password',[AccountController::class,'changePsw'])->name('admin-changepsw');
 
 
 });

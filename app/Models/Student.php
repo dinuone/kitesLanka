@@ -36,7 +36,12 @@ class Student extends Authenticatable
         $term = "%$term%";
         $query->where(function($query) use ($term){
             $query->where('FullName','like', $term)
-                    ->orWhere('student_id','like',$term);
+                    ->orWhere('student_id','like',$term)
+                    ->orWhere('date_of_birth','like',$term)
+                    ->orWhere('contact','like',$term)
+                    ->orwhere('email','like',$term)
+                    ->orwhere('school','like',$term)
+                    ->orwhere('contact_whatsapp','like',$term);
             
         });
     }

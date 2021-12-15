@@ -161,6 +161,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <p>Reports</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin-showAcc-Setting') }}"
+                                class="nav-link {{ request()->is('admin/change-password*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-user-shield"></i>
+                                <p>Account Settings</p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
