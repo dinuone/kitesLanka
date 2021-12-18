@@ -19,7 +19,7 @@ class Students extends Component
     public $course = [];
 
     public $bycourse = null;
-    public $perPage=5;
+    public $perPage=100;
     public $orderBy = 'created_at';
     public $sortBy = 'asc';
     public $search;
