@@ -68,7 +68,7 @@
         Swal.fire({
             icon: 'success',
             title: 'Deleted',
-            text: 'Selected food item has been deleted!',
+            text: 'Selected Announcment has been deleted!',
           
         });
     });

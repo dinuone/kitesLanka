@@ -21,7 +21,7 @@ class Courses extends Component
 
     public function render()
     {
-        $courses = Course::select('id','Name','teacher_id')->paginate(3);
+        $courses = Course::select('id','Name','teacher_id')->paginate(5);
         $teachers = Teacher::Select('id','fullname')->get();
         return view('livewire.courses',[
             'courses'=>$courses,

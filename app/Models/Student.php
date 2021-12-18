@@ -41,6 +41,7 @@ class Student extends Authenticatable
                     ->orWhere('contact','like',$term)
                     ->orwhere('email','like',$term)
                     ->orwhere('school','like',$term)
+                    ->orwhere('address','like',$term)
                     ->orwhere('contact_whatsapp','like',$term);
             
         });

@@ -35,7 +35,7 @@ class Students extends Component
     //returen view 
     public function render()
     {
-        $students = Student::latest()->paginate(5);
+        $students = Student::latest()->paginate(100);
         $courses = Course::Select('id','Name')->get();
         return view('livewire.students',[
             'courses'=>$courses,
