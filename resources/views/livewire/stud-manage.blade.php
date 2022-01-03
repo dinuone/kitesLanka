@@ -3,7 +3,7 @@
         <div class="col-md-3">
             <label for="">Course</label>
             <select class="form-control" wire:model="bycourse">
-                <option value="0">Not Selected</option>
+                <option value="">Not Selected</option>
                 @foreach ($crs as $cr)
                     <option value="{{ $cr->id }}">{{ $cr->Name }}</option>
                 @endforeach

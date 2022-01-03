@@ -18,7 +18,7 @@ class StudManage extends Component
     use WithPagination;
     use WithFileUploads;
 
-    public $bycourse= 1;
+    public $bycourse;
     public $courseID;
     public $bymonth;
     public $ref_number;
