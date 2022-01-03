@@ -56,7 +56,7 @@ class StudPayment extends Component
         $this->validate([
             'student_id'=>'required',
             'course'=>'required',
-            'photo'=>'image|max:1024',
+            'photo'=>'required'
             'amount'=>'required',
             'month'=>'required'
             
