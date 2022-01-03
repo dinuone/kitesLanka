@@ -57,6 +57,7 @@
                 <th><input type="checkbox" wire:model="selectAll"></th>
                 <th>Student ID</th>
                 <th>Full Name</th>
+                <th>Whatsapp Number</th>
                 <th>Course</th>
                 <th></th>
                 <th>Payment Date</th>
@@ -74,6 +75,7 @@
                     <td><input type="checkbox" value="{{ $payment->id }}" wire:model="checkedPayment"></td>
                     <td>{{ $payment->student_id }}</td>
                     <td>{{ $payment->student->FullName }}</td>
+                    <td>{{ $payment->student->contact_whatsapp }}</td>
                     <td>{{ $payment->course->Name }}</td>
                     @if ($payment->student->payment_status == 1)
                         <td>
