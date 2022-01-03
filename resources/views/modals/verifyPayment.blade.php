@@ -1,7 +1,7 @@
 <style>
     #imgrc {
         width: 50%;
-        height: 30%;
+        height: 25%;
     }
 
     p {
