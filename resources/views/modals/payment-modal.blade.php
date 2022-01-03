@@ -8,7 +8,7 @@
 <div class="modal fade addpayment" wire:ignore.self tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
     aria-hidden="true" data-keyboad="false" data-backdrop="static">
     <div class="modal-dialog modal-dialog-centered" role="document"">
-    <div class=" modal-content">
+    <div class="  modal-content">
         <div class="modal-header">
             <h4 class="modal-title">Class Fees</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -35,7 +35,7 @@
                         <label>Amount :</label>
                         <input type="text" class="form-control" placeholder="Enter paid amount here.."
                             wire:model="amount">
-                        <span class="text-danger">@error('student_id') {{ $message }} @enderror</span>
+                        <span class="text-danger">@error('amount') {{ $message }} @enderror</span>
                     </div>
 
                     <label>Select Payment Month</label>
