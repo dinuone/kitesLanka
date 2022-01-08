@@ -26,7 +26,6 @@
                         <th>Contact</th>
                         <th>Contact(Whatsapp)</th>
                         <th>School</th>
-                        <th>Address</th>
                         <th>Enroll Course</th>
                         <th colspan="3">Actions</th>
                     </tr>
@@ -42,7 +41,6 @@
                                 <td>{{ $data->contact }}</td>
                                 <td>{{ $data->contact_whatsapp }}</td>
                                 <td>{{ $data->school }}</td>
-                                <td>{{ $data->address }}</td>
                                 <td>
                                     @foreach ($data->courses as $course)
                                         <span class="badge bg-indigo mt-2 p-2">{{ $course->Name }}</span>
@@ -65,7 +63,6 @@
                                 <td>{{ $student->contact }}</td>
                                 <td>{{ $student->contact_whatsapp }}</td>
                                 <td>{{ $student->school }}</td>
-                                <td>{{ $student->address }}</td>
                                 <td>
                                     @foreach ($student->courses as $course)
                                         <span class="badge bg-indigo mt-2 p-2">{{ $course->Name }}</span>
