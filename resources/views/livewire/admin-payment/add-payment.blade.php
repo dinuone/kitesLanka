@@ -20,7 +20,6 @@
             <table class="table tbale-hover">
                 <thead class="bg-navy">
                     <tr>
-                        <th><input type="checkbox" wire:model="selectAll"></th>
                         <th>Student ID</th>
                         <th>Full Name</th>
                         <th>E-email</th>
@@ -60,7 +59,6 @@
                     @else
                         @foreach ($students as $student)
                             <tr>
-                                <td><input type="checkbox" value="{{ $student->id }}" wire:model="selected"></td>
                                 <td>{{ $student->student_id }}</td>
                                 <td>{{ $student->FullName }}</td>
                                 <td>{{ $student->email }}</td>
