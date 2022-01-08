@@ -109,9 +109,11 @@ class StudManage extends Component
     }
 
 
-    public function deletePayment($id)
+    public $studid;
+
+    public function deletePayment($id,$studid)
     {
-        $info = Payment::find($id);
+        $this->studid = $studid;
         $this->dispatchBrowserEvent('swalconfirm',[
             'title'=>'Are You Sure?',
             'id'=>$id
@@ -120,6 +122,10 @@ class StudManage extends Component
 
     public function delete($id)
     {
+        $update = Student::find($this->studid)->update([
+            'payment_status'=>1
+        ]);
+
         $del = Payment::find($id)->delete();
         if($del){
             $this->dispatchBrowserEvent('deleted');

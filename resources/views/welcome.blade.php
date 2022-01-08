@@ -12,7 +12,7 @@
 
     <main id="main">
 
-        <!-- ======= About Section ======= -->
+        {{-- <!-- ======= About Section ======= -->
         <section id="about" class="about">
             <div class="container" data-aos="fade-up">
 
@@ -50,9 +50,9 @@
                 </div>
 
             </div>
-        </section><!-- End About Section -->
+        </section><!-- End About Section --> --}}
 
-        <!-- ======= Counts Section ======= -->
+        {{-- <!-- ======= Counts Section ======= -->
         <section id="counts" class="counts section-bg">
             <div class="container">
 
@@ -81,7 +81,7 @@
                 </div>
 
             </div>
-        </section><!-- End Counts Section -->
+        </section><!-- End Counts Section --> --}}
 
         {{-- <!-- ======= Why Us Section ======= -->
     <section id="why-us" class="why-us">
@@ -132,7 +132,7 @@
       </div>
     </section><!-- End Why Us Section --> --}}
 
-        <!-- ======= Features Section ======= -->
+        {{-- <!-- ======= Features Section ======= -->
         <section id="features" class="features mt-3">
             <div class="container" data-aos="fade-up">
 
@@ -189,7 +189,7 @@
                 </div>
 
             </div>
-        </section><!-- End Features Section -->
+        </section><!-- End Features Section --> --}}
 
         <section id="popular-courses" class="courses">
             <div class="container" data-aos="fade-up">
@@ -203,8 +203,7 @@
                     @foreach ($teachers as $teacher)
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-3">
                             <div class="course-item">
-                                <img src="{{ asset('storage/' . $teacher->image_path) }}" class="img-fluid"
-                                    alt="...">
+                                <img src="{{ asset('storage/' . $teacher->image_path) }}" class="img-fluid" alt="...">
                                 <div class="course-content">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <p class="price">English</p>

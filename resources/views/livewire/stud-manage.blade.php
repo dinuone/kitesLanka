@@ -107,8 +107,8 @@
                     <td>
                         <a class="mr-3" wire:click="OpenEditPaymentModal({{ $payment->id }})"><i
                                 class="far fa-edit" style="color:#10d430;"></i></a>
-                        <a wire:click="deletePayment({{ $payment->id }})"><i class="fas fa-trash"
-                                style="color:#e70c0c;"></i></a>
+                        <a wire:click="deletePayment({{ $payment->id }},{{ $payment->student->id }})"><i
+                                class="fas fa-trash" style="color:#e70c0c;"></i></a>
                     </td>
                     </tr>
                 @endforeach

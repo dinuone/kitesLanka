@@ -120,11 +120,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('admin-payment') }}"
-                                class="nav-link {{ request()->is('admin/payment*') ? 'active' : '' }}">
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="" class="nav-link {{ request()->is('admin/payment/*') ? 'active' : '' }}">
                                 <i class="nav-icon fa fa-credit-card"></i>
                                 <p>Payments</p>
                             </a>
+                            <ul class="nav nav-treeview ml-2">
+                                <li class="nav-item">
+                                    <a href="{{ route('admin-addPayment') }}"
+                                        class="nav-link {{ request()->is('admin/payment/add-payment*') ? 'active' : '' }}">
+                                        <i class="fas fa-plus mr-2"></i>
+                                        <p>Add payments</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('receive-payment') }}"
+                                        class="nav-link {{ request()->is('admin/payment/receive-payment') ? 'active' : '' }}">
+                                        <i class="fas fa-plus mr-2"></i>
+                                        <p>Receive Payments</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('admin-links') }}"
