@@ -70,7 +70,6 @@
                     @if ($students->count())
                         @foreach ($students as $student)
                             <tr>
-                                <td><input type="checkbox" value="{{ $student->id }}" wire:model="selected"></td>
                                 <td>{{ $student->student_id }}</td>
                                 <td>{{ $student->FullName }}</td>
                                 <td>{{ $student->email }}</td>
