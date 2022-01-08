@@ -27,7 +27,7 @@
                         <th>Contact(Whatsapp)</th>
                         <th>School</th>
                         <th>Enroll Course</th>
-                        <th colspan="3">Actions</th>
+                        <th colspan="3" style="width: 130px;">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
