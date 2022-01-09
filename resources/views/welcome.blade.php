@@ -233,7 +233,7 @@
                                     <h3><a
                                             href="{{ route('student-select-teacher', $teacher->id) }}">{{ $teacher->fullname }}</a>
                                     </h3>
-                                    <p>BENG Software Engineering</p>
+
                                 </div>
                             </div>
                         </div> <!-- End Course Item-->

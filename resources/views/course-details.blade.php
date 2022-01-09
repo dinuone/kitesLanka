@@ -7,7 +7,6 @@
         <div class="breadcrumbs" data-aos="fade-in">
             <div class="container">
                 <h2>Course Details</h2>
-
             </div>
         </div><!-- End Breadcrumbs -->
 
