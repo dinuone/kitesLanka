@@ -5,7 +5,17 @@
         #logo {
             width: 300px;
             height: 300px;
-            margin-left: -50px;
+            margin-left: -60px;
+            margin-bottom: -50px;
+        }
+
+        @media screen and (max-width: 992px) {
+            #logo {
+                width: 100px;
+                height: 100px;
+                margin-bottom: -10px;
+                margin-left: -18px;
+            }
         }
 
     </style>
@@ -13,11 +23,11 @@
     <section id="hero" class="d-flex justify-content-center align-items-center">
 
         <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-            <a href="{{ url('/') }}"><img src="{{ asset('assets/img/logonew.png') }}" id="logo"></a> <br>
+            <a href="{{ url('/') }}"><img src="{{ asset('assets/img/logonew.png') }}" id="logo"
+                    class=".img-responsive "></a> <br>
             <h1>Learning Today,<br>Leading Tomorrow</h1>
             <h2>Kites Lanka | Production</h2>
             <a href="{{ route('student-course') }}" class="btn-get-started">Get Started</a>
-
         </div>
 
     </section><!-- End Hero -->
@@ -215,7 +225,8 @@
                     @foreach ($teachers as $teacher)
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-3">
                             <div class="course-item">
-                                <img src="{{ asset('storage/' . $teacher->image_path) }}" class="img-fluid" alt="...">
+                                <img src="{{ asset('storage/' . $teacher->image_path) }}" class="img-fluid"
+                                    alt="...">
                                 <div class="course-content">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <p class="price">English</p>
