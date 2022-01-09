@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\AttendanceController;
 use App\Http\Controllers\Admin\CourseMaterialsController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\AccountController;
+use App\Http\Controllers\Admin\StudentAnnouncecontroller;
 
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Teacher\MyClassController;
@@ -93,7 +94,9 @@ Route::group(['middleware'=>['auth:admin','PreventBackHistory']],function (){
     Route::view('admin/links','dashboard.admin.managelinks')->name('admin-links');
     Route::view('admin/payment/receive-payment','dashboard.admin.payment')->name('receive-payment');
     Route::view('admin/payment/add-payment','dashboard.admin.admin-add-payment')->name('admin-addPayment');
-    Route::get('admin/announcement',[announcement::class,'index'])->name('admin-announcement');
+    Route::get('admin/announcement',[StudentAnnouncecontroller::class,'index'])->name('admin-announcement');
+    Route::post('admin/store',[StudentAnnouncecontroller::class,'saveAnnounce'])->name('store-announce');
+    Route::get('admin/announce/delete/{id}',[StudentAnnouncecontroller::class,'delete'])->name('announce-delete');
     Route::get('admin/Todayregstudents',[DashboardController::class,'showtoday'])->name('admin-todayreg');
     Route::get('admin/Due-Payment',[DuepaymentController::class,'index'])->name('admin-duepayment');
     Route::get('admin/attendance',[AttendanceController::class,'index'])->name('admin-attendance');

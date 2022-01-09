@@ -85,5 +85,5 @@
         </div>
 
     </div>
-    @include('modals-payment.add-payment')
+    @include('dashboard.modals-payment.add-payment')
 </div>

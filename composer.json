@@ -17,6 +17,7 @@
         "livewire/livewire": "^2.7",
         "maatwebsite/excel": "^3.1",
         "nao-pon/flysystem-google-drive": "~1.1",
+        "realrashid/sweet-alert": "^4.1",
         "webpatser/laravel-uuid": "3.0"
     },
     "require-dev": {

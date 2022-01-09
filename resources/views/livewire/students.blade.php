@@ -49,59 +49,115 @@
 
             </div>
 
-            <!-- /.card-header -->
+            {{-- <!-- /.card-header -->
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="bg-Navy">
+                        <tr>
+                            <th><input type="checkbox" wire:model="selectAll"></th>
+                            <th>Student ID</th>
+                            <th>Full Name</th>
+                            <th>E-email</th>
+                            <th>Contact</th>
+                            <th>Contact(Whatsapp)</th>
+                            <th>School</th>
+                            <th>Address</th>
+                            <th>Enroll Course</th>
+                            <th colspan="3">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if ($students->count())
+                            @foreach ($students as $student)
+                                <tr>
+                                    <td><input type="checkbox" value="{{ $student->id }}" wire:model="selected"></td>
+                                    <td>{{ $student->student_id }}</td>
+                                    <td>{{ $student->FullName }}</td>
+                                    <td>{{ $student->email }}</td>
+                                    <td>{{ $student->contact }}</td>
+                                    <td>{{ $student->contact_whatsapp }}</td>
+                                    <td>{{ $student->school }}</td>
+                                    <td>{{ $student->address }}</td>
+                                    <td>
+                                        @foreach ($student->courses as $course)
+                                            <span class="badge bg-indigo mt-2 p-2">{{ $course->Name }}</span>
+                                        @endforeach
+                                    </td>
 
-            <table class="table table-hover">
-                <thead class="bg-Navy">
-                    <tr>
-                        <th><input type="checkbox" wire:model="selectAll"></th>
-                        <th>Student ID</th>
-                        <th>Full Name</th>
-                        <th>E-email</th>
-                        <th>Contact</th>
-                        <th>Contact(Whatsapp)</th>
-                        <th>School</th>
-                        <th>Address</th>
-                        <th>Enroll Course</th>
-                        <th colspan="3">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if ($students->count())
-                        @foreach ($students as $student)
-                            <tr>
-                                <td><input type="checkbox" value="{{ $student->id }}" wire:model="selected"></td>
-                                <td>{{ $student->student_id }}</td>
-                                <td>{{ $student->FullName }}</td>
-                                <td>{{ $student->email }}</td>
-                                <td>{{ $student->contact }}</td>
-                                <td>{{ $student->contact_whatsapp }}</td>
-                                <td>{{ $student->school }}</td>
-                                <td>{{ $student->address }}</td>
-                                <td>
-                                    @foreach ($student->courses as $course)
-                                        <span class="badge bg-indigo mt-2 p-2">{{ $course->Name }}</span>
+                                    <td>
+                                        <a wire:click="OpenEditModal({{ $student->id }})" class="mr-3"><i
+                                                class="far fa-edit" style="color:#10d430;"></i></a>
+                                        <a wire:click="deleteStudent({{ $student->id }})"><i class="fas fa-trash"
+                                                style="color:#e70c0c;"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
+                    </tbody>
+                </table>
+            </div> --}}
+
+            <div class="row">
+                <div class="col-12">
+                    <!-- /.card-header -->
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap">
+                            <thead class="bg-navy">
+                                <th><input type="checkbox" wire:model="selectAll"></th>
+                                <th>Student ID</th>
+                                <th>Full Name</th>
+                                <th>E-email</th>
+                                <th>Contact</th>
+                                <th>Contact(Whatsapp)</th>
+                                <th>School</th>
+                                <th>Address</th>
+                                <th>Enroll Course</th>
+                                <th colspan="3">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if ($students->count())
+                                    @foreach ($students as $student)
+                                        <tr>
+                                            <td><input type="checkbox" value="{{ $student->id }}"
+                                                    wire:model="selected"></td>
+                                            <td>{{ $student->student_id }}</td>
+                                            <td>{{ $student->FullName }}</td>
+                                            <td>{{ $student->email }}</td>
+                                            <td>{{ $student->contact }}</td>
+                                            <td>{{ $student->contact_whatsapp }}</td>
+                                            <td>{{ $student->school }}</td>
+                                            <td>{{ $student->address }}</td>
+                                            <td>
+                                                @foreach ($student->courses as $course)
+                                                    <span class="badge bg-indigo mt-2 p-2">{{ $course->Name }}</span>
+                                                @endforeach
+                                            </td>
+
+                                            <td>
+                                                <a wire:click="OpenEditModal({{ $student->id }})"
+                                                    class="mr-3"><i class="far fa-edit"
+                                                        style="color:#10d430;"></i></a>
+                                                <a wire:click="deleteStudent({{ $student->id }})"><i
+                                                        class="fas fa-trash" style="color:#e70c0c;"></i></a>
+                                            </td>
+                                        </tr>
                                     @endforeach
-                                </td>
-
-                                <td>
-                                    <a wire:click="OpenEditModal({{ $student->id }})" class="mr-3"><i
-                                            class="far fa-edit" style="color:#10d430;"></i></a>
-                                    <a wire:click="deleteStudent({{ $student->id }})"><i class="fas fa-trash"
-                                            style="color:#e70c0c;"></i></a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    @endif
-                </tbody>
-            </table>
-
-
-            @if (count($students))
-                {{ $students->links('modals.livewire-pagination-links') }}
-            @endif
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
         </div>
+
+        @if (count($students))
+            {{ $students->links('modals.livewire-pagination-links') }}
+        @endif
     </div>
-    @include('modals.add-stud')
-    @include('modals.edit-student')
+</div>
+@include('modals.add-stud')
+@include('modals.edit-student')
 </div>

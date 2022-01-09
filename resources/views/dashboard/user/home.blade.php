@@ -15,7 +15,6 @@
         }
 
     </style>
-
     <div class="container">
         <div class="card">
             <div class="card-header">
@@ -29,7 +28,7 @@
                                 <div class="alert alert-info alert-dismissible fade show m-2" role="alert">
                                     <strong>{{ $anc->title }} : {{ $anc->course->Name }}</strong>
                                     <br>
-                                    {{ $anc->body }}
+                                    {!! $anc->body !!}
                                     <br>
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
