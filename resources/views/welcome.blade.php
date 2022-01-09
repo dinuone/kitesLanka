@@ -244,7 +244,25 @@
             </div>
         </section><!-- End Popular teachers Section -->
 
+        <section id="popular-courses" class="courses">
+            <div class="container" data-aos="fade-up">
 
+                <div class="section-title">
+                    <h2>Kites Lanka</h2>
+                    <p>Tutorials</p>
+                </div>
+
+                <div class="row" data-aos="zoom-in" data-aos-delay="100">
+                    <iframe width="560" height="315"
+                        src="https://www.youtube.com/embed?listType=playlist&list=PL--Xmy9U4e1vdz8Zu0h59McfDUmUlR5VT"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+
+                </div>
+
+            </div>
+        </section><!-- End Popular teachers Section -->
         <!-- ======= Trainers Section ======= -->
         <section id="trainers" class="trainers">
             <div class="container" data-aos="fade-up">
