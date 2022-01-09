@@ -32,16 +32,16 @@
 
                 @if ($selected)
                     <div class="col-md-2">
-                        <div class="form-group mt-2">
-                            <a wire:click.prevent="export " class="btn btn-info mt-4"><i
+                        <div class="form-group">
+                            <a wire:click.prevent="export " class="btn btn-info"><i
                                     class="fas fa-cloud-download-alt mr-2"></i>Download Report</a>
                         </div>
                     </div>
                 @endif
                 @if ($selected)
                     <div class="col-md-2">
-                        <div class="form-group mt-2">
-                            <a wire:click="deleteStudents()" class="btn btn-danger mt-4"><i
+                        <div class="form-group">
+                            <a wire:click="deleteStudents()" class="btn btn-danger"><i
                                     class="fas fa-trash mr-2"></i>Delete</a>
                         </div>
                     </div>
