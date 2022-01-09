@@ -1,13 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        #logo {
+            width: 300px;
+            height: 300px;
+            margin-left: -50px;
+        }
+
+    </style>
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex justify-content-center align-items-center">
+
         <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
+            <a href="{{ url('/') }}"><img src="{{ asset('assets/img/logonew.png') }}" id="logo"></a> <br>
             <h1>Learning Today,<br>Leading Tomorrow</h1>
             <h2>Kites Lanka | Production</h2>
             <a href="{{ route('student-course') }}" class="btn-get-started">Get Started</a>
+
         </div>
+
     </section><!-- End Hero -->
 
     <main id="main">
@@ -239,16 +251,15 @@
                             <img src="assets/img/trainers/kites-01.png" class="img-fluid" alt="">
                             <div class="member-content">
                                 <h4>Kasun Samuditha Perera</h4>
-                                <span>CEO of Kites Lanka</span>
+                                <span>Founder & CEO</span>
                                 <p>
-                                    Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis
-                                    quaerat qui aut aut aut
+                                    BEng (Hons) in Computer Networking - London Metropolitan University (UK)
                                 </p>
                                 <div class="social">
-                                    <a href=""><i class="icofont-twitter"></i></a>
-                                    <a href=""><i class="icofont-facebook"></i></a>
-                                    <a href=""><i class="icofont-instagram"></i></a>
-                                    <a href=""><i class="icofont-linkedin"></i></a>
+                                    <a href="https://www.facebook.com/kasun.samuditha.1/" target="_blank"><i
+                                            class="icofont-facebook"></i></a>
+                                    <a href="https://www.linkedin.com/in/kasunsperera" target="_blank"><i
+                                            class="icofont-linkedin"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -258,18 +269,12 @@
                         <div class="member">
                             <img src="assets/img/trainers/kites-02.png" class="img-fluid" alt="">
                             <div class="member-content">
-                                <h4>Sarah Jhinson</h4>
-                                <span>Marketing Officer</span>
+                                <h4>Chathurika Chamali Bandaranayeka</h4>
+                                <span>Accountant and co-founder</span>
                                 <p>
-                                    Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum
-                                    rerum temporibus
+                                    BPA(Sp.) UVPA - Colombo, Sangeeth Visharad
                                 </p>
-                                <div class="social">
-                                    <a href=""><i class="icofont-twitter"></i></a>
-                                    <a href=""><i class="icofont-facebook"></i></a>
-                                    <a href=""><i class="icofont-instagram"></i></a>
-                                    <a href=""><i class="icofont-linkedin"></i></a>
-                                </div>
+
                             </div>
                         </div>
                     </div>
