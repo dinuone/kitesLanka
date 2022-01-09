@@ -44,7 +44,7 @@
                             </div>
                         @endif
                         <div class="card shadow">
-                            <div class="card-header bg-secondary text-white">Student Login</div>
+                            <div class="card-header text-white" style="background-color: #0095d9">Student Login</div>
                             <div class="card-body">
                                 <form action="{{ route('student-check') }}" method="POST">
                                     @csrf
@@ -68,7 +68,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success">Login</button>
+                                        <button type="submit" class="btn text-white"
+                                            style="background-color: #0095d9">Login</button>
                                     </div>
 
                                     <a href="{{ route('student-forget.form') }}">Forgot your Password?</a>
@@ -89,7 +90,7 @@
                             </div>
                         @endif
                         <div class="card shadow">
-                            <div class="card-header bg-info text-white">Teacher Login</div>
+                            <div class="card-header text-white" style="background-color: #0095d9">Teacher Login</div>
                             <div class="card-body">
                                 <form action="{{ route('teacher.check') }}" method="POST">
                                     @csrf
@@ -113,7 +114,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success">Login</button>
+                                        <button type="submit" class="btn text-white"
+                                            style="background-color: #0095d9">Login</button>
                                     </div>
 
                                     <a href="{{ route('student-forget.form') }}">Forgot your Password?</a>

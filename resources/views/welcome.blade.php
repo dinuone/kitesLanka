@@ -23,8 +23,7 @@
     <section id="hero" class="d-flex justify-content-center align-items-center">
 
         <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-            <a href="{{ url('/') }}"><img src="{{ asset('assets/img/logonew.png') }}" id="logo"
-                    class=".img-responsive "></a> <br>
+            <a href="{{ url('/') }}"><img src="{{ asset('assets/img/logonew.png') }}" id="logo"></a> <br>
             <h1>Learning Today,<br>Leading Tomorrow</h1>
             <h2>Kites Lanka | Production</h2>
             <a href="{{ route('student-course') }}" class="btn-get-started">Get Started</a>
@@ -225,8 +224,7 @@
                     @foreach ($teachers as $teacher)
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-3">
                             <div class="course-item">
-                                <img src="{{ asset('storage/' . $teacher->image_path) }}" class="img-fluid"
-                                    alt="...">
+                                <img src="{{ asset('storage/' . $teacher->image_path) }}" class="img-fluid" alt="...">
                                 <div class="course-content">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
                                         <p class="price">English</p>

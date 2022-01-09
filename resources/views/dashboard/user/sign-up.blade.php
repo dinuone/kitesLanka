@@ -25,7 +25,7 @@
             @endif
 
             <div class="card shadow">
-                <div class="card-header bg-secondary text-white">Student Registration </div>
+                <div class="card-header text-white" style="background-color: #0095d9">Student Registration </div>
                 <div class="card-body">
                     <form action="{{ route('stud-create') }}" method="POST">
                         @csrf
@@ -116,7 +116,7 @@
                         </div>
 
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success">Register</button>
+                            <button type="submit" class="btn text-white" style="background-color: #0095d9">Register</button>
                         </div>
                     </form>
                 </div>

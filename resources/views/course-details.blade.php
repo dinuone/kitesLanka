@@ -7,8 +7,7 @@
         <div class="breadcrumbs" data-aos="fade-in">
             <div class="container">
                 <h2>Course Details</h2>
-                <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit
-                    quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
+
             </div>
         </div><!-- End Breadcrumbs -->
 
@@ -51,7 +50,7 @@
             </div>
         </section><!-- End Cource Details Section -->
 
-        <!-- ======= Cource Details Tabs Section ======= -->
+        {{-- <!-- ======= Cource Details Tabs Section ======= -->
         <section id="cource-details-tabs" class="cource-details-tabs">
             <div class="container" data-aos="fade-up">
 
@@ -163,7 +162,7 @@
                 </div>
 
             </div>
-        </section><!-- End Cource Details Tabs Section -->
+        </section><!-- End Cource Details Tabs Section --> --}}
 
     </main><!-- End #main -->
 
