@@ -30,7 +30,10 @@
                                 <h5>Teacher</h5>
                                 <p><a href="#">{{ $course->teacher->fullname }}</a></p>
                             </div>
-
+                            <div class="course-info d-flex justify-content-between align-items-center">
+                                <h5>Admission Fee</h5>
+                                <p>Free</p>
+                            </div>
                             <div class="course-info d-flex justify-content-between align-items-center">
                                 <h5>Course Fee</h5>
                                 <p>Rs.1500</p>
