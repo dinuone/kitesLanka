@@ -22,7 +22,7 @@
                                 <img src="{{ asset('storage/' . $course->image_path) }}" class="img-fluid" alt="...">
                                 <div class="course-content">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <p class="price">Rs.1500</p>
+                                        {{-- <p class="price">Rs.1500</p> --}}
                                     </div>
 
                                     <h3><a
@@ -35,7 +35,7 @@
                                             <span>{{ $course->teacher->fullname }}</span>
                                         </div>
                                         <div class="trainer-rank d-flex align-items-center">
-                                            <i class="bx bx-user"></i>&nbsp;50
+                                            {{-- <i class="bx bx-user"></i>&nbsp;50 --}}
                                             &nbsp;&nbsp;
                                         </div>
                                     </div>
