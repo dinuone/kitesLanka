@@ -6,7 +6,7 @@
         <!-- ======= Breadcrumbs ======= -->
         <div class="breadcrumbs" data-aos="fade-in">
             <div class="container">
-                <h2>Course Details</h2>
+                <h1>Courses Details</h1>
             </div>
         </div><!-- End Breadcrumbs -->
 
