@@ -15,9 +15,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
     <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
     <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
     {{-- sweet alert 2 --}}
@@ -198,26 +198,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
             @yield('content')
         </div>
         <!-- /.content-header -->
-
-        <!-- Main content -->
-
     </div>
+    <!-- Main content -->
+
     <!-- ./wrapper -->
 
     <!-- REQUIRED SCRIPTS -->
     <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>
-
+    <!-- Bootstrap 4 -->
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <script src="dist/js/adminlte.js"></script>
-
     <!-- AdminLTE App -->
-    <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+    <script src="dist/js/adminlte.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"></script>
 
-    <script src="{{ asset('js/app.js') }}"></script>
+
     <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
 
     @yield('scripts')
