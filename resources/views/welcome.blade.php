@@ -244,7 +244,7 @@
             </div>
         </section><!-- End Popular teachers Section -->
 
-        <section id="popular-courses" class="courses">
+        {{-- <section id="popular-courses" class="courses">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
@@ -262,7 +262,7 @@
                 </div>
 
             </div>
-        </section><!-- End Popular teachers Section -->
+        </section><!-- End Popular teachers Section --> --}}
         <!-- ======= Trainers Section ======= -->
         <section id="trainers" class="trainers">
             <div class="container" data-aos="fade-up">
