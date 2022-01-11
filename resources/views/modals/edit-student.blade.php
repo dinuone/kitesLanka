@@ -14,41 +14,43 @@
                         <label for="">Full Name</label>
                         <input type="text" class="form-control" placeholder="Enter Student Full Name"
                             wire:model="upfullname">
-                        <span class="text-danger">@error('upfullname') {{ $message }} @enderror</span>
+                        <span class="text-danger">@error('upfullname') {{ 'full name required' }} @enderror</span>
                     </div>
 
                     <div class="form-group">
                         <label for="">Date of Birth</label>
                         <input type="date" class="form-control" wire:model="updob">
-                        <span class="text-danger">@error('updob') {{ $message }} @enderror</span>
+                        <span class="text-danger">@error('updob') {{ 'Dob required' }} @enderror</span>
                     </div>
 
                     <div class="form-group">
                         <label for="">Contact</label>
                         <input type="text" class="form-control" placeholder="Enter student Mobile/Lan line"
                             wire:model="upcontact">
-                        <span class="text-danger">@error('upcontact') {{ $message }} @enderror</span>
+                        <span class="text-danger">@error('upcontact') {{ 'contact number required' }}
+                            @enderror</span>
                     </div>
 
                     <div class="form-group">
                         <label>Contact (Whatsapp)</label>
                         <input type="text" class="form-control" wire:model="upwhatsapp"
                             placeholder="Enter Student Whatsapp Number..">
-                        <span class="text-danger">@error('upwhatsapp') {{ $message }} @enderror</span>
+                        <span class="text-danger">@error('upwhatsapp') {{ 'whatapp number required' }}
+                            @enderror</span>
                     </div>
 
                     <div class="form-group">
                         <label>E-mail Address</label>
                         <input type="text" class="form-control" wire:model="upemail"
                             placeholder="Enter e-mail address..">
-                        <span class="text-danger">@error('upemail') {{ $message }} @enderror</span>
+                        <span class="text-danger">@error('upemail') {{ 'email required' }} @enderror</span>
                     </div>
 
                     <div class="form-group">
                         <label for="">Address</label>
                         <textarea type="text" class="form-control" rows="3" placeholder="Enter Student Home Address"
                             wire:model="upaddress"></textarea>
-                        <span class="text-danger">@error('upaddress') {{ $message }} @enderror</span>
+                        <span class="text-danger">@error('upaddress') {{ 'address required' }} @enderror</span>
                     </div>
 
 
@@ -56,7 +58,7 @@
                         <label for="">School</label>
                         <input type="text" class="form-control" placeholder="Enter School Name here."
                             wire:model="upschool">
-                        <span class="text-danger">@error('upschool') {{ $message }} @enderror</span>
+
                     </div>
 
                     @foreach ($courses as $course)
@@ -65,7 +67,7 @@
                                 wire:model="upcourse">
                             <label class="form-check-label">{{ $course->Name }}</label>
                         </div>
-                        <span class="text-danger">@error('upcourse') {{ $message }} @enderror</span>
+                        <span class="text-danger">@error('upcourse') {{ 'course required' }} @enderror</span>
                     @endforeach
 
 
