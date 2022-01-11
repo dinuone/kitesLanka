@@ -34,7 +34,6 @@
                     @if (count($filterdata))
                         @foreach ($filterdata as $data)
                             <tr>
-                                <td>{{ $data->FullName }}</td>
                                 <td>{{ $data->student_id }}</td>
                                 <td>{{ $data->FullName }}</td>
                                 <td>{{ $data->email }}</td>

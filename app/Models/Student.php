@@ -31,26 +31,6 @@ class Student extends Authenticatable
         return $this->belongsToMany(Course::class,'course_student');
     }
 
-    public function filterCourse()
-    {
-        return $this->courses()->wherePivot('course_id',true);
-    }
-
-    public function scopeSearch($query, $term)
-    {
-        $term = "%$term%";
-        $query->where(function($query) use ($term){
-            $query->where('FullName','like', $term)
-                    ->orWhere('student_id','like',$term)
-                    ->orWhere('date_of_birth','like',$term)
-                    ->orWhere('contact','like',$term)
-                    ->orwhere('email','like',$term)
-                    ->orwhere('school','like',$term)
-                    ->orwhere('address','like',$term)
-                    ->orwhere('contact_whatsapp','like',$term);
-            
-        });
-    }
 
     public function payments()
     {

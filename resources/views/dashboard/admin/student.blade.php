@@ -3,12 +3,16 @@
 @section('content')
 
     <div class="content">
-        @livewire('students')
+        @livewire('admin-student.student-manage')
     </div>
 @endsection
 
-
 <script>
+    window.addEventListener('OpenEditStudentModal', function() {
+        $('.editstudent').find('span').html('');
+        $('.editstudent').modal('show');
+    });
+
     window.addEventListener('OpenAddStudentModal', function() {
         $('.addstudent').find('span').html('');
         $('.addstudent').find('form')[0].reset();
@@ -25,11 +29,6 @@
             text: 'New Student has been Added!',
 
         });
-    });
-
-    window.addEventListener('OpenEditModal', function() {
-        $('.editstudent').find('span').html('');
-        $('.editstudent').modal('show');
     });
 
     window.addEventListener('CloseEditStudent', function() {

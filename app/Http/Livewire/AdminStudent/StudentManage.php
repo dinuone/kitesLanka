@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\AdminStudent;
 
 use Livewire\Component;
 use App\Models\Student;
@@ -11,50 +11,69 @@ use Livewire\WithPagination;
 use App\Exports\StudentExport;
 use Maatwebsite\Excel\Facades\Excel;
 
-class Students extends Component
+class StudentManage extends Component
 {
     use WithPagination;
 
     public $fullname,$dob,$contact,$whatsapp,$address,$school,$email,$std;
     public $course = [];
-
-    public $bycourse = null;
-    public $perPage=100;
-    public $orderBy = 'created_at';
-    public $sortBy = 'asc';
     public $search;
-
+    public $filtercourse;
     public $selected=[]; 
     public $selectAll = false;
 
-    public $up_fullname,$up_dob,$up_contact,$up_whatsapp,$up_address,$up_school; //update modal vairables
-    public $up_course=[];
+    public $upfullname,$updob,$upcontact,$upwhatsapp,$upaddress,$upschool; //update modal vairables
+    public $upcourse=[];
 
     protected $listeners=['delete','deletecheckedtudents','resetstud'];
 
-    //returen view 
+
     public function render()
     {
         $students = Student::latest()->paginate(100);
         $courses = Course::Select('id','Name')->get();
-        return view('livewire.students',[
+        $filterdata = Student::whereHas('courses',function($query){
+            $query->whereIn('course_id',[$this->filtercourse]);
+     })->get();
+
+        return view('livewire.admin-student.student-manage',[
+            'students'=> Student::when($this->search, function($query,$search){
+                return $query->where('FullName','like',"%$search%")
+                    ->orWhere('student_id','like',"%$search%")
+                    ->orWhere('date_of_birth','like',"%$search%")
+                    ->orWhere('contact','like',"%$search%")
+                    ->orwhere('email','like',"%$search%")
+                    ->orwhere('school','like',"%$search%")
+                    ->orwhere('address','like',"%$search%")
+                    ->orwhere('contact_whatsapp','like',"%$search%");
+            })->paginate(100),
+            
             'courses'=>$courses,
-            'students'=>Student::when($this->bycourse, function($query){
-                $query->where('id', $this->bycourse);
-            })
-            ->search(trim($this->search))
-            ->orderBy($this->orderBy,$this->sortBy)
-            ->paginate($this->perPage)
+            'filterdata'=>$filterdata
         ]);
-
     }
 
-    public function OpenAddStudentModal()
-    {
-        $this->dispatchBrowserEvent('OpenAddStudentModal');
-    }
+     //update module 
+     public function OpenEditStudentModal($id)
+     {
+         $info = Student::find($id);
+         $this->upfullname = $info->FullName;
+         $this->upcontact = $info->contact;
+         $this->upwhatsapp = $info->contact_whatsapp;
+         $this->upaddress = $info->address;
+         $this->updob = $info->date_of_birth;
+         $this->upschool = $info->school;
+         $this->std = $id;
+         $this->dispatchBrowserEvent('OpenEditStudentModal',[
+             'id'=>$id
+         ]);
+     }
 
-    //save student
+     public function OpenAddStudentModal()
+     {
+         $this->dispatchBrowserEvent('OpenAddStudentModal');
+     }
+       //save student
     public function save()
     {
         $this->validate([
@@ -68,8 +87,8 @@ class Students extends Component
             
         ]);
 
-        $user = new Student(); 
-        $this->std = random_int(1000, 9999);
+            $user = new Student(); 
+            $this->std = random_int(1000, 9999);
         
             $user->FullName = $this->fullname;
             $user->date_of_birth = $this->dob;
@@ -93,44 +112,28 @@ class Students extends Component
         }
     }
 
-    //update module 
-    public function OpenEditModal($id)
-    {
-        $info = Student::find($id);
-        $this->up_fullname = $info->FullName;
-        $this->up_contact = $info->contact;
-        $this->up_whatsapp = $info->contact_whatsapp;
-        $this->up_address = $info->address;
-        $this->up_dob = $info->date_of_birth;
-        $this->up_school = $info->school;
-        $this->std = $info->id;
-        $this->dispatchBrowserEvent('OpenEditModal',[
-            'id'=>$id
-        ]);
-    }
-
     public function update()
     {
         $studid = $this->std;
         $this->validate([
-            'up_fullname'=>'required',
-            'up_contact'=>'required',
-            'up_whatsapp'=>'required',
-            'up_address'=>'required',
-            'up_course'=>'required'
+            'upfullname'=>'required',
+            'upcontact'=>'required',
+            'upwhatsapp'=>'required',
+            'upaddress'=>'required',
+            'upcourse'=>'required'
         ]);
 
         $update = Student::find($studid)->update([
-           ' FullName'=>$this->up_fullname,
-            'contact'=>$this->up_contact,
-            'contact_whatsapp'=>$this->up_whatsapp,
-            'address'=>$this->up_address,
-            'date_of_birth'=>$this->up_dob,
-            'school'=>$this->up_school,
+           ' FullName'=>$this->upfullname,
+            'contact'=>$this->upcontact,
+            'contact_whatsapp'=>$this->upwhatsapp,
+            'address'=>$this->upaddress,
+            'date_of_birth'=>$this->updob,
+            'school'=>$this->upschool,
         ]);
 
         $student = Student::find($this->std);
-        $student->courses()->sync($this->up_course);
+        $student->courses()->sync($this->upcourse);
 
         if($update){
             $this->dispatchBrowserEvent('CloseEditStudent');
@@ -207,4 +210,5 @@ class Students extends Component
         return (new StudentExport ($this->selected))->download('students-detials.xls'); 
       
     }
+
 }
