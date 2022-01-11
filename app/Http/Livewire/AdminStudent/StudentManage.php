@@ -22,7 +22,7 @@ class StudentManage extends Component
     public $selected=[]; 
     public $selectAll = false;
 
-    public $upfullname,$updob,$upcontact,$upwhatsapp,$upaddress,$upschool; //update modal vairables
+    public $upfullname,$updob,$upcontact,$upwhatsapp,$upaddress,$upschool,$upemail; //update modal vairables
     public $upcourse=[];
 
     protected $listeners=['delete','deletecheckedtudents','resetstud'];
@@ -63,6 +63,7 @@ class StudentManage extends Component
          $this->upaddress = $info->address;
          $this->updob = $info->date_of_birth;
          $this->upschool = $info->school;
+         $this->upemail = $info->email;
          $this->std = $id;
          $this->dispatchBrowserEvent('OpenEditStudentModal',[
              'id'=>$id
@@ -130,6 +131,7 @@ class StudentManage extends Component
             'address'=>$this->upaddress,
             'date_of_birth'=>$this->updob,
             'school'=>$this->upschool,
+            'email'=>$this->upemail,
         ]);
 
         $student = Student::find($this->std);
