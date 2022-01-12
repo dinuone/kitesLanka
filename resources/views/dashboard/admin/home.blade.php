@@ -80,7 +80,7 @@
                 },
                 xAxis: {
                     categories: [
-                        'November', 'January', 'February', 'March', 'April', 'May', 'July', 'August', 'September',
+                        'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
                         'October', 'November', 'December'
                     ]
                 },

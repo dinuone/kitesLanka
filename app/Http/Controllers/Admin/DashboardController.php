@@ -19,11 +19,7 @@ class DashboardController extends Controller
                     ->groupBy(DB::raw("Month(created_at)"))
                     ->pluck('count');
 
-        $income = Payment::select(DB::raw("SUM(amount) as total"))
-                    ->whereYear("created_at",date('Y'))
-                    ->groupBy(DB::raw("Month(created_at)"))
-                    ->pluck('total');
-       
+        
         $duecount = Student::where('payment_status','=',0)->count();
         $studToday = Student::whereDate('created_at', Carbon::today())->get()->count();
 
