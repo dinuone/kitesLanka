@@ -59,7 +59,6 @@
                                 <th>Address</th>
                                 <th>Enroll Course</th>
                                 <th colspan="3">Actions</th>
-                                </tr>
                             </thead>
                             <tbody>
                                 @if (count($filterdata))

@@ -142,6 +142,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <p>Receive Payments</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('view-summary') }}"
+                                        class="nav-link {{ request()->is('admin/payment-summary') ? 'active' : '' }}">
+                                        <i class="fas fa-plus mr-2"></i>
+                                        <p>payment Summary</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
