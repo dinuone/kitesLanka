@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use App\Models\Course;
 use App\Models\Payment;
+use App\Models\Teacher;
 use Carbon\Carbon;
 use DB;
 
@@ -22,13 +23,20 @@ class DashboardController extends Controller
         
         $duecount = Student::where('payment_status','=',0)->count();
         $studToday = Student::whereDate('created_at', Carbon::today())->get()->count();
-
+        $studcount = Student::count();
+        $teachercount = Teacher::count();
         $courseCount = Course::all()->count();
+        
+        $income = Payment::where('payment_status','=','1')->whereMonth('created_at',Carbon::now()->month)->sum('amount');
+    
         return view('dashboard.admin.home',[
             'studToday'=>$studToday,
             'duecount'=>$duecount,
             'studdata'=>$studdata,
-            'courseCount'=>$courseCount
+            'courseCount'=>$courseCount,
+            'studcount'=>$studcount,
+            'teachercount'=>$teachercount,
+            'income'=>$income
         ]);
     }
 

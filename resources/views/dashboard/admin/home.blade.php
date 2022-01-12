@@ -44,6 +44,41 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                <div class="small-box bg-teal">
+                    <div class="inner">
+                        <h3>{{ $studcount }}</h3>
+                        <p>Total Students </p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="small-box bg-gray">
+                    <div class="inner">
+                        <h3>{{ $teachercount }}</h3>
+                        <p>Total Teachers </p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="small-box bg-white">
+                    <div class="inner">
+                        <h3>Rs.{{ $income }}</h3>
+                        <p>This Month: Income </p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-money-bill-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col">
@@ -55,16 +90,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <div class="card-header bg-navy"><i class="far fa-chart-bar mr-2"></i>Student Registraion chart</div>
-                    <div class="card-body">
-                        <div id="incomechart" width="100%" height="100%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
 
         <script src="https://code.highcharts.com/highcharts.js"></script>
         <script>
@@ -73,7 +100,7 @@
 
 
                 title: {
-                    text: 'New Students Growth, 2021'
+                    text: 'New Students Growth, 2022'
                 },
                 subtitle: {
                     text: 'Source: positronx.io'
