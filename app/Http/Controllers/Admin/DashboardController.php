@@ -28,7 +28,6 @@ class DashboardController extends Controller
             'studToday'=>$studToday,
             'duecount'=>$duecount,
             'studdata'=>$studdata,
-            'income'=>$income,
             'courseCount'=>$courseCount
         ]);
     }
