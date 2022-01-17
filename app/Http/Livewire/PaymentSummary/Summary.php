@@ -15,11 +15,17 @@ class Summary extends Component
             $query->whereIn('course_id',[$this->filtercourse])->where('payment_status','=',$this->paymentSt)->where('FullName','like',"%$this->search%");
           })->get();
 
+        $count = Student::whereHas('courses',function($query){
+            $query->whereIn('course_id',[$this->filtercourse])->where('payment_status','=',$this->paymentSt)->where('FullName','like',"%$this->search%");
+        })->count();
+
+
         $courses = Course::all();
 
         return view('livewire.payment-summary.summary',[
             'filterdata'=>$filterdata,
-            'courses'=>$courses
+            'courses'=>$courses,
+            'count'=>$count
         ]);
     }
 }

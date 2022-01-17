@@ -125,7 +125,7 @@ class StudentManage extends Component
         ]);
 
         $update = Student::find($studid)->update([
-           ' FullName'=>$this->upfullname,
+            'FullName'=>$this->upfullname,
             'contact'=>$this->upcontact,
             'contact_whatsapp'=>$this->upwhatsapp,
             'address'=>$this->upaddress,

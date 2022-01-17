@@ -17,7 +17,9 @@ class Course extends Model
        'description',
        'created_at',
        'update_at',
-       'month'
+       'month',
+       'class_fee',
+       'offer_price'
        
     ];
 

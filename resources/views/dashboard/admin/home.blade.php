@@ -81,71 +81,30 @@
         </div>
 
         <div class="row">
-            <div class="col">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header bg-navy"><i class="far fa-chart-bar mr-2"></i>Student Registraion chart</div>
                     <div class="card-body">
-                        <div id="studchart" width="100%" height="100%"></div>
+                        <h4>{{ $chart1->options['chart_title'] }}</h4>
+                        {!! $chart1->renderHtml() !!}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-navy"><i class="far fa-chart-bar mr-2"></i>Income</div>
+                    <div class="card-body">
+                        <h4>{{ $chart2->options['chart_title'] }}</h4>
+                        {!! $chart2->renderHtml() !!}
                     </div>
                 </div>
             </div>
         </div>
 
+    @endsection
 
-
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script>
-            var studdata = <?php echo json_encode($studdata); ?>;
-            Highcharts.chart('studchart', {
-
-
-                title: {
-                    text: 'New Students Growth, 2022'
-                },
-                subtitle: {
-                    text: 'Source: positronx.io'
-                },
-                xAxis: {
-                    categories: [
-                        'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
-                        'October', 'November', 'December'
-                    ]
-                },
-                yAxis: {
-                    title: {
-                        text: 'Number of New Students'
-                    }
-                },
-                legend: {
-                    layout: 'vertical',
-                    align: 'right',
-                    verticalAlign: 'middle'
-                },
-                plotOptions: {
-                    series: {
-                        allowPointSelect: true
-                    }
-                },
-                series: [{
-                    name: 'New Students',
-                    data: studdata
-                }],
-                responsive: {
-                    rules: [{
-                        condition: {
-                            maxWidth: 500
-                        },
-                        chartOptions: {
-                            legend: {
-                                layout: 'horizontal',
-                                align: 'center',
-                                verticalAlign: 'bottom'
-                            }
-                        }
-                    }]
-                }
-            });
-        </script>
-
-
+    @section('scripts')
+        {!! $chart1->renderChartJsLibrary() !!}
+        {!! $chart1->renderJs() !!}
+        {!! $chart2->renderJs() !!}
     @endsection

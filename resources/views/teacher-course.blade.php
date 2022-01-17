@@ -18,7 +18,7 @@
                 <div class="row" data-aos="zoom-in" data-aos-delay="100">
                     @foreach ($thcourse as $course)
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-3">
-                            <div class="course-item">
+                            <div class="course-item shadow">
                                 <img src="{{ asset('storage/' . $course->image_path) }}" class="img-fluid" alt="...">
                                 <div class="course-content">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -28,7 +28,7 @@
                                     <h3><a
                                             href="{{ route('student-select-course', $course->id) }}">{{ $course->Name }}</a>
                                     </h3>
-                                    <p>{{ $course->description }}</p>
+                                    <p>{!! $course->description !!}</p>
                                     <div class="trainer d-flex justify-content-between align-items-center">
                                         <div class="trainer-profile d-flex align-items-center">
                                             <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">

@@ -212,37 +212,43 @@
             </div>
         </section><!-- End Features Section --> --}}
 
-        <section id="popular-courses" class="courses">
-            <div class="container" data-aos="fade-up">
+        @if (Auth::guard('student')->check())
 
-                <div class="section-title">
-                    <h2>Teachers</h2>
-                    <p>Popular Teachers</p>
-                </div>
+        @else
+            <section id="popular-courses" class="courses">
+                <div class="container" data-aos="fade-up">
 
-                <div class="row" data-aos="zoom-in" data-aos-delay="100">
-                    @foreach ($teachers as $teacher)
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-3">
-                            <div class="course-item">
-                                <img src="{{ asset('storage/' . $teacher->image_path) }}" class="img-fluid" alt="...">
-                                <div class="course-content">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <p class="price">English</p>
+                    <div class="section-title">
+                        <h2>Teachers</h2>
+                        <p>Popular Teachers</p>
+                    </div>
+
+                    <div class="row" data-aos="zoom-in" data-aos-delay="100">
+                        @foreach ($teachers as $teacher)
+                            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-3">
+                                <div class="course-item">
+                                    <img src="{{ asset('storage/' . $teacher->image_path) }}" class="img-fluid"
+                                        alt="...">
+                                    <div class="course-content">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <p class="price">English</p>
+                                        </div>
+
+                                        <h3><a
+                                                href="{{ route('student-select-teacher', $teacher->id) }}">{{ $teacher->fullname }}</a>
+                                        </h3>
+
                                     </div>
-
-                                    <h3><a
-                                            href="{{ route('student-select-teacher', $teacher->id) }}">{{ $teacher->fullname }}</a>
-                                    </h3>
-
                                 </div>
-                            </div>
-                        </div> <!-- End Course Item-->
-                    @endforeach
+                            </div> <!-- End Course Item-->
+                        @endforeach
+
+                    </div>
 
                 </div>
+            </section><!-- End Popular teachers Section -->
+        @endif
 
-            </div>
-        </section><!-- End Popular teachers Section -->
 
         {{-- <section id="popular-courses" class="courses">
             <div class="container" data-aos="fade-up">

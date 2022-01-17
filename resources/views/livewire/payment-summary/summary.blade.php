@@ -20,7 +20,15 @@
                         <option value="0">Payment Due</option>
                     </select>
                 </div>
+                <div class="col">
+                    <label>Total Student Count: </label>
+                    @if (!empty($count))
+                        <span class="badge bg-maroon p-2">{{ $count }}</span>
+                    @endif
+                </div>
             </div>
+
+
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -30,7 +38,6 @@
                         <th>Contact</th>
                         <th>Contact(Whatsapp)</th>
                         <th>School</th>
-                        <th>Address</th>
                         <th>Status</th>
                     </tr>
                 </thead>
@@ -44,7 +51,6 @@
                                 <td>{{ $data->contact }}</td>
                                 <td>{{ $data->contact_whatsapp }}</td>
                                 <td>{{ $data->school }}</td>
-                                <td>{{ $data->address }}</td>
                                 <td>
                                     @if ($data->payment_status == 1)
                                         <span class="badge bg-teal p-2">Payment Done</span>

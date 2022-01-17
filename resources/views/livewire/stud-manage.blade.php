@@ -49,6 +49,25 @@
                 </div>
             </div>
         @endif
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card ml-3 p-2">
+                <h5> Total Amount : <span class="badge bg-indigo">Rs.{{ $amount }}</span></h5>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card ml-3 p-2">
+                <h5> Verified Payments : <span class="badge bg-indigo">{{ $verify }}</span> </h5>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card ml-3 p-2">
+                <h5> Not Verified Payments : <span class="badge bg-indigo"> {{ $notverify }}</span></h5>
+            </div>
+        </div>
     </div>
 
     <table id="dataTable" class="table table-hover">

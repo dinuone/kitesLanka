@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\CourseMaterialsController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\StudentAnnouncecontroller;
+use App\Http\Controllers\Admin\AdminCourseController;
 
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Teacher\MyClassController;
@@ -27,6 +28,7 @@ use App\Http\Controllers\Teacher\TeacherPDFController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 use App\Http\Controllers\Teacher\StudAttendController;
 use App\Http\Controllers\Teacher\ChangePasswordController;
+use App\Http\Controllers\Teacher\TeacherPaymentSummary;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -41,7 +43,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome-page');
 
 //student:guest-------------------------------------------------------
 Route::view('student/login','dashboard.user.login')->name('student-login');
@@ -64,6 +66,8 @@ Route::group(['middleware'=>['auth:student','PreventBackHistory']], function(){
     Route::get('student/course-materials',[StudMaterialController::class,'index'])->name('student-course-materials');
     Route::get('student/course-register/{id}',[StudDashController::class,'showreg'])->name('student-reg-course');
     Route::post('student/course-register/save',[StudDashController::class,'save'])->name('student-course-save');
+  
+    
     //student - download pdf
    
 });
@@ -90,7 +94,12 @@ Route::group(['middleware'=>['auth:admin','PreventBackHistory']],function (){
    
     //views- admin
     Route::view('admin/student','dashboard.admin.student')->name('admin-student');
-    Route::view('admin/class','dashboard.admin.classes')->name('admin-class');
+    Route::get('admin/class',[AdminCourseController::class,'index'])->name('admin-class');
+    Route::post('admin/add-course',[AdminCourseController::class,'store'])->name('admin-courseSave');
+    Route::get('admin/edit-course/{id}',[AdminCourseController::class,'edit'])->name('admin-editcourse');
+    Route::post('admin/update',[AdminCourseController::class,'update'])->name('update-course');
+    Route::delete('admin/delete/{id}',[AdminCourseController::class,'delete'])->name('delete-course');
+
     Route::view('admin/links','dashboard.admin.managelinks')->name('admin-links');
     Route::view('admin/payment/receive-payment','dashboard.admin.payment')->name('receive-payment');
     Route::view('admin/payment/add-payment','dashboard.admin.admin-add-payment')->name('admin-addPayment');
@@ -149,6 +158,10 @@ Route::prefix('teacher')->name('teacher.')->group(function(){
         Route::get('/chenge-password',[ChangePasswordController::class,'index'])->name('show-chngepsw');
         Route::post('/change',[ChangePasswordController::class,'changePsw'])->name('submit');
 
+        //payment summary
+        Route::get('/teacher/payment-details/{id}',[TeacherPaymentSummary::class,'index'])->name('teacher-payment');
+        Route::get('teacher/search',[TeacherPaymentSummary::class,'search'])->name('search');
+      
         });
     });
         

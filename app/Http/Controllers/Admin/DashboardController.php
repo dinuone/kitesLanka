@@ -10,6 +10,7 @@ use App\Models\Payment;
 use App\Models\Teacher;
 use Carbon\Carbon;
 use DB;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class DashboardController extends Controller
 {
@@ -28,7 +29,38 @@ class DashboardController extends Controller
         $courseCount = Course::all()->count();
         
         $income = Payment::where('payment_status','=','1')->whereMonth('created_at',Carbon::now()->month)->sum('amount');
-    
+        
+        $chart_options = [
+            'chart_title' => 'Students Registration by months',
+            'report_type' => 'group_by_date',
+            'model' => 'App\Models\Student',
+            'group_by_field' => 'created_at',
+            'group_by_period' => 'month',
+            'chart_type' => 'line',
+            'chart_color'=>'46,176,232'
+        ];
+        $chart1 = new LaravelChart($chart_options);
+
+        //2nd chart
+        $chart_options = [
+            'chart_title' => 'This Month Income',
+            'report_type' => 'group_by_relationship',
+            'model' => 'App\Models\Payment',
+
+            'relationship_name'=>'course',
+            'group_by_field' => 'Name',
+            
+            'aggregate_function' => 'sum',
+            'aggregate_field' => 'amount',
+            'where_raw'=>'payment_status=1',
+
+            'filter_field'=>'created_at',
+            'filter_period'=>'month',
+            'chart_type' => 'bar',
+            'chart_color'=>'174,63,222'
+        ];
+        $chart2 = new LaravelChart($chart_options);
+
         return view('dashboard.admin.home',[
             'studToday'=>$studToday,
             'duecount'=>$duecount,
@@ -37,7 +69,7 @@ class DashboardController extends Controller
             'studcount'=>$studcount,
             'teachercount'=>$teachercount,
             'income'=>$income
-        ]);
+        ],compact('chart1','chart2'));
     }
 
     public function showtoday()

@@ -18,7 +18,7 @@
                 <div class="row" data-aos="zoom-in" data-aos-delay="100">
                     @foreach ($teachers as $teacher)
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-3">
-                            <div class="course-item">
+                            <div class="course-item shadow">
                                 <img src="{{ asset('storage/' . $teacher->image_path) }}" class="img-fluid" alt="...">
                                 <div class="course-content">
                                     <div class="d-flex justify-content-between align-items-center mb-3">

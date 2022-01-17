@@ -11,6 +11,7 @@ use Livewire\WithFileUploads;
 
 use App\Exports\PaymentsExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
 
 class StudManage extends Component
 {
@@ -40,6 +41,12 @@ class StudManage extends Component
         $payments = Payment::where('course_id', $this->bycourse)->where('month',$this->bymonth)
                     ->where('student_id','like', $search)->get();
         $paymentimage = Payment::where('id',$this->courseID)->get();
+
+        $amount = Payment::where('course_id',$this->bycourse)->where('payment_status',1)->where('month',$this->bymonth)->sum('amount');
+        
+        $verify= Payment::where('course_id',$this->bycourse)->where('payment_status',1)->where('month',$this->bymonth)->count();
+
+        $notverify= Payment::where('course_id',$this->bycourse)->where('payment_status',0)->where('month',$this->bymonth)->count();
         
         //return to payment edit modal
         $paymentStatus = Payment::where('id',$this->paymentID)->get();
@@ -47,7 +54,10 @@ class StudManage extends Component
             'payments'=>$payments,
             'crs'=>$crs,
             'paymentimage'=>$paymentimage,
-            'paymentStatus'=> $paymentStatus
+            'paymentStatus'=> $paymentStatus,
+            'amount'=>$amount,
+            'verify'=>$verify,
+            'notverify'=>$notverify
         ]);
     }
 

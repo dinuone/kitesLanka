@@ -6,7 +6,7 @@
         <!-- ======= Breadcrumbs ======= -->
         <div class="breadcrumbs" data-aos="fade-in">
             <div class="container">
-                <h1>Courses Details</h1>
+                <h1>Course Details</h1>
             </div>
         </div><!-- End Breadcrumbs -->
 
@@ -20,7 +20,7 @@
                                 alt="course-image">
                             <h4 class="mt-3">{{ $course->Name }}</h4>
                             <p>
-                                {{ $course->description }}
+                                {!! $course->description !!}
                             </p>
                         </div>
 

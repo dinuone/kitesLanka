@@ -36,8 +36,8 @@
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
 
-            <h1 class="logo mr-auto"><a href="{{ url('/') }}"><img src="{{ asset('assets/img/logo.png') }}"
-                        alt="brandname"></a></h1>
+            <h1 class="logo mr-auto"><a href="{{ route('welcome-page') }}"><img
+                        src="{{ asset('assets/img/logo.png') }}" alt="brandname"></a></h1>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -45,19 +45,25 @@
                 <ul>
                     <li class="active"><a href="{{ url('/') }}">Home</a></li>
                     {{-- <li><a href="about.html">About</a></li> --}}
-                    <li><a href="{{ route('student-course') }}">Courses</a></li>
+
                     {{-- <li><a href="contact.html">Contact</a></li> --}}
-                    <li>
-                        <a href="{{ route('stud-signup') }}" class="ml-2">Register</a>
-                    </li>
+                    @if (Auth::guard('student')->check())
+                        <li><a href="{{ route('student-home') }}">My Dashboard</a></li>
+                    @else
+                        <li><a href="{{ route('student-course') }}">Courses</a></li>
+                        <li>
+                            <a href="{{ route('stud-signup') }}" class="ml-2">Register</a>
+                        </li>
+                    @endif
+
 
                 </ul>
             </nav><!-- .nav-menu -->
-            @guest
+            @if (Auth::guard('student')->check())
+
+            @else
                 <a href="{{ route('student-login') }}" class="get-started-btn">Sign-in</a>
-
-            @endguest
-
+            @endif
 
 
 

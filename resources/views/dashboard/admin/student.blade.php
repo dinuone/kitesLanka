@@ -7,6 +7,7 @@
     </div>
 @endsection
 
+
 <script>
     window.addEventListener('OpenEditStudentModal', function() {
         $('.editstudent').find('span').html('');
