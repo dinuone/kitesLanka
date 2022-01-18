@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Student;
 use Auth;
 use Cache;
-use Carbon\Carbon;
 
 class UserActivity
 {
@@ -21,10 +20,10 @@ class UserActivity
     public function handle(Request $request, Closure $next)
     {
         if (Auth::guard('student')->check()){
-            $expireAt = Carbon::now()->addMinutes(2);
+            $expireAt = now()->addMinutes(2);
             Cache::put('user-is-online'. Auth::user()->id, true, $expireAt);
 
-            Student::where('id',Auth::user()->id)->update(['last_seen' => Carbon::now()]);
+            Student::where('id',Auth::user()->id)->update(['last_seen' => now()]);
         }
         return $next($request);
     }
