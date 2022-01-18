@@ -101,7 +101,7 @@
                                             </td>
                                             <td> {{ Carbon\Carbon::parse($data->last_seen)->diffForHumans() }}</td>
                                             <td>
-                                                @if (Cache::has('user-is-online-' . $data->id))
+                                                @if (Cache::has('user-is-online' . $data->id))
                                                     <span style="color:#10d430; "><span class="dot2"></span>
                                                         Online
                                                     </span>
@@ -140,7 +140,7 @@
                                             <td> {{ Carbon\Carbon::parse($student->last_seen)->diffForHumans() }}
                                             </td>
                                             <td>
-                                                @if (Cache::has('user-is-online-' . $student->id))
+                                                @if (Cache::has('user-is-online' . $student->id))
                                                     <span style="color:#10d430; "><span class="dot2"></span>
                                                         Online
                                                     </span>
