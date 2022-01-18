@@ -1,4 +1,23 @@
 <div>
+    <style>
+        .dot {
+            height: 10px;
+            width: 10px;
+            background-color: rgb(231, 5, 5);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .dot2 {
+            height: 10px;
+            width: 10px;
+            background-color: rgb(5, 231, 24);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+    </style>
+
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">
@@ -58,6 +77,8 @@
                                 <th>School</th>
                                 <th>Address</th>
                                 <th>Enroll Course</th>
+                                <th>Last Seen</th>
+                                <th>Status</th>
                                 <th colspan="3">Actions</th>
                             </thead>
                             <tbody>
@@ -77,6 +98,17 @@
                                                 @foreach ($data->courses as $crs)
                                                     <span class="badge bg-indigo mt-2 p-2">{{ $crs->Name }}</span>
                                                 @endforeach
+                                            </td>
+                                            <td> {{ Carbon\Carbon::parse($data->last_seen)->diffForHumans() }}</td>
+                                            <td>
+                                                @if (Cache::has('user-is-online-' . $data->id))
+                                                    <span style="color:#10d430; "><span class="dot2"></span>
+                                                        Online
+                                                    </span>
+                                                @else
+                                                    <span style="color:#960b06;"><span class="dot"></span>
+                                                        Offline</span>
+                                                @endif
                                             </td>
                                             <td>
                                                 <a wire:click=" OpenEditStudentModal({{ $data->id }})"
@@ -105,7 +137,18 @@
                                                     <span class="badge bg-indigo mt-2 p-2">{{ $course->Name }}</span>
                                                 @endforeach
                                             </td>
-
+                                            <td> {{ Carbon\Carbon::parse($student->last_seen)->diffForHumans() }}
+                                            </td>
+                                            <td>
+                                                @if (Cache::has('user-is-online-' . $student->id))
+                                                    <span style="color:#10d430; "><span class="dot2"></span>
+                                                        Online
+                                                    </span>
+                                                @else
+                                                    <span style="color:#960b06;"><span class="dot"></span>
+                                                        Offline</span>
+                                                @endif
+                                            </td>
                                             <td>
                                                 <a wire:click=" OpenEditStudentModal({{ $student->id }})"
                                                     class="mr-3"><i class="far fa-edit"

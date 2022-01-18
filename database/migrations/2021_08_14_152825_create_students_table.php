@@ -25,6 +25,7 @@ class CreateStudentsTable extends Migration
             $table->string('school')->nullable();
             $table->string('password');
             $table->boolean('payment_status')->default(0);
+            $table->timestamp('last_seen')->nullable();
             $table->timestamps();
         });
     }

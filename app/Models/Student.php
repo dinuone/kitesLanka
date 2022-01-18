@@ -23,7 +23,8 @@ class Student extends Authenticatable
         'id',
         'payment_status',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'last_seen'
     ];
 
     public function courses()
