@@ -121,6 +121,7 @@
 
                     </tbody>
                 </table>
+                {{ $files->links() }}
             </div>
         </div>
     </div>
