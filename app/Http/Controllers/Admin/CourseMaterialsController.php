@@ -19,7 +19,7 @@ class CourseMaterialsController extends Controller
 
     public function index()
     {
-        $files = Material::paginate(10);
+        $files = Material::Latest()->paginate(100);
         $courses = Course::all();
         return view('dashboard.admin.materials',[
             'courses'=>$courses,
@@ -75,10 +75,7 @@ class CourseMaterialsController extends Controller
            if(Storage::exists($materialName)){
                Storage::delete($materialName);
            }
-           else
-           {
-            return back()->with('fail','File does not exists in server!.');
-           }
+          
 
            $delete = Material::find($id)->delete();
            if($delete){
