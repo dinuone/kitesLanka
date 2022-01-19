@@ -78,13 +78,6 @@
                             <label>Select File <small class="text-danger">(Only PDf Files Allowed)</small></label>
                             <input type="file" class="form-control-file" name="material[]" multiple="multiple" id="pdf" />
                         </div>
-                        <div class="form-group">
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-teal"
-                                    role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
-                                    style="width: 0%"></div>
-                            </div>
-                        </div>
 
                         <button type="submit" name="submit" class="btn bg-indigo">
                             <i class="fas fa-cloud-upload-alt mr-2"></i>Upload
@@ -133,32 +126,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('scripts')
-    {{-- <script>
-        $(function() {
-            var path = "{{ route('file-upload') }}";
-            $(document).ready(function() {
-                $('#fileUploadForm').ajaxForm({
-                    beforeSend: function() {
-                        var percentage = '0';
-                    },
-                    uploadProgress: function(event, position, total, percentComplete) {
-                        var percentage = percentComplete;
-                        $('.progress .progress-bar').css("width", percentage + '%', function() {
-                            return $(this).attr("aria-valuenow", percentage) + "%";
-                        })
-                    },
-                    complete: function(xhr) {
-                        Swal.fire(
-                            'Success!',
-                            'New Course Created!',
-                            'success'
-                        )
-                    }
-                });
-            });
-        });
-    </script> --}}
 @endsection

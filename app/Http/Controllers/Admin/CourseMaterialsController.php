@@ -31,7 +31,7 @@ class CourseMaterialsController extends Controller
     public function uploadfile(Request $request)
     {
         $request->validate([
-            'material.*'=>'mimes:pdf',
+            'material.*'=>'mimes:doc,pdf,docx',
             'month'=>'required',
             'course'=>'required'
         ]);
