@@ -78,7 +78,6 @@
                 <th>Full Name</th>
                 <th>Whatsapp Number</th>
                 <th>Course</th>
-                <th></th>
                 <th>Payment Date</th>
                 <th>Payment for</th>
                 <th>Amount</th>
@@ -96,17 +95,6 @@
                     <td>{{ $payment->student->FullName }}</td>
                     <td>{{ $payment->student->contact_whatsapp }}</td>
                     <td>{{ $payment->course->Name }}</td>
-                    @if ($payment->student->payment_status == 1)
-                        <td>
-                            <h5><span class="badge badge-success"><i class="fas fa-check mr-2"></i>Payment
-                                    Recevied..</span></h5>
-                        </td>
-                    @else
-                        <td>
-                            <h5><span class="badge badge-warning"><i class="fas fa-info-circle mr-2"></i>Payment
-                                    Done</span></h5>
-                        </td>
-                    @endif
                     <td>{{ $payment->created_at->toDatestring() }}</td>
                     <td>{{ $payment->month }}</td>
                     <td>{{ $payment->amount }}</td>

@@ -132,14 +132,19 @@ class StudManage extends Component
 
     public function delete($id)
     {
-        $update = Student::find($this->studid)->update([
-            'payment_status'=>1
+        $update = Student::where('id',$this->studid)->update([
+            'payment_status'=>0
         ]);
 
-        $del = Payment::find($id)->delete();
-        if($del){
-            $this->dispatchBrowserEvent('deleted');
+        if($update){
+
+            $del = Payment::find($id)->delete();
+            if($del){
+                $this->dispatchBrowserEvent('deleted');
+            }
         }
+
+        
     }
 
     public function export()
