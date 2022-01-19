@@ -44,7 +44,8 @@
             <div class="card shadow">
                 <div class="card-header bg-navy"><i class="fas fa-file-alt mr-2"></i>Upload Course Materials</div>
                 <div class="card-body">
-                    <form action="{{ route('file-upload') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('file-upload') }}" method="POST" enctype="multipart/form-data"
+                        id="fileUploadForm">
                         @csrf
                         <div class="form-group">
                             <label>Select Month</label>
@@ -74,11 +75,18 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Select File <small>(PDF,MP4,docs,ppt etc..)</small></label>
-                            <input type="file" class="form-control-file" name="material[]" multiple />
+                            <label>Select File <small class="text-danger">(Only PDf Files Allowed)</small></label>
+                            <input type="file" class="form-control-file" name="material[]" multiple="multiple" id="pdf" />
+                        </div>
+                        <div class="form-group">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-teal"
+                                    role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                    style="width: 0%"></div>
+                            </div>
                         </div>
 
-                        <button type="submit" name="submit" class="btn bg-maroon">
+                        <button type="submit" name="submit" class="btn bg-indigo">
                             <i class="fas fa-cloud-upload-alt mr-2"></i>Upload
                         </button>
                     </form>
@@ -108,8 +116,8 @@
                                         <i class="fas fa-trash" style="color:#e70c0c;"></i></a>
                                 </td>
                                 <td>
-                                    <a href="{{ route('file-download', $file->file_name) }}" class="btn bg-indigo">
-                                        <i class="fas fa-cloud-download-alt mr-2"></i>Download</a>
+                                    <a href="{{ route('file-view', $file->id) }}" class="btn bg-indigo" target="_blank">
+                                        <i class="fas fa-eye mr-2"></i>VIew</a>
                                 </td>
                             </tr>
                         @empty
@@ -125,4 +133,32 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    {{-- <script>
+        $(function() {
+            var path = "{{ route('file-upload') }}";
+            $(document).ready(function() {
+                $('#fileUploadForm').ajaxForm({
+                    beforeSend: function() {
+                        var percentage = '0';
+                    },
+                    uploadProgress: function(event, position, total, percentComplete) {
+                        var percentage = percentComplete;
+                        $('.progress .progress-bar').css("width", percentage + '%', function() {
+                            return $(this).attr("aria-valuenow", percentage) + "%";
+                        })
+                    },
+                    complete: function(xhr) {
+                        Swal.fire(
+                            'Success!',
+                            'New Course Created!',
+                            'success'
+                        )
+                    }
+                });
+            });
+        });
+    </script> --}}
 @endsection

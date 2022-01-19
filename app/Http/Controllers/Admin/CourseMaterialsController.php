@@ -11,6 +11,7 @@ use Webpatser\Uuid\Uuid;
 use Illuminate\Support\Facades\Storage;
 use DB;
 use File;
+use Illuminate\Support\Facades\Response;
 
 
 class CourseMaterialsController extends Controller
@@ -30,7 +31,7 @@ class CourseMaterialsController extends Controller
     public function uploadfile(Request $request)
     {
         $request->validate([
-            'material.*' => 'required|mimes:png,jpg,jpeg,csv,txt,xlx,xls,pdf,pptx|max:10000',
+            'material.*'=>'mimes:pdf',
             'month'=>'required',
             'course'=>'required'
         ]);
@@ -40,16 +41,17 @@ class CourseMaterialsController extends Controller
             foreach($request->file('material') as $file)
             {
                 $filename = $file->getClientOriginalName();
-                // $filepath = $request->file('file')->storeAs('pdf', $filename, 'public');
-                Storage::disk('local')->put($filename, 'pdf');
+                $file->move(public_path().'/uploads/',$filename);
+                
                 $file = new Material();
                 $file->course_id = $request->course;
                 $file->file_name = $filename;
                 $file->month = $request->month;
                 $file->save();
+            
             }
 
-            
+           
 
             return back()->with('success','File has uploaded to the database.');
         }
@@ -58,10 +60,20 @@ class CourseMaterialsController extends Controller
     }
 
 
-    public function downloadfile($filename)
+    public function viewpdf($id)
     {
         
-        return Storage::download($filename);
+        $info = Material::find($id);
+        $filepath = $info->file_name;
+
+        $path= public_path('/uploads/'.$filepath);
+        
+        $header = [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . $filepath . '"'
+          ];
+
+       return response()->file($path, $header);
         
     }
 

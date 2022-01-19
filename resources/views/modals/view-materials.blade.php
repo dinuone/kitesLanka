@@ -53,9 +53,9 @@
                                     <td>{{ $file->course->Name }}</td>
                                     <td>{{ $file->created_at->toDatestring() }}</td>
                                     <td>{{ $file->file_name }}</td>
-                                    <td><a href="{{ route('student-stud-download', $file->file_name) }}"
-                                            class="btn bg-indigo"><i
-                                                class="fas fa-cloud-download-alt mr-2"></i>Download</a></td>
+                                    <td><a href="{{ route('student-file-view', $file->id) }}" class="btn bg-indigo"
+                                            target="_blank"><i class="fas fa-cloud-download-alt mr-2"></i>Download</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         @empty

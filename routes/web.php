@@ -66,13 +66,12 @@ Route::group(['middleware'=>['auth:student','PreventBackHistory']], function(){
     Route::get('student/course-materials',[StudMaterialController::class,'index'])->name('student-course-materials');
     Route::get('student/course-register/{id}',[StudDashController::class,'showreg'])->name('student-reg-course');
     Route::post('student/course-register/save',[StudDashController::class,'save'])->name('student-course-save');
-  
+    Route::get('student/course-material/view/{id}',[CourseMaterialsController::class,'viewpdf'])->name('student-file-view');
     
     //student - download pdf
    
 });
 
-Route::get('student/course-materials/download/{filename}',[StudMaterialController::class,'download'])->name('student-stud-download');
 
 
 //password reset - student ----------------------
@@ -115,17 +114,18 @@ Route::group(['middleware'=>['auth:admin','PreventBackHistory']],function (){
     Route::get('admin/course-students/{id}',[DashboardController::class,'coursestud'])->name('admin-course-stud');
     Route::view('admin/payment-summary','dashboard.admin.admin-summary')->name('view-summary');
     
+
     Route::get('admin/account-setting',[AccountController::class,'index'])->name('admin-showAcc-Setting');
     Route::post('admin/change-password',[AccountController::class,'changePsw'])->name('admin-changepsw');
-
+    //course material
+    Route::get('admin/course-material',[CourseMaterialsController::class,'index'])->name('materials');
+    Route::post('admin/upload',[CourseMaterialsController::class,'uploadfile'])->name('file-upload');
+    Route::get('admin/course-material/delete/{id}',[CourseMaterialsController::class,'Removefilles'])->name('file-remove');
+    Route::get('admin/course-material/view/{id}',[CourseMaterialsController::class,'viewpdf'])->name('file-view');
 
 });
 
-//course material
-Route::get('admin/course-material',[CourseMaterialsController::class,'index'])->name('materials');
-Route::post('admin/upload',[CourseMaterialsController::class,'uploadfile'])->name('file-upload');
-Route::get('admin/course-material/download/{filename}',[CourseMaterialsController::class,'downloadfile'])->name('file-download');
-Route::get('admin/course-material/delete/{id}',[CourseMaterialsController::class,'Removefilles'])->name('file-remove');
+
 
 
 
