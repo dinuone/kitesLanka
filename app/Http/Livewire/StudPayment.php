@@ -16,12 +16,14 @@ class StudPayment extends Component
 {
     use WithFileUploads;
     use WithPagination;
+    protected $paginationTheme = 'bootstrap';
 
     public $photo,$student_id;
     public $course;
     public $amount;
     public $month;
     public $payST = 1;
+    public $paymentid;
    
 
     public function render()
@@ -32,11 +34,13 @@ class StudPayment extends Component
 
         $courses = Auth::guard('student')->user()->courses()->get();
         $students = Student::where('id',$sid)->get();
+        $payment_imgs = Payment::select('image_path','id')->where('id',$this->paymentid)->get();
         
         return view('livewire.stud-payment',[
             'courses'=>$courses,
             'students'=>$students,
             'payments'=>$payments,
+            'payment_imgs'=>$payment_imgs
 
         ]);
     }
@@ -81,5 +85,15 @@ class StudPayment extends Component
         if($save){
             $this->dispatchBrowserEvent('ClosepaymenttModal');
         }
+    }
+
+    
+    public function OpenRecipt($id)
+    {
+        $this->paymentid = $id;
+        $this->dispatchBrowserEvent('OpenViewRecipt',[
+            'id'=>$id
+        ]);
+       
     }
 }

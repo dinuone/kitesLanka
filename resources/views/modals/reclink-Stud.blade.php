@@ -1,9 +1,9 @@
-<div class="modal fade classLink" wire:ignore.self tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+<div class="modal fade recordlink" wire:ignore.self tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
     aria-hidden="true" data-keyboad="false" data-backdrop="static">
     <div class="modal-dialog modal-dialog-centered" role="document"">
-    <div class="   modal-content">
+    <div class="             modal-content">
         <div class="modal-header">
-            <h4 class="modal-title">Your Class Link</h4>
+            <h4 class="modal-title">Your Recording Link</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -30,8 +30,8 @@
                 <label for="">Class Link</label>
                 @forelse ($payments as $payment)
                     <div class="card-body shadow">
-                        <a href="{{ $payment->course->Links }}" wire:click="markattend()" target="_blank">Join to
-                            class</a>
+                        <a href="{{ $payment->course->record_link }}" target="_blank">View
+                            Recording</a>
                     </div>
                 @empty
                     <div class="alert alert-danger" role="alert">

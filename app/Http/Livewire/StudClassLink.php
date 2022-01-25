@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class StudClassLink extends Component
 {
     public $courseID;
-    public $month;
+    public $month,$rec_month;
 
     public function render()
     {
@@ -65,5 +65,13 @@ class StudClassLink extends Component
         
     
        
+    }
+
+    public function OpenRecLinkModal($id)
+    {
+        $this->courseID = $id;
+        $this->dispatchBrowserEvent('RecLinkModal',[
+            'id'=>$id
+        ]);
     }
 }

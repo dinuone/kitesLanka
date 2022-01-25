@@ -23,6 +23,8 @@ class CreateCourses extends Migration
             $table->string('Links')->nullable();
             $table->decimal('class_fee');
             $table->decimal('offer_price')->nullable();
+            $table->string('record_link')->nullable();
+            $table->string('record_link_month')->nullable();
             $table->timestamps();
 
             $table->foreign('teacher_id')->references('id')->on('teachers')->onDelete('cascade');

@@ -19,7 +19,9 @@ class Course extends Model
        'update_at',
        'month',
        'class_fee',
-       'offer_price'
+       'offer_price',
+       'record_link',
+       'record_link_month'
        
     ];
 

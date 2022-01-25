@@ -14,7 +14,20 @@
 
         }
 
+        #myVideo {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+        }
+
     </style>
+
+    <video autoplay muted loop id="myVideo">
+        <source src="{{ asset('home_video.mp4') }}" type="video/mp4">
+    </video>
+
     <div class="container">
         <div class="card">
             <div class="card-header">
@@ -25,11 +38,18 @@
                     @foreach ($announce as $anc)
                         @foreach ($student as $std)
                             @if ($crs->id == $anc->course_id && $std->payment_status == $anc->payment_status)
-                                <div class="alert alert-info alert-dismissible fade show m-2" role="alert">
+                                <div class="alert bg-gray alert-dismissible fade show m-2" role="alert">
                                     <strong>{{ $anc->title }} : {{ $anc->course->Name }}</strong>
                                     <br>
                                     {!! $anc->body !!}
                                     <br>
+                                    <hr>
+                                    @if ($anc->payment_status == 0)
+                                        <label>Message Type :</label> <span class="badge bg-maroon">Payment Due</span>
+                                    @else
+                                        <label>Message Type :</label> <span class="badge bg-teal">Payment Done</span>
+                                    @endif
+
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>

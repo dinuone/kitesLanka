@@ -11,7 +11,7 @@ class CourseLink extends Component
     use WithPagination;
 
     public $vdlink,$crs_id,$month;
-    protected $listeners=['delete'];
+    protected $listeners=['delete','deleterec'];
 
     public function render()
     {
@@ -74,6 +74,59 @@ class CourseLink extends Component
             $this->dispatchBrowserEvent('deleted');
         }
     }
+
+    public function OpenRecLink($id)
+    {
+        $info = Course::find($id);
+        $this->crs_id = $info->id;
+        $this->dispatchBrowserEvent('OpenAddRecLinkModal',[
+            'id'=>$id
+        ]);
+    }
+
+    public $rec_link,$rec_month;
+    public function saveRecLink()
+    {
+        $this->validate([
+            'rec_link'=>'required',
+            'rec_month'=>'required'
+        ]);
+
+        $crs_id = $this->crs_id;
+        $update = Course::find($crs_id)->update([
+            'record_link'=>$this->rec_link,
+            'record_link_month'=>$this->rec_month
+        ]);
+        
+        
+        if($update)
+        {
+            $this->dispatchBrowserEvent('CloseRecModal');
+        }
+    }
+
+    
+    public function DeleteRecLink($id)
+    {
+        $info = Course::find($id);
+        $this->dispatchBrowserEvent('swalconfirmRec',[
+            'title'=>'Are You Sure?',
+            'id'=>$id
+        ]);
+    }
+
+    public function deleterec($id)
+    {
+        
+        $info = Course::find($id);
+        $del = Course::where('id',$id)->where('record_link_month','like',$info->record_link_month)->where('record_link','like',$info->record_link)->first();
+        if($del){
+
+            $del->update(['record_link' => null,'record_link_month'=>null]);
+            $this->dispatchBrowserEvent('deleted_rec');
+        }
+    }
+
 
     
 }
