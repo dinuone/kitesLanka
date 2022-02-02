@@ -1,0 +1,70 @@
+<div>
+    <div class="card">
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="search.." wire:model="search">
+                </div>
+                <div class="col">
+                    <select class="form-control" wire:model="filtercourse">
+                        <option value="">--Select course--</option>
+                        @foreach ($courses as $course)
+                            <option value="{{ $course->id }}">{{ $course->Name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col">
+                    <select class="form-control" wire:model="paymentSt">
+                        <option value="">--Payment Status--</option>
+                        <option value="1">Payment Done</option>
+                        <option value="0">Payment Due</option>
+                    </select>
+                </div>
+
+                <div class="col">
+                    <label>Total Student Count: </label>
+                    @if (!empty($count))
+                        <span class="badge bg-maroon p-2">{{ $count }}</span>
+                    @endif
+                </div>
+            </div>
+
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Full Name</th>
+                        <th>E-email</th>
+                        <th>Contact</th>
+                        <th>Contact(Whatsapp)</th>
+                        <th>School</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (count($filterdata))
+                        @foreach ($filterdata as $data)
+                            <tr>
+                                <td>{{ $data->student_id }}</td>
+                                <td>{{ $data->FullName }}</td>
+                                <td>{{ $data->email }}</td>
+                                <td>{{ $data->contact }}</td>
+                                <td>{{ $data->contact_whatsapp }}</td>
+                                <td>{{ $data->school }}</td>
+
+                                @if ($data->payment_status == 1)
+                                    <td><span class="badge bg-teal p-2">Payment Done</span></td>
+                                @else
+                                    <td><span class="badge bg-maroon p-2">Payment Due</span></td>
+                                @endif
+
+
+                            </tr>
+                        @endforeach
+                    @endif
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

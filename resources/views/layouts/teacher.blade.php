@@ -111,11 +111,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <p>Class Link</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="{{ route('teacher.materials') }}"
                                 class="nav-link {{ request()->is('teacher/course-materials*') ? 'active' : '' }}">
                                 <i class="nav-icon fa fa-file-pdf"></i>
                                 <p>Course Materials</p>
+                            </a>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a href="{{ route('teacher.payment-sum') }}"
+                                class="nav-link {{ request()->is('teacher/payment-summary') ? 'active' : '' }}">
+                                <i class="fas fa-money-check-alt mr-2"></i>
+                                <p>payment Summary</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('teacher.payment-details') }}"
+                                class="nav-link {{ request()->is('teacher/payment-details') ? 'active' : '' }}">
+                                <i class="fas fa-money-check-alt mr-2"></i>
+                                <p>payment Details</p>
                             </a>
                         </li>
                         <li class="nav-item">

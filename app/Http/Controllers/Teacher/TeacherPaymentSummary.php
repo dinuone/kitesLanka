@@ -26,6 +26,8 @@ class TeacherPaymentSummary extends Controller
             'amount'=>$amount,
             'studcount'=>$studcount
         ]);
+
+    
     }
 
     public function search(Request $request){

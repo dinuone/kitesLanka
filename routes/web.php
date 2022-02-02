@@ -145,7 +145,8 @@ Route::prefix('teacher')->name('teacher.')->group(function(){
         Route::post('/logout',[TeacherController::class,'logout'])->name('logout');
         Route::get('/today-reg',[TeacherController::class,'todayReg'])->name('today-reg');
         Route::view('/class-link','dashboard.teacher.class-link')->name('class-link');
-        
+        Route::view('/payment-summary','dashboard.teacher.paysum')->name('payment-sum');
+        Route::view('/payment-details','dashboard.teacher.payment-details')->name('payment-details');
         //file materials
         Route::get('/course-material',[CoursePDFcontroller::class,'index'])->name('course-material');
         //course material
