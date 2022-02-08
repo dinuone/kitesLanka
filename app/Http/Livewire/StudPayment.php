@@ -61,7 +61,7 @@ class StudPayment extends Component
             'student_id'=>'required',
             'course'=>'required',
             'photo'=>'required',
-            'amount'=>'required',
+            'amount'=>'numeric|min:2|max:6',
             'month'=>'required'
             
         ]);
