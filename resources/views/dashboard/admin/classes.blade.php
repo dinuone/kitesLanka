@@ -116,6 +116,7 @@
                             <th>Course Name</th>
                             <th>Teacher</th>
                             <th>Class Fee</th>
+                            <th>Admission Fee</th>
                             <th>Description</th>
                             <th>Large Description</th>
                             <th colspan="2">Actions</th>
@@ -128,6 +129,7 @@
                                 <td>{{ $course->Name }}</td>
                                 <td>{{ $course->teacher->fullname }}</td>
                                 <td>{{ $course->class_fee }}</td>
+                                <td>{{ $course->admission_fee }}</td>
                                 <td>{!! $course->description !!}</td>
                                 <td>{!! $course->large_desc !!}</td>
                                 <td>
