@@ -19,9 +19,16 @@
                             <img src="{{ asset('storage/' . $course->image_path) }}" class="img-fluid"
                                 alt="course-image">
                             <h4 class="mt-3">{{ $course->Name }}</h4>
+                            @if (!empty($course->large_desc))
+                            <p>
+                                {!! $course->large_desc !!}
+                            </p>
+                            @else
                             <p>
                                 {!! $course->description !!}
                             </p>
+                            @endif
+                           
                         </div>
 
                         <div class="col-lg-4">
@@ -32,11 +39,11 @@
                             </div>
                             <div class="course-info d-flex justify-content-between align-items-center">
                                 <h5>Admission Fee</h5>
-                                <p>Free</p>
+                                <p>{{ $course->admission_fee }}</p>
                             </div>
                             <div class="course-info d-flex justify-content-between align-items-center">
                                 <h5>Course Fee</h5>
-                                <p>Rs.1500</p>
+                                <p>{{ $course->class_fee }}</p>
                             </div>
 
                             <div class="course-info d-flex justify-content-between align-items-center">

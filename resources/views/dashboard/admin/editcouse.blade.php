@@ -35,30 +35,48 @@
                                 <span class="text-danger">@error('teacherName') {{ $message }} @enderror</span>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label></label>
+                        <div class="form-group mt-3">
+                            <label>Small Description</label>
                             <textarea name="description" id="desc" cols="5" rows="10"
                                 class="form-control mt-3">{!! $data->description !!}</textarea>
                             <span class="text-danger">@error('description') {{ $message }} @enderror</span>
                         </div>
+                        <div class="form-group mt-3">
+                            <label>Large Description</label>
+                            <textarea name="large_description" id="desc_large" cols="5" rows="10"
+                                class="form-control mt-3">{!! $data->large_desc !!}</textarea>
+                            <span class="text-danger">@error('larage_description') {{ $message }} @enderror</span>
+                        </div>
 
                         <div class="row">
                             <div class="col">
-                                <input type="text" name="classfee" class="form-control mt-3" placeholder="Class Fee..."
-                                    value="{{ $data->class_fee }}">
-                                <span class="text-danger">@error('classfee') {{ $message }} @enderror</span>
-                            </div>
-                            <div class="col mt-3">
-                                <input type="file" class="form-control-file" name="photo" required>
-                                <span class="text-danger">@error('photo') {{ $message }} @enderror</span>
                                 <div class="form-group">
+                                    <label>Class Fee</label>
+                                    <input type="text" name="classfee" class="form-control" placeholder="Class Fee..."
+                                        value="{{ $data->class_fee }}">
+                                    <span class="text-danger">@error('classfee') {{ $message }} @enderror</span>
+                                </div>
+                                
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Admission Fee</label>
+                                    <input type="text" name="admission_fee" class="form-control" placeholder="Admission Fee"
+                                        value="{{ $data->admission_fee }}">
+                                    <span class="text-danger">@error('admission_fee') {{ $message }} @enderror</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="file" class="form-control-file" name="photo" value="{{ $data->image_path }}" required>
+                                <span class="text-danger">@error('photo') {{ $message }} @enderror</span>
+                                <div class="form-group mt-3">
                                     <div class="progress">
                                         <div class="progress-bar progress-bar-striped progress-bar-animated bg-teal"
                                             role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
                                             style="width: 0%"></div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                         <div class="row">
                             <div class="form-group">
@@ -89,6 +107,11 @@
     <script>
         ClassicEditor
             .create(document.querySelector('#desc'))
+            .catch(error => {
+                console.error(error);
+            });
+            ClassicEditor
+            .create(document.querySelector('#desc_large'))
             .catch(error => {
                 console.error(error);
             });

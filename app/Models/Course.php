@@ -21,7 +21,9 @@ class Course extends Model
        'class_fee',
        'offer_price',
        'record_link',
-       'record_link_month'
+       'record_link_month',
+       'large_desc',
+       'admission_fee'
        
     ];
 

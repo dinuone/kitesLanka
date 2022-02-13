@@ -19,6 +19,7 @@ class CreateCourses extends Migration
             $table->string('Name');
             $table->string('image_path');
             $table->string('description');
+            $table->text('large_desc')->nullable();
             $table->string('month')->nullable();
             $table->string('Links')->nullable();
             $table->decimal('class_fee');

@@ -46,11 +46,17 @@
                                     <span class="text-danger">@error('teacher') {{ $message }} @enderror</span>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label></label>
+                            <div class="form-group mt-3">
+                                <label>small description</label>
                                 <textarea name="description" id="desc" cols="5" rows="10"
                                     class="form-control mt-3"></textarea>
                                 <span class="text-danger">@error('description') {{ $message }} @enderror</span>
+                            </div>
+                            <div class="form-group">
+                                <label>larage description</label>
+                                <textarea name="large_description" id="desc_large" cols="5" rows="10"
+                                    class="form-control mt-3"></textarea>
+                                <span class="text-danger">@error('large_description') {{ $message }} @enderror</span>
                             </div>
 
                             <div class="row">
@@ -59,8 +65,14 @@
                                         required>
                                     <span class="text-danger">@error('classfee') {{ $message }} @enderror</span>
                                 </div>
-                                <div class="col mt-3">
-                                    <input type="file" class="form-control-file" name="photo" required>
+                                <div class="col">
+                                    <input type="text" name="admission_fee" class="form-control mt-3" placeholder="Admission Fee..."
+                                        required>
+                                    <span class="text-danger">@error('admission_fee') {{ $message }} @enderror</span>
+                                </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <input type="file" class="form-control-file" name="photo" required>
                                     <span class="text-danger">@error('photo') {{ $message }} @enderror</span>
                                     <div class="form-group">
                                         <div class="progress">
@@ -69,7 +81,6 @@
                                                 style="width: 0%"></div>
                                         </div>
                                     </div>
-                                </div>
                             </div>
 
                             <button class="btn bg-indigo mt-3"><i class="fas fa-plus mr-2"></i>Add Course</button>
@@ -106,6 +117,7 @@
                             <th>Teacher</th>
                             <th>Class Fee</th>
                             <th>Description</th>
+                            <th>Large Description</th>
                             <th colspan="2">Actions</th>
                         </tr>
                     </thead>
@@ -117,6 +129,7 @@
                                 <td>{{ $course->teacher->fullname }}</td>
                                 <td>{{ $course->class_fee }}</td>
                                 <td>{!! $course->description !!}</td>
+                                <td>{!! $course->large_desc !!}</td>
                                 <td>
                                     <a class="btn bg-teal mr-3" href="{{ route('admin-editcourse', $course->id) }}"><i
                                             class="far fa-edit mr-2" style="color:#ffffff;"></i>Edit</a>
@@ -176,6 +189,12 @@
     <script>
         ClassicEditor
             .create(document.querySelector('#desc'))
+            .catch(error => {
+                console.error(error);
+            });
+
+            ClassicEditor
+            .create(document.querySelector('#desc_large'))
             .catch(error => {
                 console.error(error);
             });

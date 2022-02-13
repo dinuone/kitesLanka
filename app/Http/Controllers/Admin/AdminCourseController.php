@@ -12,7 +12,7 @@ class AdminCourseController extends Controller
     public function index()
     {
         $studcount = Course::withCount(['students'])->get(); 
-        $courses = Course::select('id','Name','teacher_id','description','class_fee')->paginate(5);
+        $courses = Course::select('id','Name','teacher_id','description','large_desc','class_fee')->paginate(5);
         $teachers = Teacher::Select('id','fullname')->get();
         return view('dashboard.admin.classes',[
             'courses'=>$courses,
@@ -34,9 +34,11 @@ class AdminCourseController extends Controller
         $crs = new Course();
         $crs->Name = $request->courseName;
         $crs->image_path = $request->photo->store('images', 'public');
+        $crs->large_desc = $request->large_description;
         $crs->description = $request->description;
         $crs->class_fee = $request->classfee;
         $crs->teacher_id = $request->teacher;
+        $crs->admission_fee = $request->admission_fee;
         
         $save = $crs->save();
 
@@ -70,7 +72,9 @@ class AdminCourseController extends Controller
             'teacher_id'=>$request->teacherName,
             'Name'=>$request->courseName,
             'description'=>$request->description,
+            'large_desc'=>$request->large_description,
             'class_fee'=>$request->classfee,
+            'admission_fee'=>$request->admission_fee,
             'image_path'=>$request->photo->store('images', 'public'),
         ]);
 
