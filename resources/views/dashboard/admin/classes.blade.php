@@ -53,7 +53,7 @@
                                 <span class="text-danger">@error('description') {{ $message }} @enderror</span>
                             </div>
                             <div class="form-group">
-                                <label>larage description</label>
+                                <label>large description</label>
                                 <textarea name="large_description" id="desc_large" cols="5" rows="10"
                                     class="form-control mt-3"></textarea>
                                 <span class="text-danger">@error('large_description') {{ $message }} @enderror</span>
