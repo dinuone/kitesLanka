@@ -65,7 +65,7 @@
                  <!-- Licensing information: https://bootstrapmade.com/license/ -->
                  <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/ -->
                  Developed by <a href="https://www.linkedin.com/in/dinuwan-daundasekara-307218189"
-                     target="_blank">Dinuwan Daundasekara</a>
+                     target="_blank">Dinuwan & Tharindu</a>
              </div>
          </div>
          <div class="social-links text-center text-md-right pt-3 pt-md-0">
