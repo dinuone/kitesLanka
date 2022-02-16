@@ -65,9 +65,7 @@
                     <div wire:loading wire:target="photo">Uploading...</div>
                 </div>
                 {{-- image preview --}}
-                @if ($photo)
-                    <img src="{{ $photo->temporaryUrl() }}" id="photo1">
-                @endif
+               
         </div>
 
         <div class="modal-footer justify-content-between">
