@@ -112,7 +112,8 @@
                 <th>Amount</th>
                 <th>Ref No</th>
                 <th>Payment Status</th>
-                <th style="width: 160px;"></th>
+                <th style="width: 120px;"></th>
+                <th style="width:120px;">View PDF</th>
             </tr>
         </thead>
         <tbody>
@@ -138,8 +139,13 @@
                         </td>
                     @endif
                     <td><button class="btn bg-gray" wire:click="OpenRecipt({{ $payment->id }})"><i
-                                class="fas fa-eye mr-2"></i>View</button></td>
-
+                                class="fas fa-eye mr-2"></i>View</button>
+                    </td>
+                    <td>
+                        @if ($payment->pdf_file != null)
+                        <a href="{{ route('teacher.viewpdf', $payment->id) }}" class="btn bg-teal">View PDF</a>
+                        @endif
+                    </td>
                     </tr>
                 @endforeach
             @else

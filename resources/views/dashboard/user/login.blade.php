@@ -118,7 +118,7 @@
                                             style="background-color: #0095d9">Login</button>
                                     </div>
 
-                                    <a href="{{ route('student-forget.form') }}">Forgot your Password?</a>
+                                    {{-- <a href="{{ route('student-forget.form') }}">Forgot your Password?</a> --}}
                                 </form>
                             </div>
                         </div>

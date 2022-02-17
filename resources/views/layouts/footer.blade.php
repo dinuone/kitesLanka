@@ -57,7 +57,7 @@
 
          <div class="mr-md-auto text-center text-md-left">
              <div class="copyright">
-                 &copy; Copyright <strong><span>Kites Lanka</span></strong>. All Rights Reserved
+                 &copy; 2022<strong> <span>Kites Lanka</span></strong>. All Rights Reserved
              </div>
              <div class="credits">
                  <!-- All the links in the footer should remain intact. -->

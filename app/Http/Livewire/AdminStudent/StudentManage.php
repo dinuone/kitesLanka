@@ -15,7 +15,7 @@ class StudentManage extends Component
 {
     use WithPagination;
 
-    public $fullname,$dob,$contact,$whatsapp,$address,$school,$email,$std;
+    public $fullname,$dob,$contact,$whatsapp,$address,$school,$email,$std,$password;
     public $course = [];
     public $search;
     public $filtercourse;
@@ -98,7 +98,12 @@ class StudentManage extends Component
             $user->address = $this->address;
             $user->email = $this->email;
             $user->school = $this->school;
-            $user->password = '$2y$10$7ix6e/tLHYOPYt8xwP/12uh6fouRIQd7IUZOzZXkU41cvzZjYdMsm';
+            if($this->password){
+                $user->password = \Hash::make($this->password);
+            }else{
+                $user->password = '$2y$10$7ix6e/tLHYOPYt8xwP/12uh6fouRIQd7IUZOzZXkU41cvzZjYdMsm';
+            }
+            
             $user->student_id = $this->std;
 
             $save = $user->save();
@@ -211,6 +216,12 @@ class StudentManage extends Component
     {
         return (new StudentExport ($this->selected))->download('students-detials.xls'); 
       
+    }
+
+    public $show = false;
+    public function showpsw()
+    {
+        $this->show =! $this->show;
     }
 
 }

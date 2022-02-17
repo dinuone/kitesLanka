@@ -24,7 +24,8 @@ class Student extends Authenticatable
         'payment_status',
         'created_at',
         'updated_at',
-        'last_seen'
+        'last_seen',
+     
     ];
 
     public function courses()
@@ -41,6 +42,11 @@ class Student extends Authenticatable
     public function attendance()
     {
         return $this->hasMany(Attendance::class);
+    }
+
+    public function feedbacks()
+    {
+        return $this->hasMany(Feedback::class);
     }
 }
 

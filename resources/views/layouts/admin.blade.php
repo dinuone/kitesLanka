@@ -187,6 +187,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('stud-feedbacks') }}"
+                                class="nav-link {{ request()->is('admin/feedback*') ? 'active' : '' }}">
+                                <i class="nav-icon fa fa-smile"></i>
+                                <p>Students Feedback</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('admin-showAcc-Setting') }}"
                                 class="nav-link {{ request()->is('admin/account-setting*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-user-shield"></i>

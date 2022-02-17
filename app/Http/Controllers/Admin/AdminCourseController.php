@@ -12,7 +12,7 @@ class AdminCourseController extends Controller
     public function index()
     {
         $studcount = Course::withCount(['students'])->get(); 
-        $courses = Course::select('id','Name','teacher_id','description','large_desc','class_fee')->paginate(5);
+        $courses = Course::select('id','Name','teacher_id','description','large_desc','class_fee','admission_fee')->paginate(5);
         $teachers = Teacher::Select('id','fullname')->get();
         return view('dashboard.admin.classes',[
             'courses'=>$courses,

@@ -56,6 +56,18 @@
                     <input type="text" class="form-control" placeholder="Enter School Name here." wire:model="school">
                     <span class="text-danger">@error('school') {{ $message }} @enderror</span>
                 </div>
+                
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" wire:click="showpsw()">
+                    <label class="form-check-label">Custom Passowrd ?</label>
+                </div>
+                    @if($show)
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Password" wire:model="password">
+                        <span class="text-danger">@error('password') {{ $message }} @enderror</span>
+                    </div>
+                    @endif
+                <hr>
 
                 @foreach ($courses as $course)
                     <div class="form-check">

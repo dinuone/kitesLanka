@@ -22,9 +22,16 @@
             </div>
             <div class="modal-body">
                 <form wire:submit.prevent="access">
+                   
                     @foreach ($paymentimage as $img)
                         <p>
+                            @if (empty($img->image_path))
+                            <h4 class="text-danger">User upload PDF for Recipt</h4>
+
+                            @else
                             <img src=" {{ asset('storage/' . $img->image_path) }} " alt="recipt img" id="imgrc">
+                            @endif
+                           
                         </p>
 
                     @endforeach
@@ -35,7 +42,8 @@
                             wire:model="ref_number">
                         <span class="text-danger">@error('ref_number') {{ $message }} @enderror</span>
                     </div>
-
+    
+                  
             </div>
 
             <div class="modal-footer justify-content-between">

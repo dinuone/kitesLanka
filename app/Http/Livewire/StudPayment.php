@@ -24,6 +24,7 @@ class StudPayment extends Component
     public $month;
     public $payST = 1;
     public $paymentid;
+    public $pdffile;
    
 
     public function render()
@@ -60,7 +61,6 @@ class StudPayment extends Component
         $this->validate([
             'student_id'=>'required',
             'course'=>'required',
-            'photo'=>'required',
             'amount'=>'numeric',
             'month'=>'required'
             
@@ -69,13 +69,21 @@ class StudPayment extends Component
         
         $payment = new Payment();
         $sid = Auth::user()->id;
-    
-        $payment->image_path = $this->photo->store('images', 'public');
         $payment->student_id = $this->student_id;
         $payment->course_id = $this->course;
         $payment->st_id = $sid;
         $payment->amount = $this->amount;
         $payment->month = $this->month;
+
+        if($this->photo){
+            $payment->image_path = $this->photo->store('images', 'public');
+        }
+        
+        if($this->pdffile){
+            $filename = $this->pdffile->store('reciptPDF','public');
+            $payment->pdf_file = $filename;
+        }
+       
         $save = $payment->save();
 
         $update = Student::find($sid)->update([
@@ -95,5 +103,17 @@ class StudPayment extends Component
             'id'=>$id
         ]);
        
+    }
+
+    public $showimage = false;
+    public $showpdf = false;
+    public function showimg()
+    {
+        $this->showimage =! $this->showimage;
+    }
+
+    public function showpdf()
+    {
+        $this->showpdf =! $this->showpdf;
     }
 }

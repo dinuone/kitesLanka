@@ -120,6 +120,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('view-feedback') }}"
+                                class="nav-link {{ request()->is('student/feedback*') ? 'active' : '' }}">
+                                <i class="nav-icon fa fa-smile"></i>
+                                <p>Feedback</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('student-logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();"
                                 class="nav-link {{ request()->is('student/logout*') ? 'active' : '' }}">
@@ -139,7 +146,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="background-color: white">
             @yield('content')
         </div>
         <!-- /.content-header -->

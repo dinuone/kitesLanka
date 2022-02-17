@@ -7,6 +7,7 @@ use App\Http\Controllers\User\StudDashController;
 use App\Http\Controllers\User\StudCourseController;
 use App\Http\Controllers\StudregController;
 use App\Http\Controllers\User\StudMaterialController;
+use App\Http\Controllers\User\FeedbackController;
 
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\CourseController;
@@ -21,6 +22,7 @@ use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\StudentAnnouncecontroller;
 use App\Http\Controllers\Admin\AdminCourseController;
+use App\Http\Controllers\Admin\ViewPDFCOntroller;
 
 use App\Http\Controllers\Teacher\TeacherController;
 use App\Http\Controllers\Teacher\MyClassController;
@@ -67,6 +69,8 @@ Route::group(['middleware'=>['auth:student','PreventBackHistory']], function(){
     Route::get('student/course-register/{id}',[StudDashController::class,'showreg'])->name('student-reg-course');
     Route::post('student/course-register/save',[StudDashController::class,'save'])->name('student-course-save');
     Route::get('student/course-material/view/{id}',[CourseMaterialsController::class,'viewpdf'])->name('student-file-view');
+    Route::get('student/feedback',[FeedbackController::class,'index'])->name('view-feedback');
+    Route::post('student/feedback/store',[FeedbackController::class,'store'])->name('store-feedback');
     
     //student - download pdf
    
@@ -123,6 +127,10 @@ Route::group(['middleware'=>['auth:admin','PreventBackHistory']],function (){
     Route::get('admin/course-material/delete/{id}',[CourseMaterialsController::class,'Removefilles'])->name('file-remove');
     Route::get('admin/course-material/view/{id}',[CourseMaterialsController::class,'viewpdf'])->name('file-view');
 
+    Route::get('admin/downloadpdf/{id}',[ViewPDFCOntroller::class,'viewpdf'])->name('pdf-view');
+
+    Route::get('admin/feedback/view',[FeedbackController::class,'show_feedbacks'])->name('stud-feedbacks');
+
 });
 
 
@@ -162,7 +170,7 @@ Route::prefix('teacher')->name('teacher.')->group(function(){
         //payment summary
         Route::get('/teacher/payment-details/{id}',[TeacherPaymentSummary::class,'index'])->name('teacher-payment');
         Route::get('teacher/search',[TeacherPaymentSummary::class,'search'])->name('search');
-      
+        Route::get('teacher/download/{id}',[ViewPDFCOntroller::class,'teacherviewpdf'])->name('viewpdf');
         });
     });
         

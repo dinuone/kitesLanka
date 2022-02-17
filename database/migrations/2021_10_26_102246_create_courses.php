@@ -18,11 +18,12 @@ class CreateCourses extends Migration
             $table->unsignedBigInteger('teacher_id');
             $table->string('Name');
             $table->string('image_path');
-            $table->string('description');
+            $table->text('description');
             $table->text('large_desc')->nullable();
             $table->string('month')->nullable();
             $table->string('Links')->nullable();
             $table->decimal('class_fee');
+            $table->decimal('admission_fee')->nullable();
             $table->decimal('offer_price')->nullable();
             $table->string('record_link')->nullable();
             $table->string('record_link_month')->nullable();

@@ -1,4 +1,27 @@
 <div>
+<style>
+    #crd1:hover {
+        transform: scale(1.1);
+        background-color: #0C1E7F;
+        color: white;
+        transition: transform .5s ease;
+    }
+
+    #crd2:hover {
+        transform: scale(1.1);
+        background-color: #D22779;
+        color: white;
+        transition: transform .5s ease;
+    }
+
+    #crd3:hover {
+        transform: scale(1.1);
+        background-color: #3E8E7E;
+        color: white;
+        transition: transform .5s ease;
+    }
+
+</style>
     <div class="row mb-3 ml-3 mt-2">
         <div class="col-md-3">
             <label for="">Course</label>
@@ -54,17 +77,17 @@
 
     <div class="row">
         <div class="col-md-3">
-            <div class="card ml-3 p-2">
+            <div class="card ml-3 p-2" id="crd1">
                 <h5> Total Amount : <span class="badge bg-indigo">Rs.{{ $amount }}</span></h5>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card ml-3 p-2">
+            <div class="card ml-3 p-2" id="crd2">
                 <h5> Verified Payments : <span class="badge bg-indigo">{{ $verify }}</span> </h5>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card ml-3 p-2">
+            <div class="card ml-3 p-2" id="crd3">
                 <h5> Not Verified Payments : <span class="badge bg-indigo"> {{ $notverify }}</span></h5>
             </div>
         </div>
@@ -84,6 +107,7 @@
                 <th>Ref No</th>
                 <th>Payment Status</th>
                 <th></th>
+                <th style="width:120px;">View PDF</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -110,7 +134,16 @@
                         </td>
                     @endif
                     <td><button class="btn bg-indigo"
-                            wire:click="OpenPaymentverify({{ $payment->id }})">Check</button></td>
+                            wire:click="OpenPaymentverify({{ $payment->id }})">Check</button>
+                    </td>
+                   
+                    <td>
+                        @if ($payment->pdf_file != null)
+                        <a href="{{ route('pdf-view', $payment->id) }}" class="btn bg-teal">View PDF</a>
+                        @endif
+                    </td>
+                   
+                    
                     <td>
                         <a class="mr-3" wire:click="OpenEditPaymentModal({{ $payment->id }})"><i
                                 class="far fa-edit" style="color:#10d430;"></i></a>

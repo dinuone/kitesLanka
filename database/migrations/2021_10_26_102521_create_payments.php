@@ -18,11 +18,12 @@ class CreatePayments extends Migration
             $table->unsignedBigInteger('st_id');
             $table->string('student_id');
             $table->unsignedBigInteger('course_id');
-            $table->string('image_path');
+            $table->string('image_path')->nullable();
             $table->boolean('payment_status')->default(0);
             $table->string('month');
             $table->decimal('amount');
             $table->bigInteger('ref_number')->nullable();
+            $table->string('pdf_file')->nullable();
             $table->timestamps();
 
             $table->foreign('st_id')->references('id')->on('students')->onDelete('cascade');
