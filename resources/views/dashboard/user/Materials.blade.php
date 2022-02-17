@@ -2,21 +2,23 @@
 
 @section('content')
 <style>
-    .card-img-top{max-width: 250px; max-height: 250px; }
-    .center {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
- 
-        }
-</style>
-    
-@livewire('stud-materials')
+    #bg--img{
+     display: flex;
+     max-width: 1000px;
+     position: absolute;
+     right: 0px;
+     bottom: 0px;
+ }
+
+
+ </style>
+ <img src="{{ asset('bg-new.jpg') }}" alt="bg-img" id="bg--img">
+    @livewire('stud-materials')
 
 @endsection
 
 <script>
-    window.addEventListener('OpenViewCourse',function(){
-      $('.viewmaterial').modal('show');
-  });
+    window.addEventListener('OpenViewCourse', function() {
+        $('.viewmaterial').modal('show');
+    });
 </script>

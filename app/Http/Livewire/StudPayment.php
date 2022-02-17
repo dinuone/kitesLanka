@@ -16,12 +16,15 @@ class StudPayment extends Component
 {
     use WithFileUploads;
     use WithPagination;
+    protected $paginationTheme = 'bootstrap';
 
     public $photo,$student_id;
     public $course;
     public $amount;
     public $month;
     public $payST = 1;
+    public $paymentid;
+    public $pdffile;
    
 
     public function render()
@@ -32,11 +35,13 @@ class StudPayment extends Component
 
         $courses = Auth::guard('student')->user()->courses()->get();
         $students = Student::where('id',$sid)->get();
+        $payment_imgs = Payment::select('image_path','id')->where('id',$this->paymentid)->get();
         
         return view('livewire.stud-payment',[
             'courses'=>$courses,
             'students'=>$students,
             'payments'=>$payments,
+            'payment_imgs'=>$payment_imgs
 
         ]);
     }
@@ -56,8 +61,7 @@ class StudPayment extends Component
         $this->validate([
             'student_id'=>'required',
             'course'=>'required',
-            'photo'=>'image|max:1024',
-            'amount'=>'required',
+            'amount'=>'numeric',
             'month'=>'required'
             
         ]);
@@ -65,13 +69,21 @@ class StudPayment extends Component
         
         $payment = new Payment();
         $sid = Auth::user()->id;
-    
-        $payment->image_path = $this->photo->store('images', 'public');
         $payment->student_id = $this->student_id;
         $payment->course_id = $this->course;
         $payment->st_id = $sid;
         $payment->amount = $this->amount;
         $payment->month = $this->month;
+
+        if($this->photo){
+            $payment->image_path = $this->photo->store('images', 'public');
+        }
+        
+        if($this->pdffile){
+            $filename = $this->pdffile->store('reciptPDF','public');
+            $payment->pdf_file = $filename;
+        }
+       
         $save = $payment->save();
 
         $update = Student::find($sid)->update([
@@ -81,5 +93,27 @@ class StudPayment extends Component
         if($save){
             $this->dispatchBrowserEvent('ClosepaymenttModal');
         }
+    }
+
+    
+    public function OpenRecipt($id)
+    {
+        $this->paymentid = $id;
+        $this->dispatchBrowserEvent('OpenViewRecipt',[
+            'id'=>$id
+        ]);
+       
+    }
+
+    public $showimage = false;
+    public $showpdf = false;
+    public function showimg()
+    {
+        $this->showimage =! $this->showimage;
+    }
+
+    public function showpdf()
+    {
+        $this->showpdf =! $this->showpdf;
     }
 }

@@ -18,20 +18,7 @@ return [
         'passwords' => 'users',
     ],
 
-    'admin'=>[
-        'driver'=>'eloquent',
-        'model'=>App\Models\Admin::class,
-    ],
-
-    'student'=>[
-        'driver'=>'eloquent',
-        'model'=>App\Models\Student::class,
-    ],
-
-    'teacher'=>[
-        'driver'=>'eloquent',
-        'model'=>App\Models\Teacher::class,
-    ],
+  
 
     /*
     |--------------------------------------------------------------------------
@@ -51,6 +38,7 @@ return [
     */
 
     'guards' => [
+        
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -68,14 +56,29 @@ return [
             'provider'=>'admins',
         ],
 
+        'admin-api' => [
+            'driver' => 'token',
+            'provider' => 'admins',
+        ],
+
         'student'=>[
             'driver'=>'session',
             'provider'=>'students',
         ],
 
+        'student-api' => [
+            'driver' => 'token',
+            'provider' => 'students',
+        ],
+
         'teacher'=>[
             'driver'=>'session',
             'provider'=>'teachers'
+        ],
+
+        'teacher-api' => [
+            'driver' => 'token',
+            'provider' => 'students',
         ],
 
          
@@ -149,20 +152,7 @@ return [
             'throttle' => 60,
         ],
 
-        'admins'=>[
-            'driver'=>'eloquent',
-            'model'=>App\Models\Admin::class,
-        ],
-        
-        'students'=>[
-            'driver'=>'eloquent',
-            'model'=>App\Models\Student::class,
-        ],
-
-        'teachers'=>[
-            'driver'=>'eloquent',
-            'model'=>App\Models\Teacher::class,
-        ],
+       
     ],
 
     /*

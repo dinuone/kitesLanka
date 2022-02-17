@@ -20,12 +20,11 @@ class AttendaceReport extends Component
     public function render()
     {
 
-        $attend = Attendance::where('course_id', $this->bycourse)->whereBetween('created_at', [$this->startDate, $this->EndDate])
-        ->get();
-        $courses = Course::all();
+        $attend = Attendance::where('course_id','=',$this->bycourse)->whereBetween('created_at', [$this->startDate, $this->EndDate])->get(); 
+        $courses = Course::select('Name','id')->get();
         return view('livewire.attendace-report',[
-            'attend'=>$attend,
-            'courses'=>$courses
+            'courses'=>$courses,
+            'attend'=>$attend
         ]);
     }
 
@@ -39,6 +38,7 @@ class AttendaceReport extends Component
             $this->selected = [];
         }
     }
+
 
     //export report
     public function export()

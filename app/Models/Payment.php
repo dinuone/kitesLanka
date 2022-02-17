@@ -20,6 +20,7 @@ class Payment extends Model
         'amount',
         'ref_number',
         'month',
+        'pdf_file'
     ];
 
 

@@ -11,6 +11,7 @@ use Livewire\WithFileUploads;
 
 use App\Exports\PaymentsExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
 
 class StudManage extends Component
 {
@@ -18,10 +19,10 @@ class StudManage extends Component
     use WithPagination;
     use WithFileUploads;
 
-    public $bycourse= 1;
+    public $bycourse;
     public $courseID;
     public $bymonth;
-    public $refnum;
+    public $ref_number;
     public $paymentST = 1;
     public $search;
     public $paymentID;
@@ -29,7 +30,7 @@ class StudManage extends Component
     public $checkedPayment=[];
     public $selectAll = false;
 
-    public $up_stid,$up_amount,$up_course,$up_status,$up_ref,$up_month;
+    public $up_stid,$up_amount,$up_course,$up_status,$up_month;
     protected $listeners=['delete'];
 
     public function render()
@@ -40,6 +41,12 @@ class StudManage extends Component
         $payments = Payment::where('course_id', $this->bycourse)->where('month',$this->bymonth)
                     ->where('student_id','like', $search)->get();
         $paymentimage = Payment::where('id',$this->courseID)->get();
+
+        $amount = Payment::where('course_id',$this->bycourse)->where('payment_status',1)->where('month',$this->bymonth)->sum('amount');
+        
+        $verify= Payment::where('course_id',$this->bycourse)->where('payment_status',1)->where('month',$this->bymonth)->count();
+
+        $notverify= Payment::where('course_id',$this->bycourse)->where('payment_status',0)->where('month',$this->bymonth)->count();
         
         //return to payment edit modal
         $paymentStatus = Payment::where('id',$this->paymentID)->get();
@@ -47,7 +54,10 @@ class StudManage extends Component
             'payments'=>$payments,
             'crs'=>$crs,
             'paymentimage'=>$paymentimage,
-            'paymentStatus'=> $paymentStatus
+            'paymentStatus'=> $paymentStatus,
+            'amount'=>$amount,
+            'verify'=>$verify,
+            'notverify'=>$notverify
         ]);
     }
 
@@ -70,7 +80,6 @@ class StudManage extends Component
         $this->up_amount = $info->amount;
         $this->up_course = $info->course_id;
         $this->up_status = $info->payment_status;
-        $this->up_ref = $info->ref_number;
         $this->up_month = $info->month;
         $this->dispatchBrowserEvent('OpenEditPaymentModal',[
             'id'=>$id,
@@ -80,21 +89,12 @@ class StudManage extends Component
     public function update()
     {
         $paymentID = $this->paymentID;
-        $this->validate([
-            'up_amount'=>'required',
-            'up_course'=>'required',
-            'up_status'=>'required',
-            'up_ref'=>'required',
-            'up_month'=>'required,'
-
-        ]);
 
         $update=Payment::find($paymentID)->update([
            'amount'=>$this->up_amount,
            'course_id'=>$this->up_course,
            'payment_status'=>$this->up_status,
-           'ref_number'=>$this->up_ref,
-           'up_month'=>$this->up_month
+           'month'=>$this->up_month
         ]);
 
         if($update){
@@ -105,11 +105,11 @@ class StudManage extends Component
     public function access()
     {
         $this->validate([
-            'refnum'=>'required'  
+            'ref_number'=>'required|unique:payments'  
         ]);
 
         $update = Payment::find($this->courseID)->update([
-            'ref_number'=>$this->refnum,
+            'ref_number'=>$this->ref_number,
             'payment_status'=>$this->paymentST
         ]);
 
@@ -119,9 +119,11 @@ class StudManage extends Component
     }
 
 
-    public function deletePayment($id)
+    public $studid;
+
+    public function deletePayment($id,$studid)
     {
-        $info = Payment::find($id);
+        $this->studid = $studid;
         $this->dispatchBrowserEvent('swalconfirm',[
             'title'=>'Are You Sure?',
             'id'=>$id
@@ -130,10 +132,19 @@ class StudManage extends Component
 
     public function delete($id)
     {
-        $del = Payment::find($id)->delete();
-        if($del){
-            $this->dispatchBrowserEvent('deleted');
+        $update = Student::where('id',$this->studid)->update([
+            'payment_status'=>0
+        ]);
+
+        if($update){
+
+            $del = Payment::find($id)->delete();
+            if($del){
+                $this->dispatchBrowserEvent('deleted');
+            }
         }
+
+        
     }
 
     public function export()
@@ -152,6 +163,7 @@ class StudManage extends Component
         }
     }
 
-
         
 }
+
+

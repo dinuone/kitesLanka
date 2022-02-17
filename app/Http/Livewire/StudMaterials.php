@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\Auth;
 class StudMaterials extends Component
 {
     public $courseID;
+    public $month;
 
     public function render()
     {
         
         $stdid = Auth::user()->id;
         $student = Student::where('id',$stdid)->get();
-        $paymentdone = Payment::where('st_id',$stdid)->where('course_id',$this->courseID)->where('payment_status',1)->get();
+        $paymentdone = Payment::where('st_id',$stdid)->where('course_id',$this->courseID)->where('payment_status',1)->where('month','=',$this->month)->get();
 
         $files = material::where('course_id',$this->courseID)->get();
         $courses = Auth::guard('student')->user()->courses()->get();

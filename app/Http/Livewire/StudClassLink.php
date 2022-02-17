@@ -13,13 +13,15 @@ use Illuminate\Support\Facades\Auth;
 class StudClassLink extends Component
 {
     public $courseID;
+    public $month,$rec_month;
 
     public function render()
     {
         $today = Carbon::today();
 
         $stdid = Auth::user()->id;
-        $payments = Payment::where('payment_status', '=', 1)->where('st_id','=',$stdid)->where('course_id','=',$this->courseID)->get();
+        
+        $payments = Payment::where('payment_status', '=', 1)->where('month','=',$this->month)->where('st_id','=',$stdid)->where('course_id','=',$this->courseID)->get();
         $courses = Auth::guard('student')->user()->courses()->get();
         return view('livewire.stud-class-link',[
             'courses'=>$courses,
@@ -63,5 +65,13 @@ class StudClassLink extends Component
         
     
        
+    }
+
+    public function OpenRecLinkModal($id)
+    {
+        $this->courseID = $id;
+        $this->dispatchBrowserEvent('RecLinkModal',[
+            'id'=>$id
+        ]);
     }
 }

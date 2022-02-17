@@ -17,11 +17,12 @@ class TeacherController extends Controller
         $duecount = Student::where('payment_status','=',0)->count();
         $studToday = Student::whereDate('created_at', Carbon::today())->get()->count();
         $user = Auth::guard('teacher')->id();
-        
-
+        $courses = Course::where('teacher_id',$user)->get();
+        // $income = Payment::where('payment_status','=','1')->where('course_id',)->whereMonth('created_at',Carbon::now()->month)->sum('amount');
         return view('dashboard.teacher.home',[
             'studToday'=>$studToday,
             'duecount'=>$duecount,
+            'courses'=>$courses
         ]);
     }
 
@@ -40,6 +41,12 @@ class TeacherController extends Controller
             return redirect()->back()->with('fail','Incorrect Username or Password');
         }
 
+    }
+
+    public function logout()
+    {
+        Auth::guard('teacher')->logout();
+        return redirect('/');
     }
 
 

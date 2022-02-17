@@ -4,18 +4,23 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
-use App\Models\Course;
-use App\Models\material;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Course; //
+use App\Models\Material;
 use Webpatser\Uuid\Uuid;
 use Illuminate\Support\Facades\Storage;
+use DB;
+use File;
+use Illuminate\Support\Facades\Response;
 
 
 class CourseMaterialsController extends Controller
 {
+   public $getfilename;
+
     public function index()
     {
-        $files = material::paginate(10);
+        $files = Material::Latest()->paginate(100);
         $courses = Course::all();
         return view('dashboard.admin.materials',[
             'courses'=>$courses,
@@ -23,37 +28,75 @@ class CourseMaterialsController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function uploadfile(Request $request)
     {
-        $validator = $request->validate([
-            'file' => 'required|mimes:png,jpg,jpeg,csv,txt,xlx,xls,pdf|max:10000',
+        $request->validate([
+            'material.*'=>'mimes:doc,pdf,docx',
+            'month'=>'required',
             'course'=>'required'
         ]);
-    
-        $data = new material();
-        $file = $request->file;
-        $filename = time().'.'.$file->getClientOriginalName();
-        $request->file->move('assets',$filename);
-        
-        $data->course_id = $request->course;
-        $data->file_name = $filename;
-        $data->save();
 
+     
+        if($request->hasfile('material')){
+            foreach($request->file('material') as $file)
+            {
+                $filename = $file->getClientOriginalName();
+                $file->move(public_path().'/uploads/',$filename);
+                
+                $file = new Material();
+                $file->course_id = $request->course;
+                $file->file_name = $filename;
+                $file->month = $request->month;
+                $file->save();
             
-        return back()->with('success','File has uploaded to the database.');
+            }
+
+           
+
+            return back()->with('success','File has uploaded to the database.');
+        }
+            
+
+    }
+
+
+    public function viewpdf($id)
+    {
+        
+        $info = Material::find($id);
+        $filepath = $info->file_name;
+
+        $path= public_path('/uploads/'.$filepath);
+        
+        $header = [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . $filepath . '"'
+          ];
+
+       return response()->file($path, $header);
         
     }
 
-    public function download($file_name)
+    public function Removefilles($id)
     {
-        $path = public_path('assets/'.$file_name);
-        return response()->download($path);
-        
-    }
+    
+        $checkfile = Material::select('id','file_name')->where('id','=',$id)->get();
+        foreach($checkfile as $file)
+        {
+           $materialName = $file->file_name;
+           if(Storage::exists($materialName)){
+               Storage::delete($materialName);
+           }
+          
 
-    public function destroy($id)
-    {
-        dd($id);
+           $delete = Material::find($id)->delete();
+           if($delete){
+            return back()->with('success','File has been Deleted!.');
+           }
+           
+        }
+
+
     }
   
 }

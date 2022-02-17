@@ -66,7 +66,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -12836,7 +12836,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 }
 
 .dark-mode .content-wrapper {
-  background-color: #454d55;
+  background-color: white;
   color: #fff;
 }
 

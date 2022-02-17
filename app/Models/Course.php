@@ -16,7 +16,14 @@ class Course extends Model
        'image_path',
        'description',
        'created_at',
-       'update_at'
+       'update_at',
+       'month',
+       'class_fee',
+       'offer_price',
+       'record_link',
+       'record_link_month',
+       'large_desc',
+       'admission_fee'
        
     ];
 

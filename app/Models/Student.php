@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -24,7 +23,9 @@ class Student extends Authenticatable
         'id',
         'payment_status',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'last_seen',
+     
     ];
 
     public function courses()
@@ -32,20 +33,21 @@ class Student extends Authenticatable
         return $this->belongsToMany(Course::class,'course_student');
     }
 
-    public function scopeSearch($query, $term)
-    {
-        $term = "%$term%";
-        $query->where(function($query) use ($term){
-            $query->where('FullName','like', $term)
-                    ->orWhere('student_id','like',$term);
-            
-        });
-    }
 
     public function payments()
     {
         return $this->hasMany(Payment::class);
     }
+
+    public function attendance()
+    {
+        return $this->hasMany(Attendance::class);
+    }
+
+    public function feedbacks()
+    {
+        return $this->hasMany(Feedback::class);
+    }
 }
 
-?>
+

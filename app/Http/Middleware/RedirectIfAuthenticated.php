@@ -35,8 +35,11 @@ class RedirectIfAuthenticated
                 {
                     return redirect()->route('teacher.home');
                 }
+                if (Auth::guard($guard)->check()) {
+                    return redirect('/');
+                }
 
-                return redirect()->route('welcome');
+                return $next($request);
             }
          
          

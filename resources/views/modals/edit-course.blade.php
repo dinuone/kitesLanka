@@ -37,7 +37,7 @@ aria-hidden="true" data-keyboad="false" data-backdrop="static">
           <div class="form-group">
             <label>Select Image</label>
             <input type="file" class="form-control-file" wire:model="up_photo" id="photo1">
-            <span class="text-danger">@error('photo')  {{ $message }} @enderror</span>
+            <span class="text-danger">@error('up_photo')  {{ $message }} @enderror</span>
             <div wire:loading wire:target="photo">Uploading...</div>
           </div>  
             {{-- image preview --}}
