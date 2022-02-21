@@ -15,10 +15,11 @@ class PaymentsExport implements FromQuery,WithMapping,WithHeadings
 {
     use Exportable;
     protected $checkedPayment;
-
-    public function __construct($checkedPayment)
+    protected $bymonth;
+    public function __construct($checkedPayment,$bymonth)
     {
         $this->checkedPayment = $checkedPayment;
+        $this->bymonth = $bymonth;
     }
     /**
     * @return \Illuminate\Support\Collection
@@ -58,6 +59,6 @@ class PaymentsExport implements FromQuery,WithMapping,WithHeadings
 
     public function query()
     {
-        return Payment::with('Student:id,FullName','Course:id,Name')->whereIn('id',$this->checkedPayment);
+        return Payment::with('Student:id,FullName','Course:id,Name')->whereIn('id',$this->checkedPayment)->where('month',$this->bymonth);
     }
 }

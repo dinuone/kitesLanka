@@ -149,7 +149,7 @@ class StudManage extends Component
 
     public function export()
     {
-        return (new PaymentsExport($this->checkedPayment))->download('payment-summary.xls'); 
+        return (new PaymentsExport($this->checkedPayment,$this->bymonth))->download('payment-summary.xls'); 
       
     }
 
