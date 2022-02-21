@@ -107,7 +107,7 @@
                 <th>Ref No</th>
                 <th>Payment Status</th>
                 <th></th>
-                <th style="width:120px;">View PDF</th>
+                {{-- <th style="width:120px;">View PDF</th> --}}
                 <th>Actions</th>
             </tr>
         </thead>
@@ -137,11 +137,11 @@
                             wire:click="OpenPaymentverify({{ $payment->id }})">Check</button>
                     </td>
                    
-                    <td>
+                    {{-- <td>
                         @if ($payment->pdf_file != null)
                         <a href="{{ route('pdf-view', $payment->id) }}" class="btn bg-teal">View PDF</a>
                         @endif
-                    </td>
+                    </td> --}}
                     
                     <td>
                         <a class="mr-3" wire:click="OpenEditPaymentModal({{ $payment->id }})"><i
