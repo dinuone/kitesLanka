@@ -142,7 +142,6 @@
                         <a href="{{ route('pdf-view', $payment->id) }}" class="btn bg-teal">View PDF</a>
                         @endif
                     </td>
-                   
                     
                     <td>
                         <a class="mr-3" wire:click="OpenEditPaymentModal({{ $payment->id }})"><i
