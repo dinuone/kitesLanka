@@ -70,9 +70,9 @@
                         <span class="text-danger">@error('photo') {{ $message }} @enderror</span>
                         <div wire:loading wire:target="photo">Uploading...</div>
                             {{-- image preview --}}
-                        @if ($photo)
+                        {{-- @if ($photo)
                         <img src="{{ $photo->temporaryUrl() }}" id="photo1">
-                        @endif
+                        @endif --}}
                     </div>
                @endif
                
