@@ -24,7 +24,7 @@ class StudPayment extends Component
     public $month;
     public $payST = 1;
     public $paymentid;
-    public $pdffile;
+    // public $pdffile;
    
 
     public function render()
@@ -63,8 +63,7 @@ class StudPayment extends Component
             'course'=>'required',
             'amount'=>'numeric',
             'month'=>'required',
-            'photo'=>'mimes:jpeg,jpg,png',
-            'pdffile'=>'mimes:pdf'
+            'photo'=>'required|mimes:jpeg,jpg,png',
             
         ]);
         //image name
@@ -76,15 +75,13 @@ class StudPayment extends Component
         $payment->st_id = $sid;
         $payment->amount = $this->amount;
         $payment->month = $this->month;
-
-        if($this->photo){
-            $payment->image_path = $this->photo->store('images', 'public');
-        }
+        $payment->image_path = $this->photo->store('images', 'public');
         
-        if($this->pdffile){
-            $filename = $this->pdffile->store('reciptPDF','public');
-            $payment->pdf_file = $filename;
-        }
+        
+        // if($this->pdffile){
+        //     $filename = $this->pdffile->store('reciptPDF','public');
+        //     $payment->pdf_file = $filename;
+        // }
        
         $save = $payment->save();
 
@@ -107,15 +104,15 @@ class StudPayment extends Component
        
     }
 
-    public $showimage = false;
-    public $showpdf = false;
-    public function showimg()
-    {
-        $this->showimage =! $this->showimage;
-    }
+    // public $showimage = false;
+    // public $showpdf = false;
+    // public function showimg()
+    // {
+    //     $this->showimage =! $this->showimage;
+    // }
 
-    public function showpdf()
-    {
-        $this->showpdf =! $this->showpdf;
-    }
+    // public function showpdf()
+    // {
+    //     $this->showpdf =! $this->showpdf;
+    // }
 }

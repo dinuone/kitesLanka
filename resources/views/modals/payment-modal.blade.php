@@ -57,27 +57,23 @@
 
                 @endforeach
                 <hr>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" wire:click="showimg()">
-                    <label class="form-check-label">Upload Image ?</label>
-                </div>
-                   
+               
                     
-                @if($showimage)
+               
                     <div class="form-group">
                         <label>Select Image</label>
                         <input type="file" class="form-control-file" wire:model="photo">
                         <span class="text-danger">@error('photo') {{ $message }} @enderror</span>
                         <div wire:loading wire:target="photo">Uploading...</div>
-                            {{-- image preview --}}
-                        {{-- @if ($photo)
+                         {{-- image preview  --}}
+                        @if ($photo)
                         <img src="{{ $photo->temporaryUrl() }}" id="photo1">
-                        @endif --}}
+                       @endif
                     </div>
-               @endif
+              
                
-               <hr>
-               <div class="form-check">
+               
+               {{-- <div class="form-check">
                 <input class="form-check-input" type="checkbox" wire:click="showpdf()">
                 <label class="form-check-label">Upload PDF ?</label>
                 </div>
@@ -89,7 +85,7 @@
                     <span class="text-danger">@error('pdffile') {{ $message }} @enderror</span>
                     <div wire:loading wire:target="pdffile">Uploading...</div>
                 </div>
-               @endif
+               @endif --}}
 
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

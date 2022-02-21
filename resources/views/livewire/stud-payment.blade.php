@@ -38,7 +38,7 @@
                                 <th>Date</th>
                                 <th>Payment Status</th>
                                 <th>Payment for</th>
-                                <th>Action</th>
+                                {{-- <th>Action</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -62,9 +62,9 @@
                                             @endif
                                         </td>
                                         <td>{{ $payment->month }}</td>
-                                        <td><button class="btn bg-indigo"
+                                        {{-- <td><button class="btn bg-indigo"
                                                 wire:click="OpenRecipt({{ $payment->id }})">View Recipt</button></td>
-                                    </tr>
+                                    </tr> --}}
                                 @endforeach
                             @else
                                 <td colspan="7" class="text-center text-danger">Cannot find any payment records!</td>
@@ -80,5 +80,5 @@
     </div>
 
     @include('modals.payment-modal')
-    @include('modals.view-recipt')
+    {{-- @include('modals.view-recipt') --}}
 </div>
